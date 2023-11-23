@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public AudioSource biteAudio; //Player Audiocontrol for bite effect
     //using rigidbody for movement, so no weird physic-fuck-ups
     //TODO: ✔physmat for player object
     //TODO: enemy collision event
@@ -35,5 +36,13 @@ public class Player : MonoBehaviour
     void PlayerMovement(Vector2 direction)
     {
         rb.velocity = direction * movementSpeed * Time.fixedDeltaTime;
+    }
+
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy") 
+        { 
+            biteAudio.Play();
+        }
     }
 }
