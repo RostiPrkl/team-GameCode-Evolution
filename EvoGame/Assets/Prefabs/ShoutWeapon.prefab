@@ -133,4 +133,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b2a4fd60cdf62edfb5552416fe29ccf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyCounterProjectile: 3
+  destroyCounterProjectile: 2
+  attackData: {fileID: 11400000, guid: cc89820ce61ae433b9ac0fe19eb9bc38, type: 2}

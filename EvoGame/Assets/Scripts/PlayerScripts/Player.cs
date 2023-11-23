@@ -7,11 +7,8 @@ public class Player : MonoBehaviour
 {
     //using rigidbody for movement, so no weird physic-fuck-ups
     //TODO: ✔ physmat for player object
-    //TODO: enemy collision event
+    //TODO: ✔ enemy collision event
 
-    [SerializeField] float movementSpeed = 100f;
-    public float health = 100f;
-    
     float lastHorizontal;
     float lastVertical;
     Vector2 input;
@@ -20,9 +17,11 @@ public class Player : MonoBehaviour
 
     [HideInInspector] public Vector2 moveDirection;
     [HideInInspector] public Vector2 lastMoveDirection;
+
+    public PlayerScriptableObject playerData;
     
     
-    void Start()
+    private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
     }
@@ -37,7 +36,7 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.MovePosition(rb.position + input * movementSpeed * Time.fixedDeltaTime);
+        rb.MovePosition(rb.position + input * playerData.MovementSpeed * Time.fixedDeltaTime);
     }
 
 

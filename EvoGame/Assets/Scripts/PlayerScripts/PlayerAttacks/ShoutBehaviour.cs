@@ -7,18 +7,17 @@ using UnityEngine;
 public class ShoutBehaviour : ProjectileBehaviour
 {
     //reference shout controller
-    ShoutController sc;
+    
     
     protected override void Start()
     {
         base.Start();
-        sc = FindObjectOfType<ShoutController>();
     }
 
     
     void Update()
     {
         //set the movement of shout
-        transform.position += direction * sc.speed * Time.deltaTime;
+        transform.position += direction * attackData.Speed * Time.deltaTime;
     }
 }

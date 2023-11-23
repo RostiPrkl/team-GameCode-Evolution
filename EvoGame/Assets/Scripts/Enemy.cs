@@ -8,17 +8,19 @@ public class Enemy : MonoBehaviour
     //TODO: take damage from player attack
 
    [SerializeField] float movementSpeed = 100f;
-   [SerializeField] float health = 20f;
+   [SerializeField] float maxHealth = 200f;
+
+   public float currentHealth;
 
    public float enemyDamage;
-   private Transform player;
-   private Player playerScript; 
+   Transform player;
+   
 
 
     void Start()
     {
+        currentHealth = maxHealth;
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
     }
 
     
@@ -27,11 +29,12 @@ public class Enemy : MonoBehaviour
         transform.position = Vector2.MoveTowards(transform.position, player.position, movementSpeed * Time.deltaTime);
     }
 
-
-    void OnCollision2dEnter(Collision collision)
+    public void TakeDamage(float dmg)
     {
-        //tätä ei välttis kannata käyttää, testailin vain juttuja
-        enemyDamage = 10;
-        playerScript.health -= enemyDamage;
+        currentHealth -= dmg;
+        if (currentHealth <= 0)
+            Destroy(gameObject);
     }
+
+
 }

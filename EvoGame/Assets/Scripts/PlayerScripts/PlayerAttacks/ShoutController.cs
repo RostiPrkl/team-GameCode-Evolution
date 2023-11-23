@@ -16,7 +16,7 @@ public class ShoutController : PlayerAttackController
     protected override void Attack()
     {
         base.Attack();
-        GameObject spawnedShout = Instantiate(attackPrefab);
+        GameObject spawnedShout = Instantiate(attackData.AttackPrefab);
         spawnedShout.transform.position = transform.position;
         spawnedShout.GetComponent<ShoutBehaviour>().DirectionCheck(player.lastMoveDirection);
     }

@@ -13,7 +13,7 @@ public class BiteController : PlayerAttackController
     protected override void Attack()
     {
         base.Attack();
-        GameObject spawnedBite = Instantiate(attackPrefab);
+        GameObject spawnedBite = Instantiate(attackData.AttackPrefab);
         spawnedBite.transform.SetParent(transform);
         spawnedBite.transform.position = transform.position;
     }

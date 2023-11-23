@@ -8,6 +8,19 @@ public class ProjectileBehaviour : MonoBehaviour
 {
     protected Vector3 direction;
     public float destroyCounterProjectile;
+    public PlayerAttackScriptableObject attackData;
+
+    protected float currentDamage;
+    protected float currentSpeed;
+    protected float currentCooldownDur;
+
+
+    void Awake()
+    {
+        currentDamage = attackData.Damage;
+        currentSpeed = attackData.Speed;
+        currentCooldownDur = attackData.Cooldown;
+    }
 
 
     protected virtual void Start()
@@ -55,5 +68,17 @@ public class ProjectileBehaviour : MonoBehaviour
 
         transform.localScale = scale;
         transform.rotation = Quaternion.Euler(rotation);
+    }
+
+
+    protected virtual void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.CompareTag("Enemy"))
+        {
+            Enemy enemy = collider.GetComponent<Enemy>();
+            enemy.TakeDamage(currentDamage);
+            Destroy(gameObject);
+        }
+            
     }
 }

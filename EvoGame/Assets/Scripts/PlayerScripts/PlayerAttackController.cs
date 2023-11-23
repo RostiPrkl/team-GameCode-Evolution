@@ -9,10 +9,7 @@ using UnityEngine.Rendering;
 public class PlayerAttackController : MonoBehaviour
 {
     [Header("Attack Stats")]
-    public GameObject attackPrefab;
-    public float damage;
-    public float speed;
-    public float cooldown;
+    public PlayerAttackScriptableObject attackData;
     protected Player player;
     float currentCooldown;
 
@@ -21,7 +18,7 @@ public class PlayerAttackController : MonoBehaviour
     protected virtual void Start()
     {
         player = FindObjectOfType<Player>();
-        currentCooldown = cooldown;
+        currentCooldown = attackData.Cooldown;
     }
 
 
@@ -35,6 +32,6 @@ public class PlayerAttackController : MonoBehaviour
 
     protected virtual void Attack()
     {
-        currentCooldown = cooldown;
+        currentCooldown = attackData.Cooldown;
     }
 }
