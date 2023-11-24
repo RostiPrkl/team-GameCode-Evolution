@@ -14,6 +14,8 @@ public class Enemy : MonoBehaviour
 
    public float enemyDamage;
    Transform player;
+
+   float damage = 5;
    
 
 
@@ -34,6 +36,17 @@ public class Enemy : MonoBehaviour
         currentHealth -= dmg;
         if (currentHealth <= 0)
             Destroy(gameObject);
+    }
+
+
+    void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            PlayerStats player = collision.gameObject.GetComponent<PlayerStats>();
+            player.TakeDamage(damage);
+        }
+        
     }
 
 

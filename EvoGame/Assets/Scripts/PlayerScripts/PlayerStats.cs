@@ -25,6 +25,12 @@ public class PlayerStats : MonoBehaviour
         public int expCapIncrease;
     }
 
+    [Header("Invincibility After Damage")]
+    [SerializeField] float iFrames;
+    float iFrameTimer;
+    bool isInvincible;
+
+
     public List<LevelRange> levelRanges;
     
     
@@ -41,6 +47,24 @@ public class PlayerStats : MonoBehaviour
     {
         //initialization of the exp increase system
         expCap = levelRanges[0].expCapIncrease;
+    }
+
+
+    void Update()
+    {
+        //reduce iframes and set MORTIS
+        if (iFrameTimer > 0)
+            iFrameTimer -= Time.deltaTime;
+        else if (isInvincible)
+            isInvincible = false;
+    }
+
+
+    public void RestoreHealth(float amount)
+    {
+        currentHealth += amount;
+        if (currentHealth > playerData.MaxHealth)
+            currentHealth = playerData.MaxHealth;
     }
 
 
@@ -69,5 +93,26 @@ public class PlayerStats : MonoBehaviour
             }
             expCap += expCapIncrease;
         }
+    }
+
+
+    public void TakeDamage(float dmg)
+    {
+        //Check for iframes, and granting for brief invincibilty after dmg
+        if (!isInvincible)
+        {
+            currentHealth -= dmg;
+            iFrameTimer = iFrames;
+            isInvincible = true;
+
+            if (currentHealth <= 0)
+                Death();
+        }
+    }
+
+
+    public void Death()
+    {
+        Debug.Log("Player has died");
     }
 }

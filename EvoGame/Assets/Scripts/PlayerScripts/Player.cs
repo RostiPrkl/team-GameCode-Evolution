@@ -8,6 +8,9 @@ public class Player : MonoBehaviour
     //using rigidbody for movement, so no weird physic-fuck-ups
     //TODO: ✔ physmat for player object
     //TODO: ✔ enemy collision event
+    //TODO:   xp pick up system
+    //TODO:   player health system
+    //TODO:   lvlup event
 
     float lastHorizontal;
     float lastVertical;
@@ -77,5 +80,12 @@ public class Player : MonoBehaviour
     {
         facingDir = !facingDir;
         transform.Rotate(0,180,0);
+    }
+
+
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        if(collider.gameObject.TryGetComponent(out ICollectible collectible))
+            collectible.Collect();
     }
 }
