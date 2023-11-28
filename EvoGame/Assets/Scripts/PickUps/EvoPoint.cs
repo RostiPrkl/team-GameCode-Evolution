@@ -10,6 +10,12 @@ public class EvoPoint : MonoBehaviour, ICollectible
     {
         PlayerStats player = FindObjectOfType<PlayerStats>();
         player.IncreaseExp(experienceCollected);
-        Destroy(gameObject);
+    }
+
+
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        if(collider.CompareTag("Player"))
+            Destroy(gameObject);
     }
 }

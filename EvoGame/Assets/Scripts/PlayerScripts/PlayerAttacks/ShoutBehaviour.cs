@@ -18,6 +18,6 @@ public class ShoutBehaviour : ProjectileBehaviour
     void Update()
     {
         //set the movement of shout
-        transform.position += direction * attackData.Speed * Time.deltaTime;
+        transform.position += direction * currentSpeed * Time.deltaTime;
     }
 }

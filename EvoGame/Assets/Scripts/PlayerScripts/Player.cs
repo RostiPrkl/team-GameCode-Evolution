@@ -21,12 +21,13 @@ public class Player : MonoBehaviour
     [HideInInspector] public Vector2 moveDirection;
     [HideInInspector] public Vector2 lastMoveDirection;
 
-    public PlayerScriptableObject playerData;
+    PlayerStats playerStats;
     
     
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        playerStats = GetComponent<PlayerStats>();
     }
 
     
@@ -39,7 +40,7 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.MovePosition(rb.position + input * playerData.MovementSpeed * Time.fixedDeltaTime);
+        rb.MovePosition(rb.position + input * playerStats.currentMovementSpeed * Time.fixedDeltaTime);
     }
 
 
@@ -80,12 +81,5 @@ public class Player : MonoBehaviour
     {
         facingDir = !facingDir;
         transform.Rotate(0,180,0);
-    }
-
-
-    void OnTriggerEnter2D(Collider2D collider)
-    {
-        if(collider.gameObject.TryGetComponent(out ICollectible collectible))
-            collectible.Collect();
     }
 }

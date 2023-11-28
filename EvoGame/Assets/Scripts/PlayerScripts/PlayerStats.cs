@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.PackageManager;
+using UnityEditor.U2D.Animation;
 using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
@@ -8,9 +9,10 @@ public class PlayerStats : MonoBehaviour
     public PlayerScriptableObject playerData;
 
     [HideInInspector] public float currentHealth;
-    float currentRecovery;
-    float currentMovementSpeed;
-    float currentProjectileSpeed;
+    [HideInInspector] public float currentRecovery;
+    [HideInInspector] public float currentMovementSpeed;
+    [HideInInspector] public float currentProjectileSpeed;
+    [HideInInspector] public float currentPickupRadius;
 
     [Header("Leveling stats")]
     public int experience = 0;
@@ -40,6 +42,7 @@ public class PlayerStats : MonoBehaviour
         currentRecovery = playerData.Recovery;
         currentMovementSpeed = playerData.MovementSpeed;
         currentProjectileSpeed = playerData.ProjectileSpeed;
+        currentPickupRadius = playerData.PickupRadius;
     }
 
 
@@ -57,6 +60,8 @@ public class PlayerStats : MonoBehaviour
             iFrameTimer -= Time.deltaTime;
         else if (isInvincible)
             isInvincible = false;
+        
+        Recover();
     }
 
 
@@ -107,6 +112,17 @@ public class PlayerStats : MonoBehaviour
 
             if (currentHealth <= 0)
                 Death();
+        }
+    }
+
+
+    void Recover()
+    {
+        if(currentHealth < playerData.MaxHealth)
+        {
+            currentHealth += currentRecovery * Time.deltaTime;
+            if (currentHealth > playerData.MaxHealth)
+                currentHealth = playerData.MaxHealth;
         }
     }
 

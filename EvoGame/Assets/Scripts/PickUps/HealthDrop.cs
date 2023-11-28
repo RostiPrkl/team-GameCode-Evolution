@@ -10,6 +10,14 @@ public class HealthDrop : MonoBehaviour, ICollectible
     {
         PlayerStats player = FindObjectOfType<PlayerStats>();
         player.RestoreHealth(healthCollected);
-        Destroy(gameObject);
+
+        
+    }
+
+
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        if(collider.CompareTag("Player"))
+            Destroy(gameObject);
     }
 }

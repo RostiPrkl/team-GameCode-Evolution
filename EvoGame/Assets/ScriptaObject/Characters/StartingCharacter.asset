@@ -15,5 +15,6 @@ MonoBehaviour:
   startingWeapon: {fileID: 0}
   maxHealth: 100
   projectileSpeed: 0
-  recovery: 0
+  recovery: 1
   movementSpeed: 4
+  pickupRadius: 1.5

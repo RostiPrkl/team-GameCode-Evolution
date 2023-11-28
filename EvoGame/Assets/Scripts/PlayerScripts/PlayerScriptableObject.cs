@@ -13,11 +13,14 @@ public class PlayerScriptableObject : ScriptableObject
     
     [SerializeField] float projectileSpeed;
     public float ProjectileSpeed { get => projectileSpeed; private set => projectileSpeed = value; }
-    
+
     [SerializeField] float recovery;
     public float Recovery { get => recovery; private set =>  recovery= value; }
     
     [SerializeField] float movementSpeed;
     public float MovementSpeed { get => movementSpeed; private set => movementSpeed = value; }
+
+    [SerializeField] float pickupRadius;
+    public float PickupRadius { get => pickupRadius; private set => pickupRadius = value; }
 
 }
