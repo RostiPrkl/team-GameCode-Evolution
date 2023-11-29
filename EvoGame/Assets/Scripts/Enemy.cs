@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
 
    [SerializeField] float movementSpeed = 100f;
    [SerializeField] float maxHealth = 200f;
+   
 
    public float currentHealth;
 
@@ -29,6 +30,8 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         transform.position = Vector2.MoveTowards(transform.position, player.position, movementSpeed * Time.deltaTime);
+        if (player == null)
+            Destroy(gameObject);
     }
 
     public void TakeDamage(float dmg)

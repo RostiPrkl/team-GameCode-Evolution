@@ -22,6 +22,8 @@ public class Player : MonoBehaviour
     [HideInInspector] public Vector2 lastMoveDirection;
 
     PlayerStats playerStats;
+
+    public AudioSource biteAudioSource;
     
     
     private void Awake()
@@ -81,5 +83,13 @@ public class Player : MonoBehaviour
     {
         facingDir = !facingDir;
         transform.Rotate(0,180,0);
+    }
+
+
+    //hack to get bite playing only when in contact to enemy, fix later
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.CompareTag("Enemy"))
+            biteAudioSource.PlayOneShot(biteAudioSource.clip, 1);
     }
 }

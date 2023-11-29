@@ -29,5 +29,9 @@ public class DropRateManager : MonoBehaviour
             Drops drops = possibleDrops[Random.Range(0, possibleDrops.Count)];
             Instantiate(drops.itemPrefab, transform.position, Quaternion.identity);
         }
+
+        Player player = GetComponent<Player>();
+        if (player == null)
+            Destroy(gameObject);
     }
 }

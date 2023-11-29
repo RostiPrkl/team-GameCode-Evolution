@@ -135,3 +135,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destroyCounterMelee: 0.3
   attackData: {fileID: 11400000, guid: 4ab10caa0b80b51c49e460b3132b7e34, type: 2}
+  biteAudioSource: {fileID: 0}

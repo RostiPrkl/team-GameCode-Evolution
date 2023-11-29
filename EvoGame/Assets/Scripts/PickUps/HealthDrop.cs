@@ -6,6 +6,22 @@ public class HealthDrop : MonoBehaviour, ICollectible
 {
     public int healthCollected;
 
+    PlayerStats player;
+
+
+    void Start()
+    {
+        player = FindObjectOfType<PlayerStats>();
+    }
+
+
+    void Update()
+    {
+        if (player == null)
+            Destroy(gameObject);
+    }
+
+
     public void Collect()
     {
         PlayerStats player = FindObjectOfType<PlayerStats>();

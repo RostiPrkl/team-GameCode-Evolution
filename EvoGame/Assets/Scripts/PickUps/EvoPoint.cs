@@ -5,10 +5,24 @@ using UnityEngine;
 public class EvoPoint : MonoBehaviour, ICollectible
 {
     public int experienceCollected;
+    PlayerStats player;
+
+
+    void Start()
+    {
+        player = FindObjectOfType<PlayerStats>();
+    }
+
+
+    void Update()
+    {
+        if (player == null)
+            Destroy(gameObject);
+    }
+
 
     public void Collect()
     {
-        PlayerStats player = FindObjectOfType<PlayerStats>();
         player.IncreaseExp(experienceCollected);
     }
 

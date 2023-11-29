@@ -17,4 +17,4 @@ MonoBehaviour:
   projectileSpeed: 0
   recovery: 1
   movementSpeed: 4
-  pickupRadius: 1.5
+  pickupRadius: 3

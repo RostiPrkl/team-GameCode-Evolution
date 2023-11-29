@@ -12,7 +12,7 @@ public class PlayerStats : MonoBehaviour
     [HideInInspector] public float currentRecovery;
     [HideInInspector] public float currentMovementSpeed;
     [HideInInspector] public float currentProjectileSpeed;
-    [HideInInspector] public float currentPickupRadius;
+    [HideInInspector] public float currentPickupRadius = 2;
 
     [Header("Leveling stats")]
     public int experience = 0;

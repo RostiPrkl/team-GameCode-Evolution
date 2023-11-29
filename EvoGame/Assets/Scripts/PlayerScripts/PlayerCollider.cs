@@ -12,7 +12,7 @@ public class PlayerCollider : MonoBehaviour
 
     void Start()
     {
-        playerStats = GetComponent<PlayerStats>();
+        playerStats = FindObjectOfType<PlayerStats>();
         pickup = GetComponent<CircleCollider2D>();
     }
 
