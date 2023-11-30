@@ -14,6 +14,9 @@ public class PlayerStats : MonoBehaviour
     [HideInInspector] public float currentProjectileSpeed;
     [HideInInspector] public float currentPickupRadius = 2;
 
+    [SerializeField] AudioClip lowHealthAudio;
+    [SerializeField] AudioSource audioSource;
+
     [Header("Leveling stats")]
     public int experience = 0;
     public int level = 0;
@@ -60,6 +63,14 @@ public class PlayerStats : MonoBehaviour
             iFrameTimer -= Time.deltaTime;
         else if (isInvincible)
             isInvincible = false;
+
+        if (currentHealth < 20)
+        {
+            audioSource.clip = lowHealthAudio;
+            audioSource.Play();
+        }
+        if (currentHealth > 20)
+            audioSource.Stop();
         
         Recover();
     }

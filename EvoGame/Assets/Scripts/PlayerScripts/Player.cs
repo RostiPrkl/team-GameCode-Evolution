@@ -86,7 +86,6 @@ public class Player : MonoBehaviour
     }
 
 
-    //hack to get bite playing only when in contact to enemy, fix later
     void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.CompareTag("Enemy"))
