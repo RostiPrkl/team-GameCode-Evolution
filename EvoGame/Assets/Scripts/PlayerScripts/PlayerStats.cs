@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor.PackageManager;
 using UnityEditor.U2D.Animation;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -19,6 +20,10 @@ public class PlayerStats : MonoBehaviour
 
     [Header("Leveling stats")]
     public int experience = 0;
+    [SerializeField] float previousexperience;
+    [SerializeField] Image xpFiller;
+    [SerializeField] float xpCounter;
+    [SerializeField] float xpMaxCounter;
     public int level = 0;
     public int expCap;
 
@@ -35,6 +40,11 @@ public class PlayerStats : MonoBehaviour
     float iFrameTimer;
     bool isInvincible;
 
+    [Header("Health Info")]
+    [SerializeField] float hpCounter;
+    [SerializeField] float hpMaxCounter;
+    [SerializeField] Image hpFiller;
+    [SerializeField] float previousHealth;
 
     public List<LevelRange> levelRanges;
     
@@ -71,8 +81,42 @@ public class PlayerStats : MonoBehaviour
         }
         if (currentHealth > 20)
             audioSource.Stop();
+
+        HealthBar();
+        XPBar();
         
         Recover();
+    }
+
+    public void HealthBar()
+    {
+        if (hpCounter > hpMaxCounter)
+        {
+            previousHealth = currentHealth;
+            hpCounter = 0;
+        }
+        else
+            hpCounter += Time.deltaTime;
+
+        hpFiller.fillAmount = Mathf.Lerp(previousHealth / playerData.MaxHealth, currentHealth / playerData.MaxHealth, hpCounter / hpMaxCounter);
+    }
+
+
+    public void XPBar()
+    {
+        if (xpCounter > xpMaxCounter)
+        {
+            previousexperience = experience;
+            xpCounter = 0;
+
+            LvlUpChecker();
+        }
+        else
+        {
+            xpCounter += Time.deltaTime;
+        }
+
+        xpFiller.fillAmount = Mathf.Lerp(previousexperience / expCap, experience / expCap, xpCounter / xpMaxCounter);
     }
 
 
@@ -117,7 +161,10 @@ public class PlayerStats : MonoBehaviour
         //Check for iframes, and granting for brief invincibilty after dmg
         if (!isInvincible)
         {
+            previousHealth = hpFiller.fillAmount * playerData.MaxHealth;
+            hpCounter = 0;
             currentHealth -= dmg;
+
             iFrameTimer = iFrames;
             isInvincible = true;
 
