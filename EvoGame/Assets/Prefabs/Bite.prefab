@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6644986621691535435}
   m_Layer: 0
   m_Name: Bite
-  m_TagString: Untagged
+  m_TagString: Bite
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -135,4 +135,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destroyCounterMelee: 0.3
   attackData: {fileID: 11400000, guid: 4ab10caa0b80b51c49e460b3132b7e34, type: 2}
-  biteAudioSource: {fileID: 0}

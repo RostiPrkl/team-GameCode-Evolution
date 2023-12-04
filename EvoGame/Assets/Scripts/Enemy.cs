@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
 
    [SerializeField] float movementSpeed = 100f;
    [SerializeField] float maxHealth = 200f;
+   [SerializeField] AudioSource audioSource;
    
 
    public float currentHealth;
@@ -48,6 +49,10 @@ public class Enemy : MonoBehaviour
         {
             PlayerStats player = collision.gameObject.GetComponent<PlayerStats>();
             player.TakeDamage(damage);
+        }
+        if (collision.gameObject.CompareTag("Bite"))
+        {
+            audioSource.PlayOneShot(audioSource.clip);
         }
         
     }
