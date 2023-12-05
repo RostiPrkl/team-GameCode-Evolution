@@ -8,8 +8,8 @@ public class Player : MonoBehaviour
     //using rigidbody for movement, so no weird physic-fuck-ups
     //TODO: ✔ physmat for player object
     //TODO: ✔ enemy collision event
-    //TODO:   xp pick up system
-    //TODO:   player health system
+    //TODO: ✔ xp pick up system
+    //TODO: ✔ player health system
     //TODO:   lvlup event
 
     float lastHorizontal;
@@ -85,7 +85,8 @@ public class Player : MonoBehaviour
         transform.Rotate(0,180,0);
     }
 
-
+    //FIXME: this is bugged, trigger launches from player collector, so sound plays too soon / random
+    //needs to moved to bite prefab maybe, that way it takes the bites collider
     void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.CompareTag("Enemy"))
