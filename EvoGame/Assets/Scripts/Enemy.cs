@@ -49,12 +49,16 @@ public class Enemy : MonoBehaviour
         {
             PlayerStats player = collision.gameObject.GetComponent<PlayerStats>();
             player.TakeDamage(damage);
-        }
+        } 
+    }
+
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
         if (collision.gameObject.CompareTag("Bite"))
         {
             audioSource.PlayOneShot(audioSource.clip);
         }
-        
     }
 
 
