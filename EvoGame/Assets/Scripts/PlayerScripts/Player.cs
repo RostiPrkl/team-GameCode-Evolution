@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -92,4 +93,5 @@ public class Player : MonoBehaviour
         if (collider.CompareTag("Enemy"))
             biteAudioSource.PlayOneShot(biteAudioSource.clip, 1);
     }
+   
 }

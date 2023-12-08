@@ -10,14 +10,14 @@ GameObject:
   m_Component:
   - component: {fileID: 7759167711719390995}
   - component: {fileID: 2942172194723960057}
-  - component: {fileID: 5582096003571889767}
   - component: {fileID: 9137353498149392356}
   - component: {fileID: 3849939608101427176}
   - component: {fileID: 8566080295360910515}
   - component: {fileID: 6869752710206633746}
+  - component: {fileID: 6955948604356426476}
   m_Layer: 0
   m_Name: TestEnemy
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -89,22 +89,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5582096003571889767
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5980331428888745058}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44b4b48744c83bacc9ffd45b4025388c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementSpeed: 0.5
-  maxHealth: 25
-  currentHealth: 0
-  enemyDamage: 0
 --- !u!50 &9137353498149392356
 Rigidbody2D:
   serializedVersion: 4
@@ -292,3 +276,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6955948604356426476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5980331428888745058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ddebcb9b742bd646bbe29c4cbf032c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 0}
+  coinValue: 0
+  coinObject: {fileID: 0}
+  stats:
+    health: 1
+    damage: 1
+    experience: 200
+    moveSpeed: 1

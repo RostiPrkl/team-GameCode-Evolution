@@ -9,13 +9,13 @@ public class DebugScreen : MonoBehaviour
     [SerializeField] GameObject enemyPrefab;
     [SerializeField] GameObject enemySpawn;
     PlayerStats player;
-    Enemy enemy;
+    Enemy_ enemy;
     float updateRate = 0.5f;
 
     private void Start()
     {
         InvokeRepeating("UpdateDebugInfo", 0f, updateRate);
-        enemy = FindObjectOfType<Enemy>();
+        enemy = FindObjectOfType<Enemy_>();
         player = FindObjectOfType<PlayerStats>();
     }
 
