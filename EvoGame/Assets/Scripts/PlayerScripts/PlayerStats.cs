@@ -25,7 +25,9 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] float xpCounter;
     [SerializeField] float xpMaxCounter;
     public int level = 0;
+    int previousLevel;
     public int expCap;
+    public List<LevelRange> levelRanges;
 
     [System.Serializable]
     public class LevelRange
@@ -46,7 +48,6 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] Image hpFiller;
     [SerializeField] float previousHealth;
 
-    public List<LevelRange> levelRanges;
     
     
     void Awake()
@@ -104,19 +105,19 @@ public class PlayerStats : MonoBehaviour
 
     public void XPBar()
     {
-        if (xpCounter > xpMaxCounter)
+        LvlUpChecker();
+
+        if (level > previousLevel)
+        {
+            previousLevel = level;
+            xpFiller.fillAmount = 0;
+        }        
+        else if (experience > previousexperience)
         {
             previousexperience = experience;
             xpCounter = 0;
-
-            LvlUpChecker();
+            xpFiller.fillAmount = Mathf.Lerp(previousexperience / expCap, experience / expCap, xpCounter / xpMaxCounter);
         }
-        else
-        {
-            xpCounter += Time.deltaTime;
-        }
-
-        xpFiller.fillAmount = Mathf.Lerp(previousexperience / expCap, experience / expCap, xpCounter / xpMaxCounter);
     }
 
 

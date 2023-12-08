@@ -2,34 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EvoPoint : MonoBehaviour, ICollectible
+public class EvoPoint : Pickup, ICollectible
 {
     public int experienceCollected;
-    PlayerStats player;
 
 
-    void Start()
+    protected override void Start()
     {
-        player = FindObjectOfType<PlayerStats>();
+        base.Start();
     }
 
 
-    void Update()
+    protected override void Update()
     {
-        if (player == null)
-            Destroy(gameObject);
+        base.Update();
     }
 
 
     public void Collect()
     {
+        PlayerStats player = FindObjectOfType<PlayerStats>();
         player.IncreaseExp(experienceCollected);
-    }
-
-
-    void OnTriggerEnter2D(Collider2D collider)
-    {
-        if(collider.CompareTag("Player"))
-            Destroy(gameObject);
     }
 }
