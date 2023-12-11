@@ -16,6 +16,10 @@ public class DropRateManager : MonoBehaviour
 
     void OnDestroy()
     {
+        //check for exiting the scene, no more error!
+        if (!gameObject.scene.isLoaded)
+            return;
+
         float randomNumber = Random.Range(0f, 100f);
         List<Drops> possibleDrops = new();
 

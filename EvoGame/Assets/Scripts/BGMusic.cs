@@ -35,18 +35,18 @@ public class BGMusic : MonoBehaviour
     void Update()
     {
         if(alreadyPlayed) return;
-        //GameOver();
+        GameOver();
     }
 
-    // void GameOver()
-    // {
-    //     if (player == null)
-    //     {
-    //         alreadyPlayed = true;
-    //         audioSource.clip = gameOver;
-    //         audioSource.Play();
-    //     }
-    // }
+    void GameOver()
+    {
+        if (player == null)
+        {
+            alreadyPlayed = true;
+            audioSource.clip = gameOver;
+            audioSource.Play();
+        }
+    }
 
     private IEnumerator StartGame()
     {

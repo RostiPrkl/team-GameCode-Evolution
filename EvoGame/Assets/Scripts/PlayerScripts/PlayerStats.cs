@@ -7,13 +7,15 @@ using UnityEngine.UI;
 
 public class PlayerStats : MonoBehaviour
 {
-    public PlayerScriptableObject playerData;
+    PlayerScriptableObject playerData;
 
     [HideInInspector] public float currentHealth;
     [HideInInspector] public float currentRecovery;
     [HideInInspector] public float currentMovementSpeed;
     [HideInInspector] public float currentProjectileSpeed;
     [HideInInspector] public float currentPickupRadius = 2;
+
+    SpriteRenderer spriteR;
 
     [SerializeField] AudioClip lowHealthAudio;
     [SerializeField] AudioSource audioSource;
@@ -25,7 +27,9 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] float xpCounter;
     [SerializeField] float xpMaxCounter;
     public int level = 0;
+    int previousLevel;
     public int expCap;
+    public List<LevelRange> levelRanges;
 
     [System.Serializable]
     public class LevelRange
@@ -46,16 +50,24 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] Image hpFiller;
     [SerializeField] float previousHealth;
 
-    public List<LevelRange> levelRanges;
-    
+    [Header("Weapons and upgrades")]
+    public List<GameObject> spawnedWeapons;
+
     
     void Awake()
     {
+        playerData = CharacterSelector.GetData();
+        CharacterSelector.instance.DestroySingleton();
+
+        spriteR = GetComponent<SpriteRenderer>();
+
         currentHealth = playerData.MaxHealth;
         currentRecovery = playerData.Recovery;
         currentMovementSpeed = playerData.MovementSpeed;
         currentProjectileSpeed = playerData.ProjectileSpeed;
         currentPickupRadius = playerData.PickupRadius;
+
+        SpawnWeapon(playerData.StartingWeapon);
     }
 
 
@@ -104,19 +116,22 @@ public class PlayerStats : MonoBehaviour
 
     public void XPBar()
     {
-        if (xpCounter > xpMaxCounter)
+
+        LvlUpChecker();
+
+        if (experience == 0)
+        {
+            xpFiller.fillAmount = 0;
+            previousexperience = 0;
+        }
+
+        if (experience > previousexperience)
         {
             previousexperience = experience;
             xpCounter = 0;
-
-            LvlUpChecker();
-        }
-        else
-        {
             xpCounter += Time.deltaTime;
-        }
-
-        xpFiller.fillAmount = Mathf.Lerp(previousexperience / expCap, experience / expCap, xpCounter / xpMaxCounter);
+            xpFiller.fillAmount = Mathf.Lerp(previousexperience / expCap, experience / expCap, xpCounter / xpMaxCounter);
+        }        
     }
 
 
@@ -164,6 +179,7 @@ public class PlayerStats : MonoBehaviour
             previousHealth = hpFiller.fillAmount * playerData.MaxHealth;
             hpCounter = 0;
             currentHealth -= dmg;
+            StartCoroutine(FlashRed());
 
             iFrameTimer = iFrames;
             isInvincible = true;
@@ -171,6 +187,15 @@ public class PlayerStats : MonoBehaviour
             if (currentHealth <= 0)
                 Death();
         }
+    }
+
+
+    private IEnumerator FlashRed()
+    {
+        Color originalColor = spriteR.color;
+        spriteR.color = Color.red;
+        yield return new WaitForSeconds(0.2f);
+        spriteR.color = originalColor;
     }
 
 
@@ -188,5 +213,14 @@ public class PlayerStats : MonoBehaviour
     public void Death()
     {
         Debug.Log("Player has died");
+    }
+
+
+    public void SpawnWeapon(GameObject weapon)
+    {
+        Vector3 spawnPosition = new Vector3(1, 0, 0);
+        GameObject spawnedWeapon = Instantiate(weapon, spawnPosition, Quaternion.identity);
+        spawnedWeapon.transform.SetParent(transform);
+        spawnedWeapons.Add(spawnedWeapon);
     }
 }

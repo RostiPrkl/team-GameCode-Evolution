@@ -2,23 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealthDrop : MonoBehaviour, ICollectible
+public class HealthDrop : Pickup, ICollectible
 {
     public int healthCollected;
 
-    PlayerStats player;
-
-
-    void Start()
+    protected override void Start()
     {
-        player = FindObjectOfType<PlayerStats>();
+        base.Start();
     }
 
 
-    void Update()
+    protected override void Update()
     {
-        if (player == null)
-            Destroy(gameObject);
+        base.Update();
     }
 
 
@@ -26,14 +22,5 @@ public class HealthDrop : MonoBehaviour, ICollectible
     {
         PlayerStats player = FindObjectOfType<PlayerStats>();
         player.RestoreHealth(healthCollected);
-
-        
-    }
-
-
-    void OnTriggerEnter2D(Collider2D collider)
-    {
-        if(collider.CompareTag("Player"))
-            Destroy(gameObject);
     }
 }

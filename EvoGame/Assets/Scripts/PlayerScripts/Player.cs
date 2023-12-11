@@ -84,12 +84,5 @@ public class Player : MonoBehaviour
         facingDir = !facingDir;
         transform.Rotate(0,180,0);
     }
-
-    //FIXME: this is bugged, trigger launches from player collector, so sound plays too soon / random
-    //needs to moved to bite prefab maybe, that way it takes the bites collider
-    void OnTriggerEnter2D(Collider2D collider)
-    {
-        if (collider.CompareTag("Enemy"))
-            biteAudioSource.PlayOneShot(biteAudioSource.clip, 1);
-    }
+  
 }

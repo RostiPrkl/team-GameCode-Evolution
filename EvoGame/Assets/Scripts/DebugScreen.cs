@@ -9,13 +9,11 @@ public class DebugScreen : MonoBehaviour
     [SerializeField] GameObject enemyPrefab;
     [SerializeField] GameObject enemySpawn;
     PlayerStats player;
-    Enemy enemy;
     float updateRate = 0.5f;
 
     private void Start()
     {
         InvokeRepeating("UpdateDebugInfo", 0f, updateRate);
-        enemy = FindObjectOfType<Enemy>();
         player = FindObjectOfType<PlayerStats>();
     }
 
@@ -39,24 +37,5 @@ public class DebugScreen : MonoBehaviour
 
         //Player lvl
         debugText.text += $"Player Level: {player.level}\n";
-
-        //Enemy health
-        debugText.text +=$"Enemy health: {enemy.currentHealth}\n";
-    }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            SpawnEnemy();
-        }
-    }
-
-
-    void SpawnEnemy()
-    {
-        
-        GameObject newEnemy = Instantiate(enemyPrefab, enemySpawn.transform.position, Quaternion.identity);
-        
     }
 }

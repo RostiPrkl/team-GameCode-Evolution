@@ -65,7 +65,6 @@ AudioMixerController:
   m_ExposedParameters: []
   m_AudioMixerGroupViews:
   - guids:
-    - 4fe2519010a6d199faf446d967b8fa9e
     - 1e00f88af33d74d7587f353eb76d1725
     - 57fb5faad220e26b0a866bac797361d9
     name: View
