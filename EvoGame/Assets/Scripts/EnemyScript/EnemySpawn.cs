@@ -39,9 +39,8 @@ public class EnemySpawn : MonoBehaviour
 
         GameObject newEnemy = Instantiate(enemy);
         newEnemy.transform.position = position;
-        newEnemy.GetComponent<Enemy_>().SetTarget(player);
-        Enemy_ newEnemyComponent = newEnemy.GetComponent<Enemy_>();
-        newEnemyComponent.SetTarget(player);        
+        newEnemy.GetComponent<Enemy>();
+        //Enemy newEnemyComponent = newEnemy.GetComponent<Enemy>();      
         newEnemy.transform.parent = transform;
     }
 

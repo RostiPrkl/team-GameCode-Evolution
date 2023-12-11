@@ -4,20 +4,16 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    //TODO: damage player when hit
-    //TODO: take damage from player attack
 
    [SerializeField] float movementSpeed = 100f;
    [SerializeField] float maxHealth = 200f;
-   [SerializeField] AudioSource audioSource;
+   //[SerializeField] AudioSource audioSource;
+   public float enemyDamage;
    
 
-   public float currentHealth;
+   float currentHealth;
 
-   public float enemyDamage;
    Transform player;
-
-   float damage = 5;
    
 
 
@@ -48,18 +44,18 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             PlayerStats player = collision.gameObject.GetComponent<PlayerStats>();
-            player.TakeDamage(damage);
+            player.TakeDamage(enemyDamage);
         } 
     }
 
 
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Bite"))
-        {
-            audioSource.PlayOneShot(audioSource.clip);
-        }
-    }
+    // void OnTriggerEnter2D(Collider2D collision)
+    // {
+    //     if (collision.gameObject.CompareTag("Bite"))
+    //     {
+    //         audioSource.PlayOneShot(audioSource.clip);
+    //     }
+    // }
 
 
 }
