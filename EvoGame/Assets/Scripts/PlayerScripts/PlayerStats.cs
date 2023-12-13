@@ -7,19 +7,6 @@ using UnityEngine.UI;
 
 public class PlayerStats : MonoBehaviour
 {
-    PlayerScriptableObject playerData;
-
-    [HideInInspector] public float currentHealth;
-    [HideInInspector] public float currentRecovery;
-    [HideInInspector] public float currentMovementSpeed;
-    [HideInInspector] public float currentProjectileSpeed;
-    [HideInInspector] public float currentPickupRadius = 2;
-
-    SpriteRenderer spriteR;
-
-    [SerializeField] AudioClip lowHealthAudio;
-    [SerializeField] AudioSource audioSource;
-
     [Header("Leveling stats")]
     public int experience = 0;
     [SerializeField] float previousexperience;
@@ -30,7 +17,7 @@ public class PlayerStats : MonoBehaviour
     int previousLevel;
     public int expCap;
     public List<LevelRange> levelRanges;
-
+    
     [System.Serializable]
     public class LevelRange
     {
@@ -39,10 +26,10 @@ public class PlayerStats : MonoBehaviour
         public int expCapIncrease;
     }
 
-    [Header("Invincibility After Damage")]
-    [SerializeField] float iFrames;
-    float iFrameTimer;
-    bool isInvincible;
+    [Header("Inventory")]
+    public int AttackIndex;
+    public int PassiveIndex;
+    InventoryManager inventory;
 
     [Header("Health Info")]
     [SerializeField] float hpCounter;
@@ -50,24 +37,49 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] Image hpFiller;
     [SerializeField] float previousHealth;
 
-    [Header("Weapons and upgrades")]
-    public List<GameObject> spawnedWeapons;
+    [Header("Invincibility After Damage")]
+    [SerializeField] float iFrames;
+    float iFrameTimer;
+    bool isInvincible;
+
+    [Header("Player Audio")]
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip lowHealthAudio, deathAudio, dashAudio;
+    
+    [HideInInspector] public float currentHealth;
+    [HideInInspector] public float currentRecovery;
+    [HideInInspector] public float currentMovementSpeed;
+    [HideInInspector] public float currentProjectileSpeed;
+    [HideInInspector] public float currentBaseDamage;
+    [HideInInspector] public float currentPickupRadius = 2;
+   
+    PlayerScriptableObject playerData;
+    SpriteRenderer spriteR;
+
+    public GameObject secondWeaponTest;
+    public GameObject passiveItemTest;
+    public GameObject secondPassiveTest;
 
     
     void Awake()
     {
+        spriteR = GetComponent<SpriteRenderer>();
+        inventory = GetComponent<InventoryManager>();
+
         playerData = CharacterSelector.GetData();
         CharacterSelector.instance.DestroySingleton();
-
-        spriteR = GetComponent<SpriteRenderer>();
 
         currentHealth = playerData.MaxHealth;
         currentRecovery = playerData.Recovery;
         currentMovementSpeed = playerData.MovementSpeed;
         currentProjectileSpeed = playerData.ProjectileSpeed;
+        currentBaseDamage = playerData.BaseDamage;
         currentPickupRadius = playerData.PickupRadius;
 
-        SpawnWeapon(playerData.StartingWeapon);
+        SpawnAttack(playerData.StartingAttack);
+        SpawnAttack(secondWeaponTest);
+        SpawnPassive(passiveItemTest);
+        SpawnPassive(secondPassiveTest);
     }
 
 
@@ -85,14 +97,6 @@ public class PlayerStats : MonoBehaviour
             iFrameTimer -= Time.deltaTime;
         else if (isInvincible)
             isInvincible = false;
-
-        if (currentHealth < 20)
-        {
-            audioSource.clip = lowHealthAudio;
-            audioSource.Play();
-        }
-        if (currentHealth > 20)
-            audioSource.Stop();
 
         HealthBar();
         XPBar();
@@ -179,6 +183,15 @@ public class PlayerStats : MonoBehaviour
             previousHealth = hpFiller.fillAmount * playerData.MaxHealth;
             hpCounter = 0;
             currentHealth -= dmg;
+
+            if (currentHealth < 20)
+            {
+                audioSource.clip = lowHealthAudio;
+                audioSource.Play();
+            }
+            else
+                audioSource.Stop();
+
             StartCoroutine(FlashRed());
 
             iFrameTimer = iFrames;
@@ -216,11 +229,44 @@ public class PlayerStats : MonoBehaviour
     }
 
 
-    public void SpawnWeapon(GameObject weapon)
+    public void SpawnAttack(GameObject attack)
     {
-        Vector3 spawnPosition = new Vector3(1, 0, 0);
-        GameObject spawnedWeapon = Instantiate(weapon, spawnPosition, Quaternion.identity);
-        spawnedWeapon.transform.SetParent(transform);
-        spawnedWeapons.Add(spawnedWeapon);
+        if (AttackIndex >= inventory.attackSlots.Count -1)
+        {
+            Debug.LogError("INVENTORY FULL");
+            return;
+        }
+
+        //leetle hack to get the bite to spawn in the right place
+        if (attack.CompareTag("Bite"))
+        {
+            Vector3 spawnPosition = new Vector3(1, 0, 0);
+            GameObject spawnedAttack = Instantiate(attack, spawnPosition, Quaternion.identity);
+            spawnedAttack.transform.SetParent(transform);
+            inventory.AddAttack(AttackIndex, spawnedAttack.GetComponent<PlayerAttackController>());
+            AttackIndex++;
+        }
+        else
+        {
+            GameObject spawnedAttack = Instantiate(attack, transform.position, Quaternion.identity);
+            spawnedAttack.transform.SetParent(transform);
+            inventory.AddAttack(AttackIndex, spawnedAttack.GetComponent<PlayerAttackController>());
+            AttackIndex++; //each attack is it's own slot. no overlap
+        }
+    }
+
+
+    public void SpawnPassive(GameObject passive)
+    {
+        if (PassiveIndex >= inventory.passiveSlots.Count -1)
+        {
+            Debug.LogError("INVENTORY FULL");
+            return;
+        }
+
+        GameObject spawnedPassive = Instantiate(passive, transform.position, Quaternion.identity);
+        spawnedPassive.transform.SetParent(transform);
+        inventory.AddPassive(PassiveIndex, spawnedPassive.GetComponent<PassiveItem>());
+        PassiveIndex++; //each attack is it's own slot. no overlap
     }
 }

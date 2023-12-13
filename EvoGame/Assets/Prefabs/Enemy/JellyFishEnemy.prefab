@@ -98,7 +98,6 @@ GameObject:
   - component: {fileID: 7629420613149653472}
   - component: {fileID: 1342342943294368316}
   - component: {fileID: 3344237664539186865}
-  - component: {fileID: 3985977341903791469}
   - component: {fileID: 7755206036547414646}
   m_Layer: 0
   m_Name: JellyFishEnemy
@@ -188,7 +187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 2
-  maxHealth: 35
+  maxHealth: 20
   enemyDamage: 3
 --- !u!114 &1342342943294368316
 MonoBehaviour:
@@ -236,41 +235,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!70 &3985977341903791469
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2227882465152826036}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -2.5550818}
-  m_Size: {x: 4.9499993, y: 9.330136}
-  m_Direction: 0
 --- !u!70 &7755206036547414646
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

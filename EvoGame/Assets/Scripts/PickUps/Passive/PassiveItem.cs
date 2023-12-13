@@ -10,7 +10,8 @@ public class PassiveItem : MonoBehaviour
 
     protected virtual void Modifier()
     {
-
+        //just a initializon of the method, 
+        //the actual modifier takes place in the child class
     }
 
 
@@ -18,11 +19,5 @@ public class PassiveItem : MonoBehaviour
     {
         player = FindObjectOfType<PlayerStats>(); 
         Modifier();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

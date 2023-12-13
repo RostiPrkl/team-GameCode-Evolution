@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffd9abc31f0802582a7563a80a483eea, type: 3}
+  m_Name: BaseDamageBoost 0
+  m_EditorClassIdentifier: 
+  multiplier: 3
+  level: 1
+  nextLevelPrefab: {fileID: 5569222646394051455, guid: 177be272d91a7a32c95ad1eb2538ef4d, type: 3}
+  icon: {fileID: 4232831887833596157, guid: d6fe922108c4c60b697783ab8c5ada0d, type: 3}

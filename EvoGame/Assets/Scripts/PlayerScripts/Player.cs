@@ -11,6 +11,10 @@ public class Player : MonoBehaviour
     //TODO: ✔ xp pick up system
     //TODO: ✔ player health system
     //TODO:   lvlup event
+    //TODO:   separate damage boosts
+    //TODO:   health boost
+    //TODO:   recovery boost
+    //TODO:   revamp controller (mouse input)
 
     float lastHorizontal;
     float lastVertical;
@@ -22,8 +26,6 @@ public class Player : MonoBehaviour
     [HideInInspector] public Vector2 lastMoveDirection;
 
     PlayerStats playerStats;
-
-    public AudioSource biteAudioSource;
     
     
     private void Awake()

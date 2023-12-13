@@ -7,7 +7,6 @@ public class Enemy : MonoBehaviour
 
    [SerializeField] float movementSpeed = 100f;
    [SerializeField] float maxHealth = 200f;
-   //[SerializeField] AudioSource audioSource;
    public float enemyDamage;
    
 
@@ -47,15 +46,4 @@ public class Enemy : MonoBehaviour
             player.TakeDamage(enemyDamage);
         } 
     }
-
-
-    // void OnTriggerEnter2D(Collider2D collision)
-    // {
-    //     if (collision.gameObject.CompareTag("Bite"))
-    //     {
-    //         audioSource.PlayOneShot(audioSource.clip);
-    //     }
-    // }
-
-
 }
