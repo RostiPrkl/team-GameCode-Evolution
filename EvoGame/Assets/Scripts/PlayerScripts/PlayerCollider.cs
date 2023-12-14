@@ -19,7 +19,7 @@ public class PlayerCollider : MonoBehaviour
 
     void Update()
     {
-        pickup.radius = playerStats.currentPickupRadius;
+        pickup.radius = playerStats.CurrentPickupRadius;
     }
 
 

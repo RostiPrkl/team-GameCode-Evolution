@@ -30,7 +30,19 @@ public class DebugScreen : MonoBehaviour
         debugText.text = $"FPS: {fps:F1}\n";
 
         //Player Health
-        debugText.text +=$"Player health: {player.currentHealth}\n";
+        debugText.text +=$"Player health: {player.CurrentHealth}\n";
+
+        //Player recovery
+        debugText.text +=$"Player regen: {player.CurrentRecovery}\n";
+
+        //Player Base DMG
+        debugText.text +=$"Player dmg x: {player.CurrentBaseDamage}\n";
+
+        //Player Pickup
+        debugText.text +=$"Player pickrd: {player.CurrentPickupRadius}\n";
+
+        //Player Movement speed
+        debugText.text +=$"Player movespd: {player.CurrentMovementSpeed}\n";
 
         //Player exp
         debugText.text += $"Player xp: {player.experience}\n";

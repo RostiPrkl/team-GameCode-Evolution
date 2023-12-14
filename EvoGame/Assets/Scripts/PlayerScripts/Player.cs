@@ -44,12 +44,15 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.MovePosition(rb.position + input * playerStats.currentMovementSpeed * Time.fixedDeltaTime);
+        rb.MovePosition(rb.position + input * playerStats.CurrentMovementSpeed * Time.fixedDeltaTime);
     }
 
 
     void MovementController()
     {
+        if (GameManager.instance.isGameOver || GameManager.instance.isPaused)
+            return;
+
         input.x = Input.GetAxisRaw("Horizontal");
         input.y = Input.GetAxisRaw("Vertical");
 
@@ -74,6 +77,9 @@ public class Player : MonoBehaviour
 
     void FlipController()
     {
+        if (GameManager.instance.isGameOver || GameManager.instance.isPaused)
+            return;
+
         if (input.x < 0 && facingDir)
             Flip();
         else if (input.x > 0 && !facingDir)

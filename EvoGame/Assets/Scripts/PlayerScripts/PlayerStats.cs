@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class PlayerStats : MonoBehaviour
 {
+    #region Player inspector
     [Header("Leveling stats")]
     public int experience = 0;
     [SerializeField] float previousexperience;
@@ -45,20 +46,79 @@ public class PlayerStats : MonoBehaviour
     [Header("Player Audio")]
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioClip lowHealthAudio, deathAudio, dashAudio;
-    
-    [HideInInspector] public float currentHealth;
-    [HideInInspector] public float currentRecovery;
-    [HideInInspector] public float currentMovementSpeed;
-    [HideInInspector] public float currentProjectileSpeed;
-    [HideInInspector] public float currentBaseDamage;
-    [HideInInspector] public float currentPickupRadius = 2;
+    #endregion
+
+    #region Current player stats
+    float currentHealth;
+    float currentRecovery;
+    float currentMovementSpeed;
+    float currentBaseDamage;
+    float currentPickupRadius = 2f;
+    //float currentProjectileSpeed;
+    public float CurrentHealth
+    {
+        get { return currentHealth; }
+        set
+        {
+            if (currentHealth != value)
+                currentHealth = value;
+        }
+    }
+    public float CurrentRecovery
+    {
+        get { return currentRecovery; }
+        set
+        {
+            if (currentRecovery != value)
+                currentRecovery = value;
+        }
+    }
+    public float CurrentMovementSpeed
+    {
+        get { return currentMovementSpeed; }
+        set
+        {
+            if (currentMovementSpeed != value)
+                currentMovementSpeed = value;
+        }
+    }
+    // public float CurrentProjectileSpeed
+    // {
+    //     get { return currentProjectileSpeed; }
+    //     set
+    //     {
+    //         if (currentProjectileSpeed != value)
+    //             currentProjectileSpeed = value;
+    //     }
+    // }
+    public float CurrentBaseDamage
+    {
+        get { return currentBaseDamage; }
+        set
+        {
+            if (currentBaseDamage != value)
+                currentBaseDamage = value;
+        }
+    }
+    public float CurrentPickupRadius
+    {
+        get { return currentPickupRadius; }
+        set
+        {
+            if (currentPickupRadius != value)
+                currentPickupRadius = value;
+        }
+    }
+    #endregion
    
+    #region Misc
     PlayerScriptableObject playerData;
     SpriteRenderer spriteR;
 
     public GameObject secondWeaponTest;
     public GameObject passiveItemTest;
     public GameObject secondPassiveTest;
+    #endregion
 
     
     void Awake()
@@ -69,16 +129,16 @@ public class PlayerStats : MonoBehaviour
         playerData = CharacterSelector.GetData();
         CharacterSelector.instance.DestroySingleton();
 
-        currentHealth = playerData.MaxHealth;
-        currentRecovery = playerData.Recovery;
-        currentMovementSpeed = playerData.MovementSpeed;
-        currentProjectileSpeed = playerData.ProjectileSpeed;
-        currentBaseDamage = playerData.BaseDamage;
-        currentPickupRadius = playerData.PickupRadius;
+        CurrentHealth = playerData.MaxHealth;
+        CurrentRecovery = playerData.Recovery;
+        CurrentMovementSpeed = playerData.MovementSpeed;
+        //CurrentProjectileSpeed = playerData.ProjectileSpeed;
+        CurrentBaseDamage = playerData.BaseDamage;
+        CurrentPickupRadius = playerData.PickupRadius;
 
         SpawnAttack(playerData.StartingAttack);
-        SpawnAttack(secondWeaponTest);
-        SpawnPassive(passiveItemTest);
+        //SpawnAttack(secondWeaponTest);
+        //SpawnPassive(passiveItemTest);
         SpawnPassive(secondPassiveTest);
     }
 
@@ -108,13 +168,13 @@ public class PlayerStats : MonoBehaviour
     {
         if (hpCounter > hpMaxCounter)
         {
-            previousHealth = currentHealth;
+            previousHealth = CurrentHealth;
             hpCounter = 0;
         }
         else
             hpCounter += Time.deltaTime;
 
-        hpFiller.fillAmount = Mathf.Lerp(previousHealth / playerData.MaxHealth, currentHealth / playerData.MaxHealth, hpCounter / hpMaxCounter);
+        hpFiller.fillAmount = Mathf.Lerp(previousHealth / playerData.MaxHealth, CurrentHealth / playerData.MaxHealth, hpCounter / hpMaxCounter);
     }
 
 
@@ -141,9 +201,9 @@ public class PlayerStats : MonoBehaviour
 
     public void RestoreHealth(float amount)
     {
-        currentHealth += amount;
-        if (currentHealth > playerData.MaxHealth)
-            currentHealth = playerData.MaxHealth;
+        CurrentHealth += amount;
+        if (CurrentHealth > playerData.MaxHealth)
+            CurrentHealth = playerData.MaxHealth;
     }
 
 
@@ -171,6 +231,8 @@ public class PlayerStats : MonoBehaviour
                 }
             }
             expCap += expCapIncrease;
+
+            GameManager.instance.StartEvolution();
         }
     }
 
@@ -182,9 +244,9 @@ public class PlayerStats : MonoBehaviour
         {
             previousHealth = hpFiller.fillAmount * playerData.MaxHealth;
             hpCounter = 0;
-            currentHealth -= dmg;
+            CurrentHealth -= dmg;
 
-            if (currentHealth < 20)
+            if (CurrentHealth < 20)
             {
                 audioSource.clip = lowHealthAudio;
                 audioSource.Play();
@@ -197,7 +259,7 @@ public class PlayerStats : MonoBehaviour
             iFrameTimer = iFrames;
             isInvincible = true;
 
-            if (currentHealth <= 0)
+            if (CurrentHealth <= 0)
                 Death();
         }
     }
@@ -214,18 +276,22 @@ public class PlayerStats : MonoBehaviour
 
     void Recover()
     {
-        if(currentHealth < playerData.MaxHealth)
+        if(CurrentHealth < playerData.MaxHealth)
         {
-            currentHealth += currentRecovery * Time.deltaTime;
-            if (currentHealth > playerData.MaxHealth)
-                currentHealth = playerData.MaxHealth;
+            CurrentHealth += CurrentRecovery * Time.deltaTime;
+            if (CurrentHealth > playerData.MaxHealth)
+                CurrentHealth = playerData.MaxHealth;
         }
     }
 
 
     public void Death()
     {
-        Debug.Log("Player has died");
+        if (!GameManager.instance.isGameOver)
+        {
+            Debug.Log("Player has died");
+            GameManager.instance.GameOver();
+        }
     }
 
 

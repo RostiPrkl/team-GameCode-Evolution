@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,4 +15,8 @@ public class PassiveItemScriptableObject : ScriptableObject
     public GameObject NextLevelPrefab { get => nextLevelPrefab; private set => nextLevelPrefab = value; }
     [SerializeField] Sprite icon;
     public Sprite Icon { get => icon; private set => icon = value; }
+    [SerializeField] string passiveName;
+    public string PassiveName { get => passiveName; private set => passiveName = value; }
+    [SerializeField] string passiveDescription;
+    public string PassiveDescription { get => passiveDescription; private set => passiveDescription = value; }
 }

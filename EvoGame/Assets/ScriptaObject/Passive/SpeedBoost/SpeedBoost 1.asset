@@ -15,4 +15,6 @@ MonoBehaviour:
   multiplier: 7.5
   level: 2
   nextLevelPrefab: {fileID: 1395933730415374667, guid: 38061dd026ae668258e45b595be39ca4, type: 3}
-  icon: {fileID: -5903969612840040649, guid: d6fe922108c4c60b697783ab8c5ada0d, type: 3}
+  icon: {fileID: 21300000, guid: 053549beda15cf9d98e0570d0d299106, type: 3}
+  passiveName: Tail mk 2
+  passiveDescription: Even faster

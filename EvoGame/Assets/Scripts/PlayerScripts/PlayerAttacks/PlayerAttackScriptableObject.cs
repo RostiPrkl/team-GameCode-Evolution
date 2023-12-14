@@ -22,5 +22,9 @@ public class PlayerAttackScriptableObject : ScriptableObject
     public GameObject NextLevelPrefab { get => nextLevelPrefab; private set => nextLevelPrefab = value; }
     [SerializeField] Sprite icon;
     public Sprite Icon { get => icon; private set => icon = value; }
+    [SerializeField] string attackName;
+    public string AttackName { get => attackName; private set => attackName = value; }
+    [SerializeField] string attackDescription;
+    public string AttackDescription { get => attackDescription; private set => attackDescription = value; }
 
 }

@@ -6,6 +6,6 @@ public class BaseDamageBoost : PassiveItem
 {
     protected override void Modifier()
     {
-        player.currentBaseDamage *= 1 + passiveItem.Multiplier / 100f;
+        player.CurrentBaseDamage *= 1 + passiveItem.Multiplier / 100f;
     }
 }

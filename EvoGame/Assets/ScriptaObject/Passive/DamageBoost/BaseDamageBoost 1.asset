@@ -16,3 +16,5 @@ MonoBehaviour:
   level: 2
   nextLevelPrefab: {fileID: 5569222646394051455, guid: 79d662d272da7e1afb985d52d7a3edea, type: 3}
   icon: {fileID: 4232831887833596157, guid: d6fe922108c4c60b697783ab8c5ada0d, type: 3}
+  passiveName: Even more damage
+  passiveDescription: Multiplier to 5%

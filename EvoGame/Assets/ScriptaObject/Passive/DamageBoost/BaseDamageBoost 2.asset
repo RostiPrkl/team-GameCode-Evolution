@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffd9abc31f0802582a7563a80a483eea, type: 3}
   m_Name: BaseDamageBoost 2
   m_EditorClassIdentifier: 
-  multiplier: 8
+  multiplier: 10
   level: 3
   nextLevelPrefab: {fileID: 0}
   icon: {fileID: 4232831887833596157, guid: d6fe922108c4c60b697783ab8c5ada0d, type: 3}
+  passiveName: Max DMGBoost
+  passiveDescription: 10% max damage to all attacks

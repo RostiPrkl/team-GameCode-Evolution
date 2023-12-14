@@ -14,9 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackPrefab: {fileID: 2170071144750661667, guid: ebec76a901aeecc16bf80105ce3cec52, type: 3}
   damage: 1
-  speed: 1
+  speed: 4
   cooldown: 2
   penetrate: 0
   level: 1
   nextLevelPrefab: {fileID: 2935252070034245117, guid: fb16570fe6e218ffa92c5672a3a7d22c, type: 3}
-  icon: {fileID: 21300000, guid: 787fe553648a20b4eba58efd4c1e86c2, type: 3}
+  icon: {fileID: 21300000, guid: de1fd655ac514f29f9c36683d023c41d, type: 3}
+  attackName: Bubbles
+  attackDescription: FUCKING BUBBLES
