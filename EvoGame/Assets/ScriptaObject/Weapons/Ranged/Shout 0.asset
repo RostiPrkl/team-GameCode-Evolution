@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Shout 0
   m_EditorClassIdentifier: 
   attackPrefab: {fileID: 2170071144750661667, guid: ebec76a901aeecc16bf80105ce3cec52, type: 3}
-  damage: 1
+  damage: 15
   speed: 4
   cooldown: 2
   penetrate: 0

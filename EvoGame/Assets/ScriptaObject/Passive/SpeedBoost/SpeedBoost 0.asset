@@ -17,4 +17,4 @@ MonoBehaviour:
   nextLevelPrefab: {fileID: 1395933730415374667, guid: fc6b2dfb415a70c528893140616206a2, type: 3}
   icon: {fileID: 21300000, guid: 053549beda15cf9d98e0570d0d299106, type: 3}
   passiveName: Evolved Tail
-  passiveDescription: Move faster
+  passiveDescription: 5 % More Move Speed

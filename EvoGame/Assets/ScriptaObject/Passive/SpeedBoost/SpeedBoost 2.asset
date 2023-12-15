@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffd9abc31f0802582a7563a80a483eea, type: 3}
   m_Name: SpeedBoost 2
   m_EditorClassIdentifier: 
-  multiplier: 9
+  multiplier: 15
   level: 3
   nextLevelPrefab: {fileID: 0}
   icon: {fileID: 21300000, guid: 053549beda15cf9d98e0570d0d299106, type: 3}
   passiveName: tail 3
-  passiveDescription: faster stronger better harder
+  passiveDescription: 15 % more Move speed

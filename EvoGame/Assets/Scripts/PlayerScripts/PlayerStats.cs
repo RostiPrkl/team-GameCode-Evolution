@@ -109,6 +109,7 @@ public class PlayerStats : MonoBehaviour
                 currentPickupRadius = value;
         }
     }
+    
     #endregion
    
     #region Misc
@@ -303,22 +304,12 @@ public class PlayerStats : MonoBehaviour
             return;
         }
 
-        //leetle hack to get the bite to spawn in the right place
-        if (attack.CompareTag("Bite"))
-        {
-            Vector3 spawnPosition = new Vector3(1, 0, 0);
-            GameObject spawnedAttack = Instantiate(attack, spawnPosition, Quaternion.identity);
-            spawnedAttack.transform.SetParent(transform);
-            inventory.AddAttack(AttackIndex, spawnedAttack.GetComponent<PlayerAttackController>());
-            AttackIndex++;
-        }
-        else
-        {
+        //leetle hack to get the spwans in the right place
+
             GameObject spawnedAttack = Instantiate(attack, transform.position, Quaternion.identity);
             spawnedAttack.transform.SetParent(transform);
             inventory.AddAttack(AttackIndex, spawnedAttack.GetComponent<PlayerAttackController>());
-            AttackIndex++; //each attack is it's own slot. no overlap
-        }
+            AttackIndex++;
     }
 
 

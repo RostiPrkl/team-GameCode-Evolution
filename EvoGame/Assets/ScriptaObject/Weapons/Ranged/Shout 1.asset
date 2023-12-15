@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Shout 1
   m_EditorClassIdentifier: 
   attackPrefab: {fileID: 2170071144750661667, guid: b59ee04b5ca943ab0890e560a18361ab, type: 3}
-  damage: 1
+  damage: 20
   speed: 4
   cooldown: 1.7
-  penetrate: 0
+  penetrate: 1
   level: 2
   nextLevelPrefab: {fileID: 2935252070034245117, guid: b77c9dc958ad401a0a837e5879e664a3, type: 3}
   icon: {fileID: 21300000, guid: de1fd655ac514f29f9c36683d023c41d, type: 3}
-  attackName: More Bubbles
-  attackDescription: Actually no
+  attackName: hard bubbles
+  attackDescription: 100 % more damage, can shoot through enemies

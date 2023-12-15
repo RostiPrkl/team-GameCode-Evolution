@@ -19,3 +19,4 @@ MonoBehaviour:
   movementSpeed: 4
   pickupRadius: 3
   baseDamage: 1
+  mouth: {fileID: 3371806100916176572, guid: 5c983826d0953ba0b9b78ee8ac477981, type: 3}

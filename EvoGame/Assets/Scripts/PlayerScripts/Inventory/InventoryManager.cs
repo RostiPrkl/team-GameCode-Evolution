@@ -18,6 +18,7 @@ public class InventoryManager : MonoBehaviour
     {
       public GameObject initalAttack;
       public PlayerAttackScriptableObject attackData;
+	  public int attackEvolutionIndex;
     }
 
     [System.Serializable]
@@ -25,6 +26,7 @@ public class InventoryManager : MonoBehaviour
     {
       public GameObject initialPassive;
       public PassiveItemScriptableObject passiveData;
+	  public int PassiveEvolutionIndex;
     }
 
     [System.Serializable]
@@ -73,7 +75,7 @@ public class InventoryManager : MonoBehaviour
    }
 
 
-    public void LvlUpAttack(int slotIndex)
+    public void LvlUpAttack(int slotIndex, int evolutionIndex)
     {
       if (attackSlots.Count > slotIndex)
       {
@@ -89,13 +91,15 @@ public class InventoryManager : MonoBehaviour
           Destroy(attack.gameObject);
           attackLevels[slotIndex] = leveledAttack.GetComponent<PlayerAttackController>().attackData.Level;
 
+		  attackEvolutions[evolutionIndex].attackData = leveledAttack.GetComponent<PlayerAttackController>().attackData;
+
 		if (GameManager.instance != null && GameManager.instance.chooseUpgrade)
 			GameManager.instance.EndEvolution();
      }
    }
 
 
-   public void LvlUpPassive(int slotIndex)
+   public void LvlUpPassive(int slotIndex, int evolutionIndex)
    {
      if (passiveSlots.Count > slotIndex)
       {
@@ -105,11 +109,13 @@ public class InventoryManager : MonoBehaviour
             Debug.Log("NO NEXT PASSIVE LEVEL");
             return;
         }
-        GameObject leveledPassive = Instantiate(playerPassive.passiveItem.NextLevelPrefab, transform.position, Quaternion.identity);
+        GameObject leveledPassive = Instantiate(playerPassive.passiveItem.NextLevelPrefab, player.transform.position, Quaternion.identity);
         leveledPassive.transform.SetParent(transform);
         AddPassive(slotIndex, leveledPassive.GetComponent<PassiveItem>());
         Destroy(playerPassive.gameObject);
         passiveLevels[slotIndex] = leveledPassive.GetComponent<PassiveItem>().passiveItem.Level;
+
+		passiveEvolutions[evolutionIndex].passiveData = leveledPassive.GetComponent<PassiveItem>().passiveItem;
 
 		if (GameManager.instance != null && GameManager.instance.chooseUpgrade)
 			GameManager.instance.EndEvolution();
@@ -120,15 +126,31 @@ public class InventoryManager : MonoBehaviour
    void ApplyEvolution()
    {
 	//JFC
+	List<AttackEvolution> AvailableAttackEvolutions = new List<AttackEvolution>(attackEvolutions);
+	List<PassiveEvolution> AvailablePassiveEvolutions = new List<PassiveEvolution>(passiveEvolutions);
+
       	foreach (var evolutionOption in evolutionUIoptions)
       	{
-        	int evolutionType = Random.Range(1,3);
+        	int evolutionType;
+
+			if (AvailableAttackEvolutions.Count == 0 && AvailablePassiveEvolutions.Count == 0)
+				return;
+
+			if (AvailableAttackEvolutions.Count == 0)
+				evolutionType = 2;
+			else if (AvailablePassiveEvolutions.Count == 0)
+				evolutionType = 1;
+			else
+				evolutionType = Random.Range(1, 3);
+
         	if (evolutionType == 1)
         	{
-        		AttackEvolution chosenAttackEvolution = attackEvolutions[Random.Range(0, attackEvolutions.Count)];
+        		AttackEvolution chosenAttackEvolution = AvailableAttackEvolutions[Random.Range(0, AvailableAttackEvolutions.Count)];
+				AvailableAttackEvolutions.Remove(chosenAttackEvolution);
 
         		if (chosenAttackEvolution != null)
                 {
+					EnableUI(evolutionOption);
         			bool newAttack = false;
 					for (int i = 0; i < attackSlots.Count; i++)
 					{
@@ -137,7 +159,13 @@ public class InventoryManager : MonoBehaviour
 							newAttack = false;
 							if (!newAttack)
 							{
-								evolutionOption.evolutionButton.onClick.AddListener(() => LvlUpAttack(i));
+								if (!chosenAttackEvolution.attackData.AttackPrefab)
+								{
+									DisableUI(evolutionOption);
+									break;
+								}
+
+								evolutionOption.evolutionButton.onClick.AddListener(() => LvlUpAttack(i, chosenAttackEvolution.attackEvolutionIndex));
 								evolutionOption.evolutionDescription.text = chosenAttackEvolution.attackData.NextLevelPrefab.GetComponent<PlayerAttackController>().attackData.AttackDescription;
 								evolutionOption.evolutionName.text = chosenAttackEvolution.attackData.NextLevelPrefab.GetComponent<PlayerAttackController>().attackData.AttackName;
 							}
@@ -158,10 +186,12 @@ public class InventoryManager : MonoBehaviour
         	}
 			else if (evolutionType == 2)
 			{
-				PassiveEvolution chosenPassiveEvolution = passiveEvolutions[Random.Range(0, passiveEvolutions.Count)];
-
+				PassiveEvolution chosenPassiveEvolution = AvailablePassiveEvolutions[Random.Range(0, AvailablePassiveEvolutions.Count)];
+				AvailablePassiveEvolutions.Remove(chosenPassiveEvolution);
+				
 				if (chosenPassiveEvolution != null)
 				{
+					EnableUI(evolutionOption);
 					bool newPassive = false;
 					for (int i = 0; i < passiveSlots.Count; i++)
 					{
@@ -170,7 +200,13 @@ public class InventoryManager : MonoBehaviour
 							newPassive = false;
 							if (!newPassive)
 							{
-								evolutionOption.evolutionButton.onClick.AddListener(() => LvlUpPassive(i));
+								if (!chosenPassiveEvolution.passiveData.NextLevelPrefab)
+								{
+									DisableUI(evolutionOption);
+									break;
+								}
+
+								evolutionOption.evolutionButton.onClick.AddListener(() => LvlUpPassive(i, chosenPassiveEvolution.PassiveEvolutionIndex));
 								evolutionOption.evolutionDescription.text = chosenPassiveEvolution.passiveData.NextLevelPrefab.GetComponent<PassiveItem>().passiveItem.PassiveDescription;
 								evolutionOption.evolutionName.text = chosenPassiveEvolution.passiveData.NextLevelPrefab.GetComponent<PassiveItem>().passiveItem.PassiveName;
 							}
@@ -206,5 +242,17 @@ public class InventoryManager : MonoBehaviour
 	{
 		RemoveEvolutions();
 		ApplyEvolution();
+	}
+
+
+	void DisableUI(EvolutionUI ui)
+	{
+		ui.evolutionName.transform.parent.gameObject.SetActive(false);
+	}
+
+
+	void EnableUI(EvolutionUI ui)
+	{
+		ui.evolutionName.transform.parent.gameObject.SetActive(true);
 	}
 }
