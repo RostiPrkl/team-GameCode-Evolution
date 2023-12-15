@@ -384,12 +384,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 734b4e70b024d56a5945519964a13f29, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d39d770e4b8148cb08689ff0985f8a40, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 7.23, y: 3.68}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -441,8 +441,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.06925358, y: 0.04946467}
-  m_Size: {x: 1.64, y: 0.57215613}
+  m_Offset: {x: -0.01, y: 0.04946467}
+  m_Size: {x: 1.7, y: 0.87}
   m_Direction: 1
 --- !u!114 &79419080
 MonoBehaviour:
@@ -487,9 +487,6 @@ MonoBehaviour:
   lowHealthAudio: {fileID: 8300000, guid: 32f1fbac8c79acb51974b0a1835dd8ad, type: 3}
   deathAudio: {fileID: 0}
   dashAudio: {fileID: 0}
-  secondWeaponTest: {fileID: 2935252070034245117, guid: 8166883529a0afc12bde70ea92660e32, type: 3}
-  passiveItemTest: {fileID: 5569222646394051455, guid: d0c56ab6edc88fc10979f5d105cdda7f, type: 3}
-  secondPassiveTest: {fileID: 1395933730415374667, guid: f56bf273c8a402ae1bc4e01ceb8e00e8, type: 3}
 --- !u!82 &79419082
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1194,7 +1191,7 @@ MonoBehaviour:
   m_Follow: {fileID: 79419074}
   m_Lens:
     FieldOfView: 34
-    OrthographicSize: 5
+    OrthographicSize: 7
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -1829,7 +1826,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 7
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -6436,16 +6433,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 618571620}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 1789500762}
+        m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
+        m_MethodName: SceneChange
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: MainMenu
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1981256417
@@ -6770,7 +6767,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -10
-  m_Sprite: {fileID: 21300000, guid: 7cd3369137d5b6408b594e2680d95fad, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 01a784a55588596c18fdf95068668d64, type: 3}
   m_Color: {r: 0, g: 0.43139789, b: 0.7169812, a: 1}
   m_FlipX: 0
   m_FlipY: 0

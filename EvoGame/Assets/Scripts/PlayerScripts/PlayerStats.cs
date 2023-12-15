@@ -1,7 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.PackageManager;
-using UnityEditor.U2D.Animation;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -115,10 +113,6 @@ public class PlayerStats : MonoBehaviour
     #region Misc
     PlayerScriptableObject playerData;
     SpriteRenderer spriteR;
-
-    public GameObject secondWeaponTest;
-    public GameObject passiveItemTest;
-    public GameObject secondPassiveTest;
     #endregion
 
     
@@ -138,9 +132,6 @@ public class PlayerStats : MonoBehaviour
         CurrentPickupRadius = playerData.PickupRadius;
 
         SpawnAttack(playerData.StartingAttack);
-        //SpawnAttack(secondWeaponTest);
-        //SpawnPassive(passiveItemTest);
-        SpawnPassive(secondPassiveTest);
     }
 
 

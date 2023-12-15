@@ -1,9 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.PlasticSCM.Editor.UI;
 using UnityEngine;
-using UnityEngine.Rendering;
-
 //Base for all player attack types to inherit from
 
 public class PlayerAttackController : MonoBehaviour

@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -234,6 +233,7 @@ public class InventoryManager : MonoBehaviour
 		foreach (var evolutionOption in evolutionUIoptions)
 		{
 			evolutionOption.evolutionButton.onClick.RemoveAllListeners();
+			DisableUI(evolutionOption);
 		}
 	}
 
