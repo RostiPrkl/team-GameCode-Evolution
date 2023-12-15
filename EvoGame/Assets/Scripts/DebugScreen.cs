@@ -41,22 +41,22 @@ public class DebugScreen : MonoBehaviour
         debugText.text += $"Player Level: {player.level}\n";
 
         //Enemy health
-        debugText.text +=$"Enemy health: {enemy.currentHealth}\n";
+        //debugText.text +=$"Enemy health: {enemy.currentHealth}\n";
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            SpawnEnemy();
-        }
-    }
+    //void Update()
+    //{
+      // if (Input.GetKeyDown(KeyCode.H))
+       // {
+         //   SpawnEnemy();
+      //  }
+   // }
 
 
-    void SpawnEnemy()
-    {
+    //void SpawnEnemy()
+    //{
         
-        GameObject newEnemy = Instantiate(enemyPrefab, enemySpawn.transform.position, Quaternion.identity);
+     //   GameObject newEnemy = Instantiate(enemyPrefab, enemySpawn.transform.position, Quaternion.identity);
         
-    }
+    //}
 }

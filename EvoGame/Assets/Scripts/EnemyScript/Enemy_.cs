@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-
 [Serializable]
-public class  EnemyStats
+public class EnemyStats
 {
+    // Vihollisen tilastot. 
     public int health = 1;
     public int damage = 1;
     public int experience = 200;
@@ -15,30 +15,51 @@ public class  EnemyStats
     private EnemyStats stats;
 
     public EnemyStats(EnemyStats stats)
-    {              
+    {
         this.health = stats.health;
         this.damage = stats.damage;
         this.experience = stats.experience;
         this.moveSpeed = stats.moveSpeed;
     }
+
+    internal void ApplyProgress(float progress)
+    {
+        this.health = (int)(health * progress);
+        this.damage = (int)(damage * progress);
+    }
 }
-
-
 public class Enemy_ : MonoBehaviour
+
 {
-    Transform targetDestination;    
-    GameObject targetGameobject;
-    Rigidbody2D rb2d;
-    PlayerStats targetPlayer;   
+    public EnemyStats stats;
+    Transform targetDestination;   
+    GameObject targetGameobject;     
+    PlayerStats targetPlayer;
     [SerializeField] protected SpriteRenderer sprite;
     [SerializeField] protected int coinValue;
     [SerializeField] private GameObject coinObject;
+    [SerializeField] EnemyData enemyData;
     internal object currentHealth;
-    public EnemyStats stats;
-    
+
+    Rigidbody2D rb2d;
+
     private void Awake()
+
     {
-        rb2d = GetComponent<Rigidbody2D>();        
+
+        rb2d = GetComponent<Rigidbody2D>();
+
+    }
+
+    private void Start()
+    {
+        if (enemyData != null) 
+        {
+           
+            SetStats(enemyData.stats);
+            SetTarget(GameManager.instance.playerTransform.gameObject);
+        
+        }
     }
 
     public void SetTarget(GameObject target)
@@ -48,12 +69,19 @@ public class Enemy_ : MonoBehaviour
 
     }
 
-    private void FixedUpdate()
+    internal void UpdateStatsForProgress(float progress)
     {
+        stats.ApplyProgress(progress);
+    }
+    
+    private void FixedUpdate()
+
+    {
+
         Vector3 direction = (targetDestination.position - transform.position).normalized;
         rb2d.velocity = direction * stats.moveSpeed;
-    }
 
+    }
 
     internal void SetStats(EnemyStats stats)
     {
@@ -61,20 +89,24 @@ public class Enemy_ : MonoBehaviour
     }
 
     private void OnCollisionStay2D(Collision2D collision)
+
     {
         if (collision.gameObject == targetGameobject)
+
         {
             Attack();
         }
     }
 
     private void Attack()
+
     {
         if (targetPlayer == null)
         {
             targetPlayer = targetGameobject.GetComponent<PlayerStats>();
         }
         targetPlayer.TakeDamage(stats.damage);
+
     }
 
     private void TakeDamage(int damage)
@@ -90,4 +122,5 @@ public class Enemy_ : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
 }

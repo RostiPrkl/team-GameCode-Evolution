@@ -288,11 +288,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ddebcb9b742bd646bbe29c4cbf032c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
-  coinValue: 0
-  coinObject: {fileID: 0}
   stats:
     health: 1
     damage: 1
     experience: 200
     moveSpeed: 1
+  sprite: {fileID: 0}
+  coinValue: 0
+  coinObject: {fileID: 112556324597756653, guid: 804b06d7d70951d6db86aaaab1bf5793, type: 3}
