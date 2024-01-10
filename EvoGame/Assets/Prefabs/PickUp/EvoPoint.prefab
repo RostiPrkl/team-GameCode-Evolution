@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -1594636426260991642}
   - component: {fileID: 2107630855993264585}
   - component: {fileID: 3497015554411722618}
+  - component: {fileID: 7239327062913194610}
   m_Layer: 0
   m_Name: EvoPoint
   m_TagString: Untagged
@@ -162,3 +163,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &7239327062913194610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112556324597756653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e43f164c6cc09d2eb1b8192181cc771, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bobSpeed: 5
+  bobJump: 0.2
+  direction: {x: 0, y: 1.5, z: 0}

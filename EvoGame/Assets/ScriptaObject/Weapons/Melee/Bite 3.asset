@@ -21,4 +21,4 @@ MonoBehaviour:
   nextLevelPrefab: {fileID: 0}
   icon: {fileID: 21300000, guid: 525174bb59f65b344adf0130d1da3175, type: 3}
   attackName: DEBUG TEETH LEVEL
-  attackDescription: 150 % more damage (this will create a new bite controller)
+  attackDescription: 150 % more damage

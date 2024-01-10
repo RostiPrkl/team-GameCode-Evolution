@@ -15,8 +15,9 @@ public class ShoutBehaviour : ProjectileBehaviour
     }
 
     
-    void Update()
+    protected override void Update()
     {
+        base.Update();
         //set the movement of shout
         transform.position += direction * currentSpeed * Time.deltaTime;
     }

@@ -16,9 +16,9 @@ MonoBehaviour:
   damage: 20
   speed: 4
   cooldown: 1.7
-  penetrate: 1
+  penetrate: 0
   level: 2
   nextLevelPrefab: {fileID: 2935252070034245117, guid: b77c9dc958ad401a0a837e5879e664a3, type: 3}
   icon: {fileID: 21300000, guid: de1fd655ac514f29f9c36683d023c41d, type: 3}
-  attackName: hard bubbles
-  attackDescription: 100 % more damage, can shoot through enemies
+  attackName: Bubbles 2
+  attackDescription: 100 % more damage, Bigger Bubble

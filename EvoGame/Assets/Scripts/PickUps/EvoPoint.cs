@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EvoPoint : Pickup, ICollectible
+public class EvoPoint : Pickup
 {
     public int experienceCollected;
 
@@ -19,8 +19,13 @@ public class EvoPoint : Pickup, ICollectible
     }
 
 
-    public void Collect()
+    public override void Collect()
     {
+        if (isCollected)
+            return;
+        else
+        base.Collect();
+
         PlayerStats player = FindObjectOfType<PlayerStats>();
         player.IncreaseExp(experienceCollected);
     }

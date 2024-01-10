@@ -18,8 +18,13 @@ public class HealthDrop : Pickup, ICollectible
     }
 
 
-    public void Collect()
+    public override void Collect()
     {
+        if (isCollected)
+            return;
+        else
+        base.Collect();
+
         PlayerStats player = FindObjectOfType<PlayerStats>();
         player.RestoreHealth(healthCollected);
     }

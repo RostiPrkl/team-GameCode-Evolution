@@ -65,7 +65,9 @@ AudioMixerController:
   m_ExposedParameters: []
   m_AudioMixerGroupViews:
   - guids:
+    - 4fe2519010a6d199faf446d967b8fa9e
     - 1e00f88af33d74d7587f353eb76d1725
+    - f63d80644d382274a8ac322379206dec
     - 57fb5faad220e26b0a866bac797361d9
     name: View
   m_CurrentViewIndex: 0
@@ -81,6 +83,7 @@ AudioMixerGroupController:
   m_GroupID: 4fe2519010a6d199faf446d967b8fa9e
   m_Children:
   - {fileID: -4937873602936223418}
+  - {fileID: -6683211759016078778, guid: d3e69b57599b32f45ad4c5eed4e1c44f, type: 2}
   - {fileID: 3675379459518892806}
   m_Volume: 93a7d69477c525b358170f486dea1911
   m_Pitch: f62af033d91f71a9383c86d96e923110

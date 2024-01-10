@@ -35,6 +35,7 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] float hpMaxCounter;
     [SerializeField] Image hpFiller;
     [SerializeField] float previousHealth;
+    public float newMaxHealth;
 
     [Header("Invincibility After Damage")]
     [SerializeField] float iFrames;
@@ -124,7 +125,8 @@ public class PlayerStats : MonoBehaviour
         playerData = CharacterSelector.GetData();
         CharacterSelector.instance.DestroySingleton();
 
-        CurrentHealth = playerData.MaxHealth;
+        newMaxHealth = playerData.MaxHealth;
+        CurrentHealth = newMaxHealth;
         CurrentRecovery = playerData.Recovery;
         CurrentMovementSpeed = playerData.MovementSpeed;
         //CurrentProjectileSpeed = playerData.ProjectileSpeed;
@@ -166,7 +168,7 @@ public class PlayerStats : MonoBehaviour
         else
             hpCounter += Time.deltaTime;
 
-        hpFiller.fillAmount = Mathf.Lerp(previousHealth / playerData.MaxHealth, CurrentHealth / playerData.MaxHealth, hpCounter / hpMaxCounter);
+        hpFiller.fillAmount = Mathf.Lerp(previousHealth / newMaxHealth, CurrentHealth / newMaxHealth, hpCounter / hpMaxCounter);
     }
 
 
@@ -194,8 +196,8 @@ public class PlayerStats : MonoBehaviour
     public void RestoreHealth(float amount)
     {
         CurrentHealth += amount;
-        if (CurrentHealth > playerData.MaxHealth)
-            CurrentHealth = playerData.MaxHealth;
+        if (CurrentHealth > newMaxHealth)
+            CurrentHealth = newMaxHealth;
     }
 
 
@@ -234,7 +236,7 @@ public class PlayerStats : MonoBehaviour
         //Check for iframes, and granting for brief invincibilty after dmg
         if (!isInvincible)
         {
-            previousHealth = hpFiller.fillAmount * playerData.MaxHealth;
+            previousHealth = hpFiller.fillAmount * newMaxHealth;
             hpCounter = 0;
             CurrentHealth -= dmg;
 
@@ -268,11 +270,11 @@ public class PlayerStats : MonoBehaviour
 
     void Recover()
     {
-        if(CurrentHealth < playerData.MaxHealth)
+        if(CurrentHealth < newMaxHealth)
         {
             CurrentHealth += CurrentRecovery * Time.deltaTime;
-            if (CurrentHealth > playerData.MaxHealth)
-                CurrentHealth = playerData.MaxHealth;
+            if (CurrentHealth > newMaxHealth)
+                CurrentHealth = newMaxHealth;
         }
     }
 

@@ -16,9 +16,9 @@ MonoBehaviour:
   damage: 30
   speed: 5
   cooldown: 2
-  penetrate: 2
+  penetrate: 1
   level: 3
   nextLevelPrefab: {fileID: 0}
   icon: {fileID: 21300000, guid: de1fd655ac514f29f9c36683d023c41d, type: 3}
-  attackName: MORE bubbles
-  attackDescription: 150 % more damage, can shoot throug 2 enemies
+  attackName: Bubble 3
+  attackDescription: Bubble can penetrate enemies once

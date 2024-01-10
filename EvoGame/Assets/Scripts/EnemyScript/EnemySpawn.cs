@@ -7,13 +7,14 @@ public class EnemySpawn : MonoBehaviour
     [SerializeField] GameObject enemy;
     [SerializeField] Vector2 spawnArea;
     [SerializeField] float spawnTimer;
+    [SerializeField] float initialSpawnTimer;
     [SerializeField] GameObject player;
     public float timer;
 
 
     private void Awake()
     {
-        timer = spawnTimer;
+        timer = initialSpawnTimer;
     }
 
 

@@ -34,6 +34,25 @@ public class ProjectileBehaviour : MonoBehaviour
         Destroy(gameObject, destroyCounterProjectile);
     }
 
+
+    protected virtual void Update()
+    {
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePosition.z = 0f;
+
+        direction = (mousePosition - transform.position).normalized;
+
+        //UpdateRotation();
+
+    }
+
+
+    // public void UpdateRotation()
+    // {
+    //     float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+    //     transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+    // }
+
     
     public void DirectionCheck(Vector3 dir)
     {

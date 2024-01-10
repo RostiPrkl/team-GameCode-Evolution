@@ -10,10 +10,10 @@ public class Player : MonoBehaviour
     //TODO: ✔ enemy collision event
     //TODO: ✔ xp pick up system
     //TODO: ✔ player health system
-    //TODO:   lvlup event
-    //TODO:   separate damage boosts
+    //TODO: ✔ lvlup event
+    //TODO: ✔ separate damage boosts
     //TODO:   health boost
-    //TODO:   recovery boost
+    //TODO: ✔ recovery boost
     //TODO:   revamp controller (mouse input)
 
     float lastHorizontal;
