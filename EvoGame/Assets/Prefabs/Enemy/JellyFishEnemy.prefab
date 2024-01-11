@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 573254088843182214}
   - component: {fileID: 30970083257823002}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 1342342943294368316}
   - component: {fileID: 3344237664539186865}
   - component: {fileID: 7755206036547414646}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: JellyFishEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -216,7 +216,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2227882465152826036}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -280,7 +280,7 @@ GameObject:
   m_Component:
   - component: {fileID: 949075339298890686}
   - component: {fileID: 8083254864459829696}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Layer 3 Copy
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8566080295360910515}
   - component: {fileID: 6869752710206633746}
   - component: {fileID: 5470185555294747491}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: AnglerEnemyRare
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 4
-  maxHealth: 70
+  maxHealth: 50
   enemyDamage: 20
 --- !u!50 &9137353498149392356
 Rigidbody2D:
@@ -121,7 +121,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 6200000, guid: 75a3e0808dd9854ee81b04ba5967c7c7, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0

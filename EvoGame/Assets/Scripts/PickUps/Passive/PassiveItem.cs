@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.RestService;
 using UnityEngine;
 
 public class PassiveItem : MonoBehaviour
 {
     protected PlayerStats player;
+    //protected PlayerScriptableObject playerData;
     public PassiveItemScriptableObject passiveItem;
 
 
@@ -17,6 +19,7 @@ public class PassiveItem : MonoBehaviour
 
     void Start()
     {
+        //playerData = FindObjectOfType<PlayerScriptableObject>();
         player = FindObjectOfType<PlayerStats>(); 
         Modifier();
     }

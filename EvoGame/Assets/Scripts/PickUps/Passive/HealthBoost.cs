@@ -7,5 +7,8 @@ public class HealthBoost : PassiveItem
     protected override void Modifier()
     {
         player.newMaxHealth *= 1 + passiveItem.Multiplier / 100f;
+        
+        if (player.CurrentHealth < player.newMaxHealth)
+            player.CurrentHealth = player.newMaxHealth;
     }
 }

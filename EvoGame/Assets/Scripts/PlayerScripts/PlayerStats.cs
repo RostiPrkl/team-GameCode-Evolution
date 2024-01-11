@@ -113,13 +113,13 @@ public class PlayerStats : MonoBehaviour
    
     #region Misc
     PlayerScriptableObject playerData;
-    SpriteRenderer spriteR;
+    SpriteRenderer[] spriteRList;
     #endregion
 
     
     void Awake()
     {
-        spriteR = GetComponent<SpriteRenderer>();
+        spriteRList = GetComponentsInChildren<SpriteRenderer>();
         inventory = GetComponent<InventoryManager>();
 
         playerData = CharacterSelector.GetData();
@@ -175,7 +175,7 @@ public class PlayerStats : MonoBehaviour
     public void XPBar()
     {
 
-        LvlUpChecker();
+        //LvlUpChecker();
 
         if (experience == 0)
         {
@@ -214,6 +214,7 @@ public class PlayerStats : MonoBehaviour
         {
             level++;
             experience -= expCap;
+            expCap = 0;
 
             int expCapIncrease = 0;
             foreach (LevelRange range in levelRanges)
@@ -261,10 +262,13 @@ public class PlayerStats : MonoBehaviour
 
     private IEnumerator FlashRed()
     {
-        Color originalColor = spriteR.color;
-        spriteR.color = Color.red;
-        yield return new WaitForSeconds(0.2f);
-        spriteR.color = originalColor;
+        foreach (SpriteRenderer sprite in spriteRList)
+        {
+            Color originalColor = sprite.color;
+            sprite.color = Color.red;
+            yield return new WaitForSeconds(0.07f);
+            sprite.color = originalColor;
+        }
     }
 
 
@@ -296,8 +300,6 @@ public class PlayerStats : MonoBehaviour
             Debug.LogError("INVENTORY FULL");
             return;
         }
-
-        //leetle hack to get the spwans in the right place
 
             GameObject spawnedAttack = Instantiate(attack, transform.position, Quaternion.identity);
             spawnedAttack.transform.SetParent(transform);

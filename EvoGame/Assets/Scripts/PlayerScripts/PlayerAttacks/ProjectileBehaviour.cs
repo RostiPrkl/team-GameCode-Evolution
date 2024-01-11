@@ -4,6 +4,7 @@ using UnityEngine;
 
 //Base Script for projectile Weapon behaviour
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class ProjectileBehaviour : MonoBehaviour
 {
     protected Vector3 direction;
@@ -37,13 +38,8 @@ public class ProjectileBehaviour : MonoBehaviour
 
     protected virtual void Update()
     {
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mousePosition.z = 0f;
-
-        direction = (mousePosition - transform.position).normalized;
 
         //UpdateRotation();
-
     }
 
 
@@ -54,46 +50,46 @@ public class ProjectileBehaviour : MonoBehaviour
     // }
 
     
-    public void DirectionCheck(Vector3 dir)
-    {
-        direction = dir;
+    // public void DirectionCheck(Vector3 dir)
+    // {
+    //     direction = dir;
 
-        float dirX = direction.x;
-        float dirY = direction.y;
+    //     float dirX = direction.x;
+    //     float dirY = direction.y;
 
-        Vector3 scale = transform.localScale;
-        Vector3 rotation = transform.rotation.eulerAngles;
+    //     Vector3 scale = transform.localScale;
+    //     Vector3 rotation = transform.rotation.eulerAngles;
 
-        //temporary, switch to rigidbody velocity movement
-        if (dirX > 0 && dirY == 0 ) //facing right
-            rotation.z = -30f;
-        else if (dirX < 0 && dirY == 0) //facing left
-            rotation.z = 30f;
-        else if (dirX == 0 && dirY == 0) //facing down
-            scale.y *= 0;
-        else if (dirX == 0 && dirY > 0) //facing up
-            scale.y *= -1;
-        else if (dirX > 0 && dirY > 0) //right up
-            rotation.z = 0f;
-        else if (dirX > 0 && dirY < 0) //right down
-            rotation.z = -90f;
-        else if (dirX < 0 && dirY > 0) //left up
-        {
-            scale.x *= -1;
-            scale.y *= -1;
-            rotation.z = -90f;
-        }
-        else if (dirX < 0 && dirY < 0) //left down
-        {
-            scale.x *= -1;
-            scale.y *= -1;
-            rotation.z = 0f;
-        }
-        //mmmm delicious spagetti
+    //     //temporary, switch to rigidbody velocity movement
+    //     if (dirX > 0 && dirY == 0 ) //facing right
+    //         rotation.z = -30f;
+    //     else if (dirX < 0 && dirY == 0) //facing left
+    //         rotation.z = 30f;
+    //     else if (dirX == 0 && dirY == 0) //facing down
+    //         scale.y *= 0;
+    //     else if (dirX == 0 && dirY > 0) //facing up
+    //         scale.y *= -1;
+    //     else if (dirX > 0 && dirY > 0) //right up
+    //         rotation.z = 0f;
+    //     else if (dirX > 0 && dirY < 0) //right down
+    //         rotation.z = -90f;
+    //     else if (dirX < 0 && dirY > 0) //left up
+    //     {
+    //         scale.x *= -1;
+    //         scale.y *= -1;
+    //         rotation.z = -90f;
+    //     }
+    //     else if (dirX < 0 && dirY < 0) //left down
+    //     {
+    //         scale.x *= -1;
+    //         scale.y *= -1;
+    //         rotation.z = 0f;
+    //     }
+    //     //mmmm delicious spagetti
 
-        transform.localScale = scale;
-        transform.rotation = Quaternion.Euler(rotation);
-    }
+    //     transform.localScale = scale;
+    //     transform.rotation = Quaternion.Euler(rotation);
+    //}
 
 
     protected virtual void OnTriggerEnter2D(Collider2D collider)

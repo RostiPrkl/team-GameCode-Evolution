@@ -43,11 +43,18 @@ public class EnemySpawn : MonoBehaviour
     }
 
     private Vector3 GenerateRandomPosition()
+{
+    Vector3 position = new Vector3();
+
+    float f = UnityEngine.Random.value > 0.5f ? -1f : 1f;
+
+    // Maximum attempts to find a valid position
+    int maxAttempts = 10;
+    int attempts = 0;
+    bool hasEnvironmentCollider;
+
+    do
     {
-
-        Vector3 position = new Vector3();
-
-        float f = UnityEngine.Random.value > 0.5f ? -1f : 1f;
         if (UnityEngine.Random.value > 0.5f)
         {
             position.x = UnityEngine.Random.Range(-spawnArea.x, spawnArea.x);
@@ -59,8 +66,22 @@ public class EnemySpawn : MonoBehaviour
             position.x = spawnArea.x * f;
         }
 
-        position.z = 0;
-        return position;
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(position, 180f);
+        hasEnvironmentCollider = false;
 
-    }
+        foreach (Collider2D collider in colliders)
+        {
+            if (collider.CompareTag("Environment"))
+            {
+                hasEnvironmentCollider = true;
+                break;
+            }
+        }
+                attempts++;
+
+    } while (hasEnvironmentCollider && attempts < maxAttempts);
+
+    position.z = 0;
+    return position;
+}
 }

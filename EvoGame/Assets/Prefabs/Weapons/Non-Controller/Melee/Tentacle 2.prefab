@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 7410748151294500438}
   - component: {fileID: 5886131838215078423}
   - component: {fileID: 2391586984429198830}
-  - component: {fileID: 6644986621691535435}
   - component: {fileID: 1995492341312797735}
+  - component: {fileID: -3957381663622066005}
   m_Layer: 0
   m_Name: Tentacle 2
   m_TagString: Bite
@@ -122,22 +122,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.49
---- !u!114 &6644986621691535435
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5612393631241055225}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29424ebe66fab78c48a065a545a6b4ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  destroyCounterMelee: 0.3
-  attackData: {fileID: 11400000, guid: 4ab10caa0b80b51c49e460b3132b7e34, type: 2}
-  currentDamage: 0
-  audioSource: {fileID: 1995492341312797735}
 --- !u!82 &1995492341312797735
 AudioSource:
   m_ObjectHideFlags: 0
@@ -148,7 +132,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -4937873602936223418, guid: 56672a3f0c1eafa16893f5fa9f3c47d4, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 248e9b9c9c7a01eccb5326378073fca7, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 51f0ae206657e7425a77bc52166ac276, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -234,3 +218,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-3957381663622066005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5612393631241055225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8901ba95084a58fa939d59c6e9e359b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyCounterMelee: 1
+  attackData: {fileID: 11400000, guid: 7eec57294aaa31eb7868818dbbd77af8, type: 2}
+  currentDamage: 0
+  audioSource: {fileID: 1995492341312797735}
