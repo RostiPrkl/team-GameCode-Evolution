@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Gaskellgames.AudioController;
 
 public class Enemy : MonoBehaviour
 {
@@ -13,7 +14,9 @@ public class Enemy : MonoBehaviour
    float currentHealth;
 
    Transform player;
-   
+
+    public Gaskellgames.AudioController.SoundController sdcsndmngr;
+
 
 
     void Start()
@@ -32,9 +35,14 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(float dmg)
     {
+        sdcsndmngr = GameObject.FindObjectOfType<SoundController>();
         currentHealth -= dmg;
-        if (currentHealth <= 0)
+        if (currentHealth <= 0) 
+        {
+            sdcsndmngr.PlaySoundFX("smallEnemyDie");
             Destroy(gameObject);
+        }
+            
     }
 
 

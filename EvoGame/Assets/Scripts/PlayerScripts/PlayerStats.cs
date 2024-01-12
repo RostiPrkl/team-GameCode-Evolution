@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Gaskellgames.AudioController;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -114,9 +115,11 @@ public class PlayerStats : MonoBehaviour
     #region Misc
     PlayerScriptableObject playerData;
     SpriteRenderer[] spriteRList;
+    public SoundController sdcsndmngr;
+    public bool lvlChange;
     #endregion
 
-    
+
     void Awake()
     {
         spriteRList = GetComponentsInChildren<SpriteRenderer>();
@@ -141,6 +144,7 @@ public class PlayerStats : MonoBehaviour
     {
         //initialization of the exp increase system
         expCap = levelRanges[0].expCapIncrease;
+        sdcsndmngr = GameObject.FindObjectOfType<SoundController>();
     }
 
 
@@ -205,6 +209,15 @@ public class PlayerStats : MonoBehaviour
     {
         experience += amount;
         LvlUpChecker();
+
+        if (lvlChange == false)
+        {
+            sdcsndmngr.PlaySoundFX("experience2");
+        }
+        else
+        {
+            lvlChange = false;
+        }
     }
 
 
@@ -288,6 +301,8 @@ public class PlayerStats : MonoBehaviour
         if (!GameManager.instance.isGameOver)
         {
             Debug.Log("Player has died");
+            sdcsndmngr.StopAllSounds();
+            sdcsndmngr.PlaySoundFX("playerDead");
             GameManager.instance.GameOver();
         }
     }
