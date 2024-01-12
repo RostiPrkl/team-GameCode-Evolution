@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 
 [Serializable]
@@ -40,7 +41,7 @@ public class Enemy_ : MonoBehaviour
     [SerializeField] private GameObject coinObject;
     [SerializeField] EnemyData enemyData;
     internal object currentHealth;
-
+    
     Rigidbody2D rb2d;
 
     private void Awake()
@@ -58,7 +59,8 @@ public class Enemy_ : MonoBehaviour
            
             SetStats(enemyData.stats);
             SetTarget(GameManager.instance.playerTransform.gameObject);
-        
+            
+
         }
     }
 
@@ -109,9 +111,9 @@ public class Enemy_ : MonoBehaviour
 
     }
 
-    private void TakeDamage(int damage)
+    public void TakeDamage(float currentDamage)
     {
-        stats.health -= damage;
+        stats.health -= currentDamage;
 
         if (stats.health < 1)
         {

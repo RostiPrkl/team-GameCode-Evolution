@@ -32,7 +32,7 @@ public class MeleeBehaviour : MonoBehaviour
     {
         if (collider.CompareTag("Enemy"))
         {
-            Enemy enemy = collider.GetComponent<Enemy>();
+            Enemy_ enemy = collider.GetComponent<Enemy_>();
             enemy.TakeDamage(currentDamage);
             Destroy(gameObject);
         }
