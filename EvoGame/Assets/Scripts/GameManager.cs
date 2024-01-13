@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public GameObject levelUpScreen;
     public GameObject pauseScreen;
     public GameObject playerLevelSydema;
+    public Transform playerTransform;
 
     public bool isGameOver = false;
     public bool isPaused = false;
@@ -32,6 +33,7 @@ public class GameManager : MonoBehaviour
             Debug.LogWarning("DUPLICATE" + this + "REMOVED");
             Destroy(gameObject);
         }
+        //playerTransform = GetComponent<PlayerStats>().transform;
         DisableScreen();
     }
 

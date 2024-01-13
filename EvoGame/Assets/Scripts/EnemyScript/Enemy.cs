@@ -1,22 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Gaskellgames.AudioController;
 
 public class Enemy : MonoBehaviour
 {
+    //TODO: damage player when hit
+    //TODO: take damage from player attack
 
    [SerializeField] float movementSpeed = 100f;
    [SerializeField] float maxHealth = 200f;
-   public float enemyDamage;
    
 
-   float currentHealth;
+   public float currentHealth;
 
+   public float enemyDamage;
    Transform player;
 
-    public Gaskellgames.AudioController.SoundController sdcsndmngr;
-
+   float damage = 5;
+   
 
 
     void Start()
@@ -35,14 +36,9 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(float dmg)
     {
-        sdcsndmngr = GameObject.FindObjectOfType<SoundController>();
         currentHealth -= dmg;
-        if (currentHealth <= 0) 
-        {
-            sdcsndmngr.PlaySoundFX("smallEnemyDie");
+        if (currentHealth <= 0)
             Destroy(gameObject);
-        }
-            
     }
 
 
@@ -51,7 +47,10 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             PlayerStats player = collision.gameObject.GetComponent<PlayerStats>();
-            player.TakeDamage(enemyDamage);
-        } 
+            player.TakeDamage(damage);
+        }
+        
     }
+
+
 }
