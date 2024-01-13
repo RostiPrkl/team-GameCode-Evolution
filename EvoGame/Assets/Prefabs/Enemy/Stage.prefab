@@ -72,5 +72,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38437b1479ac4ee4bb269c844676dd9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  progressTimeRate: 5
+  progressTimeRate: 1
   progressPerSplit: 0.2

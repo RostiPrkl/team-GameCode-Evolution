@@ -350,4 +350,4 @@ MonoBehaviour:
     experience: 0
     moveSpeed: 0
   sprite: {fileID: 2942172194723960057}
-  enemyData: {fileID: 11400000, guid: 66486496b930a0147a2bcc6261a3bf9a, type: 2}
+  enemyData: {fileID: 11400000, guid: e9928383a4e43a35f9c3a68c4e61c4c5, type: 2}

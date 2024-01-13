@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 8566080295360910515}
   - component: {fileID: 6869752710206633746}
   - component: {fileID: 5470185555294747491}
+  - component: {fileID: 4763243636651372156}
   m_Layer: 7
   m_Name: AnglerEnemyRare
   m_TagString: Enemy
@@ -97,13 +98,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5980331428888745058}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 44b4b48744c83bacc9ffd45b4025388c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 8
   maxHealth: 90
+  currentHealth: 0
   enemyDamage: 30
 --- !u!50 &9137353498149392356
 Rigidbody2D:
@@ -330,3 +332,22 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 2.96, y: 1.4}
   m_Direction: 1
+--- !u!114 &4763243636651372156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5980331428888745058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ddebcb9b742bd646bbe29c4cbf032c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats:
+    health: 0
+    damage: 0
+    experience: 0
+    moveSpeed: 0
+  sprite: {fileID: 2942172194723960057}
+  enemyData: {fileID: 11400000, guid: e72785eeb9b4f341882fdc2940b5450d, type: 2}

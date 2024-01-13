@@ -99,6 +99,7 @@ GameObject:
   - component: {fileID: 1342342943294368316}
   - component: {fileID: 3344237664539186865}
   - component: {fileID: 7755206036547414646}
+  - component: {fileID: 9189201184918167534}
   m_Layer: 7
   m_Name: JellyFishEnemyRare
   m_TagString: Enemy
@@ -181,13 +182,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2227882465152826036}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 44b4b48744c83bacc9ffd45b4025388c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 3
   maxHealth: 80
+  currentHealth: 0
   enemyDamage: 20
 --- !u!114 &1342342943294368316
 MonoBehaviour:
@@ -270,6 +272,25 @@ CapsuleCollider2D:
   m_Offset: {x: -0.026072396, y: -4.0412}
   m_Size: {x: 3.7506738, y: 10.529462}
   m_Direction: 0
+--- !u!114 &9189201184918167534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2227882465152826036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ddebcb9b742bd646bbe29c4cbf032c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats:
+    health: 0
+    damage: 0
+    experience: 0
+    moveSpeed: 0
+  sprite: {fileID: 6488296515995224673}
+  enemyData: {fileID: 11400000, guid: 228fa64f73150aa80a9f6d879de5dcfa, type: 2}
 --- !u!1 &5203030964821595496
 GameObject:
   m_ObjectHideFlags: 0
