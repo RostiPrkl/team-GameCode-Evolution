@@ -7,8 +7,8 @@ public class PlayerAttackScriptableObject : ScriptableObject
 {
     [SerializeField] GameObject attackPrefab;
     public GameObject AttackPrefab { get => attackPrefab; private set => attackPrefab = value; }
-    [SerializeField] float damage;
-    public float Damage { get => damage; private set => damage = value; }
+    [SerializeField] int damage;
+    public int Damage { get => damage; private set => damage = value; }
     [SerializeField] float speed;
     public float Speed { get => speed; private set => speed = value; }
     [SerializeField] float cooldown;

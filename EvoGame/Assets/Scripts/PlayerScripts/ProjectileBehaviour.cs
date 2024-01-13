@@ -10,7 +10,7 @@ public class ProjectileBehaviour : MonoBehaviour
     public float destroyCounterProjectile;
     public PlayerAttackScriptableObject attackData;
 
-    protected float currentDamage;
+    protected int currentDamage;
     protected float currentSpeed;
     protected float currentCooldownDur;
 

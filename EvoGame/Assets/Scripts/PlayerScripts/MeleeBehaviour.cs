@@ -9,7 +9,7 @@ public class MeleeBehaviour : MonoBehaviour
     public float destroyCounterMelee;
     public PlayerAttackScriptableObject attackData;
 
-    protected float currentDamage;
+    protected int currentDamage;
     protected float currentSpeed;
     protected float currentCooldownDur;
 

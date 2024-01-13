@@ -37,8 +37,8 @@ public class Enemy_ : MonoBehaviour
     GameObject targetGameobject;     
     PlayerStats targetPlayer;
     [SerializeField] protected SpriteRenderer sprite;
-    [SerializeField] protected int coinValue;
-    [SerializeField] private GameObject coinObject;
+    //[SerializeField] protected int coinValue;
+    //[SerializeField] private GameObject coinObject;
     [SerializeField] EnemyData enemyData;
     internal object currentHealth;
     
@@ -111,7 +111,7 @@ public class Enemy_ : MonoBehaviour
 
     }
 
-    public void TakeDamage(float currentDamage)
+    public void TakeDamage(int currentDamage)
     {
         stats.health -= currentDamage;
 
@@ -119,8 +119,8 @@ public class Enemy_ : MonoBehaviour
         {
             targetGameobject.GetComponent<PlayerStats>().IncreaseExp(stats.experience);
             var instantiationPoint = sprite.transform;
-            var coin = Instantiate(coinObject, instantiationPoint.position, Quaternion.identity);
-            coin.gameObject.GetComponent<Coins>().SetValue(coinValue);
+            //var coin = Instantiate(coinObject, instantiationPoint.position, Quaternion.identity);
+            //coin.gameObject.GetComponent<Coins>().SetValue(coinValue);
             Destroy(gameObject);
         }
     }

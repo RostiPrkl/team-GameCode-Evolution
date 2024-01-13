@@ -294,6 +294,4 @@ MonoBehaviour:
     experience: 200
     moveSpeed: 1
   sprite: {fileID: 0}
-  coinValue: 0
-  coinObject: {fileID: 112556324597756653, guid: 804b06d7d70951d6db86aaaab1bf5793, type: 3}
-  enemyData: {fileID: 0}
+  enemyData: {fileID: 11400000, guid: 66486496b930a0147a2bcc6261a3bf9a, type: 2}
