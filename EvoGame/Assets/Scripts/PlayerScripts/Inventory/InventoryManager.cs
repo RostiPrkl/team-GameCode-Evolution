@@ -84,13 +84,15 @@ public class InventoryManager : MonoBehaviour
              Debug.Log("NO NEXT ATTACK LEVEL");
              return;
           }
-          GameObject leveledAttack = Instantiate(attack.attackData.NextLevelPrefab, transform.position, Quaternion.identity);
-          leveledAttack.transform.SetParent(transform);
-          AddAttack(slotIndex, leveledAttack.GetComponent<PlayerAttackController>());
-          Destroy(attack.gameObject);
-          attackLevels[slotIndex] = leveledAttack.GetComponent<PlayerAttackController>().attackData.Level;
+		  
+			GameObject leveledAttack = Instantiate(attack.attackData.NextLevelPrefab, transform.position, Quaternion.identity);
+	          leveledAttack.transform.SetParent(transform);
+	          AddAttack(slotIndex, leveledAttack.GetComponent<PlayerAttackController>());
+	          Destroy(attack.gameObject);
+	          attackLevels[slotIndex] = leveledAttack.GetComponent<PlayerAttackController>().attackData.Level;
 
-		  attackEvolutions[evolutionIndex].attackData = leveledAttack.GetComponent<PlayerAttackController>().attackData;
+			  attackEvolutions[evolutionIndex].attackData = leveledAttack.GetComponent<PlayerAttackController>().attackData;
+
 
 		if (GameManager.instance != null && GameManager.instance.chooseUpgrade)
 			GameManager.instance.EndEvolution();

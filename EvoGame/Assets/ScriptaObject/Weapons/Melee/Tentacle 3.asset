@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Tentacle 3
   m_EditorClassIdentifier: 
   attackPrefab: {fileID: 5612393631241055225, guid: b02895913d6f0f0d7998d43a04902b01, type: 3}
-  damage: 15
+  damage: 40
   speed: 0
-  cooldown: 1
+  cooldown: 1.5
   penetrate: 0
   level: 0
   nextLevelPrefab: {fileID: 0}

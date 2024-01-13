@@ -5,14 +5,14 @@ public class PlayerAttackController : MonoBehaviour
 {
     [Header("Attack Stats")]
     public PlayerAttackScriptableObject attackData;
-    protected Player player;
+    protected PlayerStats player;
     float currentCooldown;
 
 
 
     protected virtual void Start()
     {
-        player = FindObjectOfType<Player>();
+        player = FindObjectOfType<PlayerStats>();
         currentCooldown = attackData.Cooldown;
     }
 

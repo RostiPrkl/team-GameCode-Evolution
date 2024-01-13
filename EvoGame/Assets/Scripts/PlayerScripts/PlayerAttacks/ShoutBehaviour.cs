@@ -26,7 +26,7 @@ public class ShoutBehaviour : ProjectileBehaviour
         targetObject.transform.position = mousePosition;
         target = targetObject.transform;
 
-        Destroy(targetObject, 5f);
+        Destroy(targetObject, 3f);
     }
 
     

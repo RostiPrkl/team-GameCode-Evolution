@@ -187,8 +187,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 3
-  maxHealth: 60
-  enemyDamage: 15
+  maxHealth: 80
+  enemyDamage: 20
 --- !u!114 &1342342943294368316
 MonoBehaviour:
   m_ObjectHideFlags: 0

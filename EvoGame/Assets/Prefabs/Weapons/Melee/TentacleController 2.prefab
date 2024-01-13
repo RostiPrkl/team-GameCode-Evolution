@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3997868643883131915}
   m_Layer: 0
   m_Name: TentacleController 2
-  m_TagString: Bite
+  m_TagString: Melee
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

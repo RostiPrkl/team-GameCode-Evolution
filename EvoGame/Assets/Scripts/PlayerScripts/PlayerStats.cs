@@ -115,8 +115,9 @@ public class PlayerStats : MonoBehaviour
     #region Misc
     PlayerScriptableObject playerData;
     SpriteRenderer[] spriteRList;
-    public SoundController sdcsndmngr;
+
     public bool lvlChange;
+    public SoundController sdcsndmngr;
     #endregion
 
 
@@ -136,12 +137,13 @@ public class PlayerStats : MonoBehaviour
         CurrentBaseDamage = playerData.BaseDamage;
         CurrentPickupRadius = playerData.PickupRadius;
 
-        SpawnAttack(playerData.StartingAttack);
+        
     }
 
 
     void Start()
     {
+        SpawnAttack(playerData.StartingAttack);
         //initialization of the exp increase system
         expCap = levelRanges[0].expCapIncrease;
         sdcsndmngr = GameObject.FindObjectOfType<SoundController>();
@@ -181,7 +183,7 @@ public class PlayerStats : MonoBehaviour
 
         //LvlUpChecker();
 
-        if (experience == 0)
+        if (experience == 0 || experience >= expCap)
         {
             xpFiller.fillAmount = 0;
             previousexperience = 0;
@@ -310,17 +312,22 @@ public class PlayerStats : MonoBehaviour
 
     public void SpawnAttack(GameObject attack)
     {
-        if (AttackIndex >= inventory.attackSlots.Count -1)
+        if (AttackIndex >= inventory.attackSlots.Count - 1)
         {
             Debug.LogError("INVENTORY FULL");
             return;
         }
 
-            GameObject spawnedAttack = Instantiate(attack, transform.position, Quaternion.identity);
-            spawnedAttack.transform.SetParent(transform);
-            inventory.AddAttack(AttackIndex, spawnedAttack.GetComponent<PlayerAttackController>());
-            AttackIndex++;
+        Vector3 spawnPosition;
+        spawnPosition = transform.position;
+        Debug.Log("Melee/Ranged spawn position: " + spawnPosition);
+        GameObject spawnedAttack = Instantiate(attack, spawnPosition, Quaternion.identity);
+        spawnedAttack.transform.SetParent(transform);
+        inventory.AddAttack(AttackIndex, spawnedAttack.GetComponent<PlayerAttackController>());
+        AttackIndex++;
+        
     }
+
 
 
     public void SpawnPassive(GameObject passive)
