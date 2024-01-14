@@ -45,7 +45,7 @@ public class MeleeBehaviour : MonoBehaviour
                 isPlaying = true;
                 audioSource.PlayOneShot(audioSource.clip);
             }
-            Enemy enemy = collider.GetComponent<Enemy>();
+            Enemy_ enemy = collider.GetComponent<Enemy_>();
             enemy.TakeDamage(GetCurrentDamage());
 
             float delay = audioSource.clip.length;

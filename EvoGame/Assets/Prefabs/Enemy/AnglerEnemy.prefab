@@ -163,7 +163,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -194,13 +194,13 @@ MonoBehaviour:
   drops:
   - name: EvoPoint 5 xp
     itemPrefab: {fileID: 112556324597756653, guid: a53f24a57365c0214b1458d4a367a416, type: 3}
-    dropRate: 80
+    dropRate: 10
   - name: Health
     itemPrefab: {fileID: 3262823880636201055, guid: 8bb42e006630e80a7ab4e8ef4951369b, type: 3}
-    dropRate: 20
+    dropRate: 1
   - name: Evopoint
     itemPrefab: {fileID: 112556324597756653, guid: 804b06d7d70951d6db86aaaab1bf5793, type: 3}
-    dropRate: 50
+    dropRate: 70
 --- !u!82 &6869752710206633746
 AudioSource:
   m_ObjectHideFlags: 0
@@ -326,7 +326,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -344,10 +344,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ddebcb9b742bd646bbe29c4cbf032c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats:
-    health: 0
-    damage: 0
-    experience: 0
-    moveSpeed: 0
-  sprite: {fileID: 2942172194723960057}
   enemyData: {fileID: 11400000, guid: e9928383a4e43a35f9c3a68c4e61c4c5, type: 2}
+  currentHealth: 0
+  currentMovespeed: 0
+  currentDamage: 0

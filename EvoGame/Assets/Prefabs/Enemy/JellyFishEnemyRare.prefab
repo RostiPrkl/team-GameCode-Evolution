@@ -100,6 +100,7 @@ GameObject:
   - component: {fileID: 3344237664539186865}
   - component: {fileID: 7755206036547414646}
   - component: {fileID: 9189201184918167534}
+  - component: {fileID: 9216967724469597096}
   m_Layer: 7
   m_Name: JellyFishEnemyRare
   m_TagString: Enemy
@@ -206,10 +207,13 @@ MonoBehaviour:
   drops:
   - name: Evopoint 10 xp
     itemPrefab: {fileID: 112556324597756653, guid: 8b7eccff092ed8ba7b3904f8c537f598, type: 3}
-    dropRate: 9
+    dropRate: 60
   - name: Health Big
     itemPrefab: {fileID: 3262823880636201055, guid: dce5c34c44663294c907f3e6edabc633, type: 3}
-    dropRate: 10
+    dropRate: 5
+  - name: Evo 5 xp
+    itemPrefab: {fileID: 112556324597756653, guid: a53f24a57365c0214b1458d4a367a416, type: 3}
+    dropRate: 7
 --- !u!50 &3344237664539186865
 Rigidbody2D:
   serializedVersion: 4
@@ -269,8 +273,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.026072396, y: -4.0412}
-  m_Size: {x: 3.7506738, y: 10.529462}
+  m_Offset: {x: -0.04506211, y: -3.6614273}
+  m_Size: {x: 5.5357013, y: 11.896747}
   m_Direction: 0
 --- !u!114 &9189201184918167534
 MonoBehaviour:
@@ -284,13 +288,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ddebcb9b742bd646bbe29c4cbf032c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats:
-    health: 0
-    damage: 0
-    experience: 0
-    moveSpeed: 0
-  sprite: {fileID: 6488296515995224673}
   enemyData: {fileID: 11400000, guid: 228fa64f73150aa80a9f6d879de5dcfa, type: 2}
+  currentHealth: 0
+  currentMovespeed: 0
+  currentDamage: 0
+--- !u!70 &9216967724469597096
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2227882465152826036}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.02607306, y: -4.022226}
+  m_Size: {x: 4.2064347, y: 11.175135}
+  m_Direction: 0
 --- !u!1 &5203030964821595496
 GameObject:
   m_ObjectHideFlags: 0

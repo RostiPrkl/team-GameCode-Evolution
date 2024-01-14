@@ -12,10 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6f9a9cc1239529479f6def2651af709, type: 3}
   m_Name: RareAnglerData
   m_EditorClassIdentifier: 
-  Name: RareAnglerData
-  animatedPrefab: {fileID: 5980331428888745058, guid: 1261c72825b083240b602a9f30d7e3b1, type: 3}
-  stats:
-    health: 90
-    damage: 15
-    experience: 0
-    moveSpeed: 7
+  enemyPrefab: {fileID: 5980331428888745058, guid: 08b9afd3d4b87c2f8b7436e22ba34ded, type: 3}
+  health: 40
+  moveSpeed: 7
+  damage: 15

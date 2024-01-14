@@ -12,10 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6f9a9cc1239529479f6def2651af709, type: 3}
   m_Name: JellyEnemyData
   m_EditorClassIdentifier: 
-  Name: JellyEnemyData
-  animatedPrefab: {fileID: 2227882465152826036, guid: b3a41add9b6599c468c67de769a18815, type: 3}
-  stats:
-    health: 20
-    damage: 5
-    experience: 0
-    moveSpeed: 2
+  enemyPrefab: {fileID: 2227882465152826036, guid: b3a41add9b6599c468c67de769a18815, type: 3}
+  health: 20
+  moveSpeed: 2
+  damage: 5

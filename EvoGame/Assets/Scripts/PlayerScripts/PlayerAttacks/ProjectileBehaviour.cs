@@ -14,6 +14,7 @@ public class ProjectileBehaviour : MonoBehaviour
     protected float currentDamage;
     protected float currentSpeed;
     protected float currentCooldownDur;
+    protected int currentPenetrate;
 
 
     void Awake()
@@ -21,6 +22,7 @@ public class ProjectileBehaviour : MonoBehaviour
         currentDamage = attackData.Damage;
         currentSpeed = attackData.Speed;
         currentCooldownDur = attackData.Cooldown;
+        currentPenetrate = attackData.Penetrate;
     }
 
 
@@ -96,10 +98,18 @@ public class ProjectileBehaviour : MonoBehaviour
     {
         if (collider.CompareTag("Enemy"))
         {
-            Enemy enemy = collider.GetComponent<Enemy>();
+            Enemy_ enemy = collider.GetComponent<Enemy_>();
             enemy.TakeDamage(GetCurrentDamage());
-            Destroy(gameObject);
+            ReducePenetrationLevel();
         }
             
+    }
+
+
+    void ReducePenetrationLevel()
+    {
+        currentPenetrate--;
+        if (currentPenetrate <= 0)
+            Destroy(gameObject);
     }
 }
