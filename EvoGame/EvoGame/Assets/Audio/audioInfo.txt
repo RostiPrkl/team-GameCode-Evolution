@@ -1,0 +1,33 @@
+Bite1-Bite3= Pelihahmon puraisut.
+
+Button1-Button4= Menun namiskoiden äänet.
+
+DeadInTheWater= enemyn death ääni
+
+EnemyExplode = Enemyn death äänet
+
+Healing = Hitareiden parannus ääni
+
+Levlgain= Levelin nousu.
+
+LowHealtLoop= Ilmaisee äänellä jos hahmon hitarit vaarallisen alhaalla.
+
+MagicChestOpening1-2= mahdollisen aarrearkun avausääni
+
+Monster***=tarkoitettu erilaisten monstereiden ääniksi
+
+Punch3= lisä-isku ääni tarvittaessa
+
+Shoot1-4= ampumis ääniä eri tarkoituksiin
+
+Stream loop moderate 3= mahdollinen lisä ääni päämenuun
+
+Underwater athmosphere = vedenalainen athmosphere ääni loopattavaksi johonkin kenttään
+
+Upgrade= esim evoluution tai parannuksen ääni
+
+
+
+
+
+ 
