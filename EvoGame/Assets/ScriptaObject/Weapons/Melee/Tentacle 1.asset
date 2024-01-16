@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14e036b40d01814cd848d3818eda7186, type: 3}
+  m_Name: Tentacle 1
+  m_EditorClassIdentifier: 
+  attackPrefab: {fileID: 5612393631241055225, guid: 5e50f33f0910a34579fcfac6a31a588c, type: 3}
+  damage: 20
+  speed: 0
+  cooldown: 2
+  penetrate: 0
+  level: 1
+  nextLevelPrefab: {fileID: 7265460018517887890, guid: c8a6b818ecd66b1a5b86cb1f4f88bdbd, type: 3}
+  icon: {fileID: 4232831887833596157, guid: d6fe922108c4c60b697783ab8c5ada0d, type: 3}
+  attackName: Tentacle Swipe 2
+  attackDescription: Increased Swipe Radius & Cooldown

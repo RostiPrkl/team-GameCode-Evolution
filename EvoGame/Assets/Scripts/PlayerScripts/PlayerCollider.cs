@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
 public class PlayerCollider : MonoBehaviour
@@ -19,7 +18,7 @@ public class PlayerCollider : MonoBehaviour
 
     void Update()
     {
-        pickup.radius = playerStats.currentPickupRadius;
+        pickup.radius = playerStats.CurrentPickupRadius;
     }
 
 

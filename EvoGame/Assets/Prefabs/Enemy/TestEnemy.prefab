@@ -10,12 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 7759167711719390995}
   - component: {fileID: 2942172194723960057}
-  - component: {fileID: 5582096003571889767}
   - component: {fileID: 9137353498149392356}
   - component: {fileID: 3849939608101427176}
   - component: {fileID: 8566080295360910515}
   - component: {fileID: 6869752710206633746}
-  - component: {fileID: 5470185555294747491}
+  - component: {fileID: 6955948604356426476}
   m_Layer: 0
   m_Name: TestEnemy
   m_TagString: Enemy
@@ -90,23 +89,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5582096003571889767
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5980331428888745058}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44b4b48744c83bacc9ffd45b4025388c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementSpeed: 0.5
-  maxHealth: 20
-  audioSource: {fileID: 6869752710206633746}
-  currentHealth: 0
-  enemyDamage: 0
 --- !u!50 &9137353498149392356
 Rigidbody2D:
   serializedVersion: 4
@@ -194,7 +176,7 @@ MonoBehaviour:
   drops:
   - name: EvoPoint
     itemPrefab: {fileID: 112556324597756653, guid: 804b06d7d70951d6db86aaaab1bf5793, type: 3}
-    dropRate: 80
+    dropRate: 50
   - name: Health
     itemPrefab: {fileID: 3262823880636201055, guid: 8bb42e006630e80a7ab4e8ef4951369b, type: 3}
     dropRate: 50
@@ -208,7 +190,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -4937873602936223418, guid: 56672a3f0c1eafa16893f5fa9f3c47d4, type: 2}
-  m_audioClip: {fileID: 8300000, guid: beb323c7b45f757388be8f55841ec865, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -294,38 +276,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!70 &5470185555294747491
-CapsuleCollider2D:
+--- !u!114 &6955948604356426476
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5980331428888745058}
   m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 2.96, y: 1.4}
-  m_Direction: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ddebcb9b742bd646bbe29c4cbf032c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats:
+    health: 1
+    damage: 1
+    experience: 200
+    moveSpeed: 1
+  sprite: {fileID: 0}
+  enemyData: {fileID: 11400000, guid: 66486496b930a0147a2bcc6261a3bf9a, type: 2}

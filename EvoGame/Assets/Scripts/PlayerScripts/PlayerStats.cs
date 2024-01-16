@@ -1,25 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.PackageManager;
-using UnityEditor.U2D.Animation;
 using UnityEngine;
 using UnityEngine.UI;
+using Gaskellgames.AudioController;
 
 public class PlayerStats : MonoBehaviour
 {
-    PlayerScriptableObject playerData;
-
-    [HideInInspector] public float currentHealth;
-    [HideInInspector] public float currentRecovery;
-    [HideInInspector] public float currentMovementSpeed;
-    [HideInInspector] public float currentProjectileSpeed;
-    [HideInInspector] public float currentPickupRadius = 2;
-
-    SpriteRenderer spriteR;
-
-    [SerializeField] AudioClip lowHealthAudio;
-    [SerializeField] AudioSource audioSource;
-
+    #region Player inspector
     [Header("Leveling stats")]
     public int experience = 0;
     [SerializeField] float previousexperience;
@@ -30,7 +17,7 @@ public class PlayerStats : MonoBehaviour
     int previousLevel;
     public int expCap;
     public List<LevelRange> levelRanges;
-
+    
     [System.Serializable]
     public class LevelRange
     {
@@ -39,42 +26,127 @@ public class PlayerStats : MonoBehaviour
         public int expCapIncrease;
     }
 
-    [Header("Invincibility After Damage")]
-    [SerializeField] float iFrames;
-    float iFrameTimer;
-    bool isInvincible;
+    [Header("Inventory")]
+    public int AttackIndex;
+    public int PassiveIndex;
+    InventoryManager inventory;
 
     [Header("Health Info")]
     [SerializeField] float hpCounter;
     [SerializeField] float hpMaxCounter;
     [SerializeField] Image hpFiller;
     [SerializeField] float previousHealth;
+    public float newMaxHealth;
 
-    [Header("Weapons and upgrades")]
-    public List<GameObject> spawnedWeapons;
+    [Header("Invincibility After Damage")]
+    [SerializeField] float iFrames;
+    float iFrameTimer;
+    bool isInvincible;
 
+    [Header("Player Audio")]
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip lowHealthAudio, deathAudio, dashAudio;
+    #endregion
+
+    #region Current player stats
+    float currentHealth;
+    float currentRecovery;
+    float currentMovementSpeed;
+    float currentBaseDamage;
+    float currentPickupRadius = 2f;
+    //float currentProjectileSpeed;
+    public float CurrentHealth
+    {
+        get { return currentHealth; }
+        set
+        {
+            if (currentHealth != value)
+                currentHealth = value;
+        }
+    }
+    public float CurrentRecovery
+    {
+        get { return currentRecovery; }
+        set
+        {
+            if (currentRecovery != value)
+                currentRecovery = value;
+        }
+    }
+    public float CurrentMovementSpeed
+    {
+        get { return currentMovementSpeed; }
+        set
+        {
+            if (currentMovementSpeed != value)
+                currentMovementSpeed = value;
+        }
+    }
+    // public float CurrentProjectileSpeed
+    // {
+    //     get { return currentProjectileSpeed; }
+    //     set
+    //     {
+    //         if (currentProjectileSpeed != value)
+    //             currentProjectileSpeed = value;
+    //     }
+    // }
+    public float CurrentBaseDamage
+    {
+        get { return currentBaseDamage; }
+        set
+        {
+            if (currentBaseDamage != value)
+                currentBaseDamage = value;
+        }
+    }
+    public float CurrentPickupRadius
+    {
+        get { return currentPickupRadius; }
+        set
+        {
+            if (currentPickupRadius != value)
+                currentPickupRadius = value;
+        }
+    }
     
+    #endregion
+   
+    #region Misc
+    PlayerScriptableObject playerData;
+    SpriteRenderer[] spriteRList;
+
+    public bool lvlChange;
+    public SoundController sdcsndmngr;
+    #endregion
+
+
     void Awake()
     {
+        spriteRList = GetComponentsInChildren<SpriteRenderer>();
+        inventory = GetComponent<InventoryManager>();
+
         playerData = CharacterSelector.GetData();
         CharacterSelector.instance.DestroySingleton();
 
-        spriteR = GetComponent<SpriteRenderer>();
+        newMaxHealth = playerData.MaxHealth;
+        CurrentHealth = newMaxHealth;
+        CurrentRecovery = playerData.Recovery;
+        CurrentMovementSpeed = playerData.MovementSpeed;
+        //CurrentProjectileSpeed = playerData.ProjectileSpeed;
+        CurrentBaseDamage = playerData.BaseDamage;
+        CurrentPickupRadius = playerData.PickupRadius;
 
-        currentHealth = playerData.MaxHealth;
-        currentRecovery = playerData.Recovery;
-        currentMovementSpeed = playerData.MovementSpeed;
-        currentProjectileSpeed = playerData.ProjectileSpeed;
-        currentPickupRadius = playerData.PickupRadius;
-
-        SpawnWeapon(playerData.StartingWeapon);
+        
     }
 
 
     void Start()
     {
+        SpawnAttack(playerData.StartingAttack);
         //initialization of the exp increase system
         expCap = levelRanges[0].expCapIncrease;
+        sdcsndmngr = GameObject.FindObjectOfType<SoundController>();
     }
 
 
@@ -86,14 +158,6 @@ public class PlayerStats : MonoBehaviour
         else if (isInvincible)
             isInvincible = false;
 
-        if (currentHealth < 20)
-        {
-            audioSource.clip = lowHealthAudio;
-            audioSource.Play();
-        }
-        if (currentHealth > 20)
-            audioSource.Stop();
-
         HealthBar();
         XPBar();
         
@@ -104,22 +168,22 @@ public class PlayerStats : MonoBehaviour
     {
         if (hpCounter > hpMaxCounter)
         {
-            previousHealth = currentHealth;
+            previousHealth = CurrentHealth;
             hpCounter = 0;
         }
         else
             hpCounter += Time.deltaTime;
 
-        hpFiller.fillAmount = Mathf.Lerp(previousHealth / playerData.MaxHealth, currentHealth / playerData.MaxHealth, hpCounter / hpMaxCounter);
+        hpFiller.fillAmount = Mathf.Lerp(previousHealth / newMaxHealth, CurrentHealth / newMaxHealth, hpCounter / hpMaxCounter);
     }
 
 
     public void XPBar()
     {
 
-        LvlUpChecker();
+        //LvlUpChecker();
 
-        if (experience == 0)
+        if (experience == 0 || experience >= expCap)
         {
             xpFiller.fillAmount = 0;
             previousexperience = 0;
@@ -137,9 +201,9 @@ public class PlayerStats : MonoBehaviour
 
     public void RestoreHealth(float amount)
     {
-        currentHealth += amount;
-        if (currentHealth > playerData.MaxHealth)
-            currentHealth = playerData.MaxHealth;
+        CurrentHealth += amount;
+        if (CurrentHealth > newMaxHealth)
+            CurrentHealth = newMaxHealth;
     }
 
 
@@ -147,6 +211,15 @@ public class PlayerStats : MonoBehaviour
     {
         experience += amount;
         LvlUpChecker();
+
+        if (lvlChange == false)
+        {
+            sdcsndmngr.PlaySoundFX("experience2");
+        }
+        else
+        {
+            lvlChange = false;
+        }
     }
 
 
@@ -156,6 +229,7 @@ public class PlayerStats : MonoBehaviour
         {
             level++;
             experience -= expCap;
+            expCap = 0;
 
             int expCapIncrease = 0;
             foreach (LevelRange range in levelRanges)
@@ -167,6 +241,8 @@ public class PlayerStats : MonoBehaviour
                 }
             }
             expCap += expCapIncrease;
+
+            GameManager.instance.StartEvolution();
         }
     }
 
@@ -176,15 +252,24 @@ public class PlayerStats : MonoBehaviour
         //Check for iframes, and granting for brief invincibilty after dmg
         if (!isInvincible)
         {
-            previousHealth = hpFiller.fillAmount * playerData.MaxHealth;
+            previousHealth = hpFiller.fillAmount * newMaxHealth;
             hpCounter = 0;
-            currentHealth -= dmg;
+            CurrentHealth -= dmg;
+
+            if (CurrentHealth < 20)
+            {
+                audioSource.clip = lowHealthAudio;
+                audioSource.Play();
+            }
+            else
+                audioSource.Stop();
+
             StartCoroutine(FlashRed());
 
             iFrameTimer = iFrames;
             isInvincible = true;
 
-            if (currentHealth <= 0)
+            if (CurrentHealth <= 0)
                 Death();
         }
     }
@@ -192,35 +277,70 @@ public class PlayerStats : MonoBehaviour
 
     private IEnumerator FlashRed()
     {
-        Color originalColor = spriteR.color;
-        spriteR.color = Color.red;
-        yield return new WaitForSeconds(0.2f);
-        spriteR.color = originalColor;
+        foreach (SpriteRenderer sprite in spriteRList)
+        {
+            Color originalColor = sprite.color;
+            sprite.color = Color.red;
+            yield return new WaitForSeconds(0.07f);
+            sprite.color = originalColor;
+        }
     }
 
 
     void Recover()
     {
-        if(currentHealth < playerData.MaxHealth)
+        if(CurrentHealth < newMaxHealth)
         {
-            currentHealth += currentRecovery * Time.deltaTime;
-            if (currentHealth > playerData.MaxHealth)
-                currentHealth = playerData.MaxHealth;
+            CurrentHealth += CurrentRecovery * Time.deltaTime;
+            if (CurrentHealth > newMaxHealth)
+                CurrentHealth = newMaxHealth;
         }
     }
 
 
     public void Death()
     {
-        Debug.Log("Player has died");
+        if (!GameManager.instance.isGameOver)
+        {
+            Debug.Log("Player has died");
+            sdcsndmngr.StopAllSounds();
+            sdcsndmngr.PlaySoundFX("playerDead");
+            GameManager.instance.GameOver();
+        }
     }
 
 
-    public void SpawnWeapon(GameObject weapon)
+    public void SpawnAttack(GameObject attack)
     {
-        Vector3 spawnPosition = new Vector3(1, 0, 0);
-        GameObject spawnedWeapon = Instantiate(weapon, spawnPosition, Quaternion.identity);
-        spawnedWeapon.transform.SetParent(transform);
-        spawnedWeapons.Add(spawnedWeapon);
+        if (AttackIndex >= inventory.attackSlots.Count - 1)
+        {
+            Debug.LogError("INVENTORY FULL");
+            return;
+        }
+
+        Vector3 spawnPosition;
+        spawnPosition = transform.position;
+        Debug.Log("Melee/Ranged spawn position: " + spawnPosition);
+        GameObject spawnedAttack = Instantiate(attack, spawnPosition, Quaternion.identity);
+        spawnedAttack.transform.SetParent(transform);
+        inventory.AddAttack(AttackIndex, spawnedAttack.GetComponent<PlayerAttackController>());
+        AttackIndex++;
+        
+    }
+
+
+
+    public void SpawnPassive(GameObject passive)
+    {
+        if (PassiveIndex >= inventory.passiveSlots.Count -1)
+        {
+            Debug.LogError("INVENTORY FULL");
+            return;
+        }
+
+        GameObject spawnedPassive = Instantiate(passive, transform.position, Quaternion.identity);
+        spawnedPassive.transform.SetParent(transform);
+        inventory.AddPassive(PassiveIndex, spawnedPassive.GetComponent<PassiveItem>());
+        PassiveIndex++; //each attack is it's own slot. no overlap
     }
 }

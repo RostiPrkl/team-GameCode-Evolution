@@ -10,7 +10,11 @@ public class Player : MonoBehaviour
     //TODO: ✔ enemy collision event
     //TODO: ✔ xp pick up system
     //TODO: ✔ player health system
-    //TODO:   lvlup event
+    //TODO: ✔ lvlup event
+    //TODO: ✔ separate damage boosts
+    //TODO:   health boost
+    //TODO: ✔ recovery boost
+    //TODO:   revamp controller (mouse input)
 
     float lastHorizontal;
     float lastVertical;
@@ -22,8 +26,6 @@ public class Player : MonoBehaviour
     [HideInInspector] public Vector2 lastMoveDirection;
 
     PlayerStats playerStats;
-
-    public AudioSource biteAudioSource;
     
     
     private void Awake()
@@ -42,12 +44,15 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.MovePosition(rb.position + input * playerStats.currentMovementSpeed * Time.fixedDeltaTime);
+        rb.MovePosition(rb.position + input * playerStats.CurrentMovementSpeed * Time.fixedDeltaTime);
     }
 
 
     void MovementController()
     {
+        if (GameManager.instance.isGameOver || GameManager.instance.isPaused)
+            return;
+
         input.x = Input.GetAxisRaw("Horizontal");
         input.y = Input.GetAxisRaw("Vertical");
 
@@ -72,6 +77,9 @@ public class Player : MonoBehaviour
 
     void FlipController()
     {
+        if (GameManager.instance.isGameOver || GameManager.instance.isPaused)
+            return;
+
         if (input.x < 0 && facingDir)
             Flip();
         else if (input.x > 0 && !facingDir)

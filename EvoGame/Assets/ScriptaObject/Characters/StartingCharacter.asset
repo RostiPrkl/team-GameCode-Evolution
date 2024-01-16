@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fea20ab6cb6752573aa92dbcacabd107, type: 3}
   m_Name: StartingCharacter
   m_EditorClassIdentifier: 
-  startingWeapon: {fileID: 7265460018517887890, guid: 6b039fe3df77a039cb1fa074ab012cc3, type: 3}
+  startingAttack: {fileID: 7265460018517887890, guid: 6b039fe3df77a039cb1fa074ab012cc3, type: 3}
   maxHealth: 100
-  projectileSpeed: 0
-  recovery: 1
+  projectileSpeed: 1
+  recovery: 0
   movementSpeed: 4
   pickupRadius: 3
+  baseDamage: 1

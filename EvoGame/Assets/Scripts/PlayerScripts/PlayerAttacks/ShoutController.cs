@@ -18,6 +18,6 @@ public class ShoutController : PlayerAttackController
         base.Attack();
         GameObject spawnedShout = Instantiate(attackData.AttackPrefab);
         spawnedShout.transform.position = transform.position;
-        spawnedShout.GetComponent<ShoutBehaviour>().DirectionCheck(player.lastMoveDirection);
+        //spawnedShout.GetComponent<ShoutBehaviour>().DirectionCheck(player.lastMoveDirection);
     }
 }
