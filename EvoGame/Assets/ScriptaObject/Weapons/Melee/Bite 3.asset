@@ -20,5 +20,5 @@ MonoBehaviour:
   level: 4
   nextLevelPrefab: {fileID: 0}
   icon: {fileID: 21300000, guid: 525174bb59f65b344adf0130d1da3175, type: 3}
-  attackName: DEBUG TEETH LEVEL
+  attackName: Teeth 4
   attackDescription: 150 % more damage

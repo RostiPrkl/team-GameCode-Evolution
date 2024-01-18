@@ -276,15 +276,26 @@ public class PlayerStats : MonoBehaviour
 
 
     private IEnumerator FlashRed()
+{
+    List<Color> originalColors = new List<Color>();
+    foreach (SpriteRenderer sprite in spriteRList)
     {
-        foreach (SpriteRenderer sprite in spriteRList)
-        {
-            Color originalColor = sprite.color;
-            sprite.color = Color.red;
-            yield return new WaitForSeconds(0.07f);
-            sprite.color = originalColor;
-        }
+        originalColors.Add(sprite.color);
     }
+
+    foreach (SpriteRenderer sprite in spriteRList)
+    {
+        sprite.color = Color.red;
+    }
+
+    yield return new WaitForSeconds(0.07f);
+
+
+    for (int i = 0; i < spriteRList.Length; i++)
+    {
+        spriteRList[i].color = originalColors[i];
+    }
+}
 
 
     void Recover()
@@ -318,13 +329,26 @@ public class PlayerStats : MonoBehaviour
             return;
         }
 
-        Vector3 spawnPosition;
-        spawnPosition = transform.position;
-        Debug.Log("Melee/Ranged spawn position: " + spawnPosition);
-        GameObject spawnedAttack = Instantiate(attack, spawnPosition, Quaternion.identity);
-        spawnedAttack.transform.SetParent(transform);
-        inventory.AddAttack(AttackIndex, spawnedAttack.GetComponent<PlayerAttackController>());
-        AttackIndex++;
+        if (transform.Find("BiteController") || transform.Find("ShoutController 0"))
+        {
+            Vector3 spawnPosition = transform.position + new Vector3(1,0,0);
+            Debug.Log("Melee/Ranged spawn position: " + spawnPosition);
+            GameObject spawnedAttack = Instantiate(attack, spawnPosition, Quaternion.identity);
+            spawnedAttack.transform.SetParent(transform);
+            inventory.AddAttack(AttackIndex, spawnedAttack.GetComponent<PlayerAttackController>());
+            AttackIndex++;
+
+        }
+        else
+        {
+            Vector3 spawnPosition = transform.position;
+            Debug.Log("Melee/Ranged spawn position: " + spawnPosition);
+            GameObject spawnedAttack = Instantiate(attack, spawnPosition, Quaternion.identity);
+            spawnedAttack.transform.SetParent(transform);
+            inventory.AddAttack(AttackIndex, spawnedAttack.GetComponent<PlayerAttackController>());
+            AttackIndex++;
+
+        }
         
     }
 

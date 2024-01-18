@@ -18,6 +18,8 @@ public class Player : MonoBehaviour
 
     float lastHorizontal;
     float lastVertical;
+
+    [SerializeField] Animator animator;
     Vector2 input;
     Rigidbody2D rb;
     bool facingDir = true;
@@ -57,19 +59,15 @@ public class Player : MonoBehaviour
         input.y = Input.GetAxisRaw("Vertical");
 
         //needed for the attack scripts
-        if (input.x != 0)
+        if (input.x != 0 || input.y != 0)
             {
+                animator.SetBool("isMoving", true);
                 lastHorizontal = input.x;
-                lastMoveDirection = new Vector2(lastHorizontal, 0);
+                lastMoveDirection = new Vector2(lastHorizontal, lastVertical);
             }
-        if (input.y != 0)
-            {
-                lastVertical = input.y;
-                lastMoveDirection = new Vector2(0, lastVertical);
-            }
-        //fixes bug in ranged weapon while moving
-        if (input.x != 0 && input.y != 0)
-            lastMoveDirection = new Vector2(lastHorizontal, lastVertical);
+        else
+            animator.SetBool("isMoving", false);
+        
 
         //moveDirection = new Vector2(input.x, input.y); 
     }

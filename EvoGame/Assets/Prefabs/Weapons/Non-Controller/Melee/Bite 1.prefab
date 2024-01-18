@@ -138,6 +138,7 @@ MonoBehaviour:
   attackData: {fileID: 11400000, guid: d3072876da2a143318cadce3a8949b86, type: 2}
   currentDamage: 0
   audioSource: {fileID: 1995492341312797735}
+  animator: {fileID: 0}
 --- !u!82 &1995492341312797735
 AudioSource:
   m_ObjectHideFlags: 0

@@ -2,33 +2,53 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using static UnityEditor.Experimental.GraphView.GraphView;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 
+[Serializable]
+public class EnemyStats
+{
+    // Vihollisen tilastot. 
+    public float health = 1;
+    public int damage = 1;
+    public int experience = 200;
+    public float moveSpeed = 1f;
+    private EnemyStats stats;
+
+    public EnemyStats(EnemyStats stats)
+    {
+        this.health = stats.health;
+        this.damage = stats.damage;
+        this.experience = stats.experience;
+        this.moveSpeed = stats.moveSpeed;
+    }
+
+    internal void ApplyProgress(float progress)
+    {
+        this.health = (int)(health * progress);
+        this.damage = (int)(damage * progress);
+    }
+}
 public class Enemy_ : MonoBehaviour
 
 {
-    public EnemyData enemyData;
+    public EnemyStats stats;
     Transform targetDestination;   
     GameObject targetGameobject;     
     PlayerStats targetPlayer;
-    //[SerializeField] protected SpriteRenderer sprite;
+    [SerializeField] protected SpriteRenderer sprite;
     //[SerializeField] protected int coinValue;
     //[SerializeField] private GameObject coinObject;
-
-    [SerializeField] float currentHealth;
-    [SerializeField] float currentMovespeed;
-    [SerializeField] float currentDamage;
+    [SerializeField] EnemyData enemyData;
+    internal object currentHealth;
     
     Rigidbody2D rb2d;
-    internal object stats;
 
     private void Awake()
 
     {
 
         rb2d = GetComponent<Rigidbody2D>();
-        //enemyData = FindObjectOfType<EnemyData>();
 
     }
 
@@ -37,11 +57,8 @@ public class Enemy_ : MonoBehaviour
         if (enemyData != null) 
         {
            
-            //stats = GetComponent<Enemy_>
+            SetStats(enemyData.stats);
             SetTarget(GameManager.instance.playerTransform.gameObject);
-            currentHealth = enemyData.Health;
-            currentMovespeed = enemyData.MoveSpeed;
-            currentDamage = enemyData.Damage;
             
 
         }
@@ -54,54 +71,58 @@ public class Enemy_ : MonoBehaviour
 
     }
 
-    // internal void UpdateStatsForProgress(float progress)
-    // {
-    //     stats.ApplyProgress(progress);
-    // }
+    internal void UpdateStatsForProgress(float progress)
+    {
+        stats.ApplyProgress(progress);
+    }
     
     private void FixedUpdate()
 
     {
 
         Vector3 direction = (targetDestination.position - transform.position).normalized;
-        rb2d.velocity = direction * currentMovespeed;
+        rb2d.velocity = direction * stats.moveSpeed;
 
     }
 
-    // internal void SetStats(EnemyStats stats)
-    // {
-    //     this.stats = new EnemyStats(stats);
-    // }
-
-    void OnTriggerEnter2D(Collider2D other)
+    internal void SetStats(EnemyStats stats)
     {
-        if (other.gameObject.CompareTag("Player"))
+        this.stats = new EnemyStats(stats);
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+
+    {
+        if (collision.gameObject == targetGameobject)
+
         {
-            PlayerStats player = other.gameObject.GetComponent<PlayerStats>();
-            player.TakeDamage(currentDamage);
+            Attack();
         }
-        
     }
 
-    public void TakeDamage(float dmg)
+    private void Attack()
+
     {
-        currentHealth -= dmg;
-        if (currentHealth <= 0f)
-            Death();
+        if (targetPlayer == null)
+        {
+            targetPlayer = targetGameobject.GetComponent<PlayerStats>();
+        }
+        targetPlayer.TakeDamage(stats.damage);
+
     }
 
-
-    public void Death()
+    public void TakeDamage(float currentDamage)
     {
+        stats.health -= currentDamage;
 
-        Destroy(gameObject);
-    }
-
-
-    private void OnDestroy()
-    {
-        EnemySpawn es = FindObjectOfType<EnemySpawn>();
-        es.OnEnemyKIlled();
+        if (stats.health < 1)
+        {
+            targetGameobject.GetComponent<PlayerStats>().IncreaseExp(stats.experience);
+            var instantiationPoint = sprite.transform;
+            //var coin = Instantiate(coinObject, instantiationPoint.position, Quaternion.identity);
+            //coin.gameObject.GetComponent<Coins>().SetValue(coinValue);
+            Destroy(gameObject);
+        }
     }
 
 }

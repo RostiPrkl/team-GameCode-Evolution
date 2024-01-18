@@ -13,6 +13,7 @@ public class MeleeBehaviour : MonoBehaviour
     protected float currentSpeed;
     protected float currentCooldownDur;
     [SerializeField] AudioSource audioSource;
+    //public Animator animator;
     bool isPlaying;
 
 
@@ -45,6 +46,7 @@ public class MeleeBehaviour : MonoBehaviour
                 isPlaying = true;
                 audioSource.PlayOneShot(audioSource.clip);
             }
+            //animator.SetTrigger("Bite");
             Enemy_ enemy = collider.GetComponent<Enemy_>();
             enemy.TakeDamage(GetCurrentDamage());
 

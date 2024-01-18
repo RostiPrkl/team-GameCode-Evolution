@@ -20,5 +20,5 @@ MonoBehaviour:
   level: 3
   nextLevelPrefab: {fileID: 7265460018517887890, guid: 344583c884628aea38cc664a4c4e6787, type: 3}
   icon: {fileID: 21300000, guid: 525174bb59f65b344adf0130d1da3175, type: 3}
-  attackName: MAX TEETH
+  attackName: Teeth level 3
   attackDescription: 100 % more damage

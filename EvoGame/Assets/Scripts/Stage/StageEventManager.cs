@@ -24,46 +24,46 @@ public class StageEventManager : MonoBehaviour
         enemySpawn = FindObjectOfType<EnemySpawn>();
     }
 
-    // public void Update()
-    // {
-    //     if (eventIndexer >= stageData.stageEvents.Count)
-    //     {
-    //         return;
-    //     }
+    public void Update()
+    {
+        if (eventIndexer >= stageData.stageEvents.Count)
+        {
+            return;
+        }
 
-    //     if (stageTime.time > stageData.stageEvents[eventIndexer].time)
-    //     {
-    //         switch (stageData.stageEvents[eventIndexer].eventType)
-    //         {
+        if (stageTime.time > stageData.stageEvents[eventIndexer].time)
+        {
+            switch (stageData.stageEvents[eventIndexer].eventType)
+            {
 
-    //             case StageEventType.SpawnEnemy:
-    //                 SpawnEnemy(false);
-    //                 break;
+                case StageEventType.SpawnEnemy:
+                    SpawnEnemy(false);
+                    break;
 
-    //             case StageEventType.SpawnObject:
-    //                 SpawnObject();
-    //                 break;
+                case StageEventType.SpawnObject:
+                    SpawnObject();
+                    break;
 
-    //             case StageEventType.WinStage:
-    //                 WinStage();
-    //                 break;
+                case StageEventType.WinStage:
+                    WinStage();
+                    break;
 
-    //             case StageEventType.SpawnEnemyBoss:
-    //                 break;
+                case StageEventType.SpawnEnemyBoss:
+                    break;
 
-    //         }
-    //             Debug.Log(stageData.stageEvents[eventIndexer].message);
-    //             eventIndexer += 1;
+            }
+                Debug.Log(stageData.stageEvents[eventIndexer].message);
+                eventIndexer += 1;
 
 
             
-    //     }
-    // }
+        }
+    }
 
-    // private void SpawnEnemyBoss()
-    // {
-    //     SpawnEnemy(true);
-    // }
+    private void SpawnEnemyBoss()
+    {
+        SpawnEnemy(true);
+    }
 
 
     private void WinStage()
@@ -71,18 +71,18 @@ public class StageEventManager : MonoBehaviour
         playerWin.Win();
     }
 
-    // private void SpawnEnemy(bool bossEnemy)
-    // {
-    //     {
-    //         StageEvent currentEvent = stageData.stageEvents[eventIndexer];
-    //         enemySpawn.AddGroupToSpawn(currentEvent.enemyToSpawn, currentEvent.count, bossEnemy);
+    private void SpawnEnemy(bool bossEnemy)
+    {
+        {
+            StageEvent currentEvent = stageData.stageEvents[eventIndexer];
+            enemySpawn.AddGroupToSpawn(currentEvent.enemyToSpawn, currentEvent.count, bossEnemy);
 
-    //         if (currentEvent.isRepeatedEvent == true)
-    //         {
-    //             enemySpawn.AddRepeatedSpawn(currentEvent, bossEnemy);
-    //         }
-    //     }
-    // }
+            if (currentEvent.isRepeatedEvent == true)
+            {
+                enemySpawn.AddRepeatedSpawn(currentEvent, bossEnemy);
+            }
+        }
+    }
 
     private void SpawnObject()
     {

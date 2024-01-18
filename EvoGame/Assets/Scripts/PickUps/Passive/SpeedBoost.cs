@@ -8,4 +8,13 @@ public class SpeedBoost : PassiveItem
     {
         player.CurrentMovementSpeed *= 1 + passiveItem.Multiplier / 100f;
     }
+
+
+    protected override void Update()
+    {
+        // if (Input.GetKeyDown(KeyCode.CapsLock))
+        // {
+        //    float dashSpeed = player.CurrentMovementSpeed * 5;
+        // }
+    }
 }

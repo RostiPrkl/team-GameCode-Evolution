@@ -1,277 +1,177 @@
-//using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public class EnemiesSpawnGroup
+{
+    public EnemyData enemyData;
+    public int count;
+    public bool isBoss;
+
+    public float repeatTimer;
+    public float timeBetweenSpawn;
+    public int repeatCount;
+
+   
+
+    public EnemiesSpawnGroup(EnemyData enemyData, int count, bool isBoss)
+    {
+        this.enemyData = enemyData;
+        this.count = count;
+        this.isBoss = isBoss;
+    }
+    public void SetRepeatSpawn(float timeBetweenSpawn, int repeatCount)
+    {
+        this.timeBetweenSpawn = timeBetweenSpawn;
+        this.repeatCount = repeatCount;
+        repeatTimer = timeBetweenSpawn;
+
+    }
+}
 public class EnemySpawn : MonoBehaviour
 {
-    [System.Serializable]
-    public class EnemiesSpawnGroup
-    {
-        public string waveName;
-        public List<GrupInWave> enemyGroups;
-        public int quota;
-        public int spawnCount;
-        public float timeBetweenSpawn;
-        
-        // public EnemiesSpawnGroup(EnemyData enemyData, int count, bool isBoss)
-        // {
-        //     this.enemyData = enemyData;
-        //     this.enemyCount = count;
-        //     this.isBoss = isBoss;
-        // }
-        // public void SetRepeatSpawn(float timeBetweenSpawn, int repeatCount)
-        // {
-        //     this.timeBetweenSpawn = timeBetweenSpawn;
-        //     this.repeatCount = repeatCount;
-        //     repeatTimer = timeBetweenSpawn;
-
-        // }
-    }
-
-    [System.Serializable]
-    public class GrupInWave
-    {
-        public string EnemyName;
-        public int enemyCount;
-        public int spawnCount;
-        public GameObject enemyPrefab;
-        public bool isBoss;
-        [SerializeField] Slider bossHealthBar;
-
-    }
-
-    //[SerializeField] StageProgress stageProgress;
-    //[SerializeField] GameObject enemy;    
-    //[SerializeField] Vector2 spawnArea;
-    [SerializeField] Transform player;
-
-    public int waveCount;
+    [SerializeField] StageProgress stageProgress;
+    [SerializeField] GameObject enemy;    
+    [SerializeField] Vector2 spawnArea;
+    [SerializeField] GameObject player;
 
     List<Enemy_> bossEnemiesList;
-    public List<EnemiesSpawnGroup> waves;
     float totalBossHealth;
     float currentBossHealth;
+    [SerializeField] Slider bossHealthBar;
     List<EnemiesSpawnGroup> enemiesSpawnGroupList;
     List<EnemiesSpawnGroup> repeatedSpawnGroupList;
 
-    public float repeatTimer;
-    public float waveTimer;
-    public int maxEnemies;
-    public int enemiesAlive;
-    bool isFull = false;
-    bool isCoroutineRunning = false;
-    //public int repeatCount;
-
     int spawnPerFrame = 2;
-
-
 
     private void Start()
     {
-        player = FindObjectOfType<PlayerStats>().transform;
-    //     bossHealthBar = FindObjectOfType<BossHealthBar>(true).GetComponent<Slider>();
-    //     stageProgress = FindObjectOfType<StageProgress>();
-    // }
-
-    // private void Update()
-    // {
-    //     ProcessSpawn();
-    //     ProcessRepeatedSpawnGroup();
-    //     UpdateBossHealth();
-        CalculateWaveQuota();
-        repeatTimer = 0f;
+        player = GameManager.instance.playerTransform.gameObject;
+        bossHealthBar = FindObjectOfType<BossHealthBar>(true).GetComponent<Slider>();
+        stageProgress = FindObjectOfType<StageProgress>();
     }
 
-
-    void Update()
+    private void Update()
     {
-        repeatTimer += Time.deltaTime;
-        
-        if (waveCount < waves.Count && waves[waveCount].spawnCount == 0 && !isCoroutineRunning)
-            StartCoroutine(NextWave());
-
-        if (repeatTimer >= waves[waveCount].timeBetweenSpawn)
-        {
-            repeatTimer = 0f;
-            SpawnEnemies();
-        }
+        ProcessSpawn();
+        ProcessRepeatedSpawnGroup();
+        UpdateBossHealth();
     }
 
-
-    IEnumerator NextWave()
+    private void ProcessRepeatedSpawnGroup()
     {
-        isCoroutineRunning = true;
-
-        yield return new WaitForSeconds(waveTimer);
-
-        if (waveCount < waves.Count - 1)
+        if (repeatedSpawnGroupList == null) { return; }
+        for (int i = repeatedSpawnGroupList.Count - 1; i >= 0; i--)
         {
-            isCoroutineRunning = false;
-            waveCount++;
-            CalculateWaveQuota();
-        }
-    }
-
-
-    void CalculateWaveQuota()
-    {
-        int currentWave = 0;
-        foreach (var group in waves[waveCount].enemyGroups)
-        {
-            currentWave += group.enemyCount;
-        }
-
-        waves[waveCount].quota = currentWave;
-        Debug.LogWarning(currentWave);
-    }
-    // private void ProcessRepeatedSpawnGroup()
-    // {
-    //     if (repeatedSpawnGroupList == null) { return; }
-    //     for (int i = repeatedSpawnGroupList.Count - 1; i >= 0; i--)
-    //     {
-    //         repeatedSpawnGroupList[i].repeatTimer -= Time.deltaTime;
-    //         if (repeatedSpawnGroupList[i].repeatTimer < 0)
-    //         {
-    //             repeatedSpawnGroupList[i].repeatTimer = repeatedSpawnGroupList[i].timeBetweenSpawn;
-    //             AddGroupToSpawn(repeatedSpawnGroupList[i].enemyData, repeatedSpawnGroupList[i].enemyCount, repeatedSpawnGroupList[i].isBoss);
-    //             repeatedSpawnGroupList[i].repeatCount -= 1;
-    //             if (repeatedSpawnGroupList[i].repeatCount <= 0)
-    //             {
-    //                 repeatedSpawnGroupList.RemoveAt(i);
-    //             }
-    //         }
-    //     }
-    // }
-
-    void SpawnEnemies()
-    {
-        if (waves[waveCount].spawnCount < waves[waveCount].quota && !isFull)
-        {
-            foreach (var enemyGroup in waves[waveCount].enemyGroups)
+            repeatedSpawnGroupList[i].repeatTimer -= Time.deltaTime;
+            if (repeatedSpawnGroupList[i].repeatTimer < 0)
             {
-                if (enemyGroup.spawnCount < enemyGroup.enemyCount)
+                repeatedSpawnGroupList[i].repeatTimer = repeatedSpawnGroupList[i].timeBetweenSpawn;
+                AddGroupToSpawn(repeatedSpawnGroupList[i].enemyData, repeatedSpawnGroupList[i].count, repeatedSpawnGroupList[i].isBoss);
+                repeatedSpawnGroupList[i].repeatCount -= 1;
+                if (repeatedSpawnGroupList[i].repeatCount <= 0)
                 {
-                    Vector2 spawnPosition = new Vector2(player.position.x + Random.Range(-20f, 20f), player.position.y + Random.Range(-20f, 20f));
-                    Instantiate(enemyGroup.enemyPrefab, spawnPosition, Quaternion.identity);
-
-                    enemyGroup.spawnCount++;
-                    waves[waveCount].spawnCount++;
-                    enemiesAlive++;
-
-                    if (enemiesAlive >= maxEnemies)
-                    {
-                        isFull = true;
-                        return;
-                    }
+                    repeatedSpawnGroupList.RemoveAt(i);
                 }
             }
         }
     }
 
-
-    public void OnEnemyKIlled()
+    private void ProcessSpawn()
     {
-        enemiesAlive--;
+        if (enemiesSpawnGroupList == null) { return; }
+        for (int i = 0; i<spawnPerFrame; i++) 
+        {
+            if (enemiesSpawnGroupList.Count > 0)
+            {
+                if (enemiesSpawnGroupList[0].count <= 0) { return; }
+                SpawnEnemy(enemiesSpawnGroupList[0].enemyData, enemiesSpawnGroupList[0].isBoss);
+                enemiesSpawnGroupList[0].count -= 1;
+                if (enemiesSpawnGroupList[0].count <= 0)
+                {
+                    enemiesSpawnGroupList.RemoveAt(0);
+                }
 
-        if (enemiesAlive < maxEnemies)
-            isFull = false;
+            }
+        }
+        
+    }
+    private void UpdateBossHealth()
+    {
+        if (bossEnemiesList == null) { return; }
+        if (bossEnemiesList.Count == 0) { return; }
+
+        currentBossHealth = 0;
+
+        for (int i = 0; i < bossEnemiesList.Count; i++)
+        {
+            if (bossEnemiesList[i] == null) { continue; }
+            currentBossHealth += bossEnemiesList[i].stats.health;
+        }
+        bossHealthBar.value = currentBossHealth;
+
+        if (currentBossHealth < 0)
+        {
+            bossHealthBar.gameObject.SetActive(false);
+            bossEnemiesList.Clear();
+        }
     }
 
-    // private void ProcessSpawn()
-    // {
-    //     if (enemiesSpawnGroupList == null) { return; }
-    //     for (int i = 0; i<spawnPerFrame; i++) 
-    //     {
-    //         if (enemiesSpawnGroupList.Count > 0)
-    //         {
-    //             if (enemiesSpawnGroupList[0].enemyCount <= 0) { return; }
-    //             SpawnEnemy(enemiesSpawnGroupList[0].enemyData, enemiesSpawnGroupList[0].isBoss);
-    //             enemiesSpawnGroupList[0].enemyCount -= 1;
-    //             if (enemiesSpawnGroupList[0].enemyCount <= 0)
-    //             {
-    //                 enemiesSpawnGroupList.RemoveAt(0);
-    //             }
+    public void AddGroupToSpawn(EnemyData enemyToSpawn, int count, bool isBoss)
+    {
+        EnemiesSpawnGroup newGroupToSpawn = new EnemiesSpawnGroup(enemyToSpawn, count, isBoss);
 
-    //         }
-    //     }
-        
-    // }
-    // private void UpdateBossHealth()
-    // {
-    //     if (bossEnemiesList == null) { return; }
-    //     if (bossEnemiesList.Count == 0) { return; }
+        if (enemiesSpawnGroupList == null) { enemiesSpawnGroupList = new List<EnemiesSpawnGroup>(); }
+        enemiesSpawnGroupList.Add(newGroupToSpawn);
+    }
 
-    //     currentBossHealth = 0;
+    public void SpawnEnemy(EnemyData enemyToSpawn, bool isBoss)
 
-    //     for (int i = 0; i < bossEnemiesList.Count; i++)
-    //     {
-    //         if (bossEnemiesList[i] == null) { continue; }
-    //         currentBossHealth += bossEnemiesList[i].enemyData.Health;
-    //     }
-    //     bossHealthBar.value = currentBossHealth;
+    {
+        Vector3 position = UtilityTools.GenerateRandomPositionSquarePattern(spawnArea);
+        position += player.transform.position;
 
-    //     if (currentBossHealth < 0)
-    //     {
-    //         bossHealthBar.gameObject.SetActive(false);
-    //         bossEnemiesList.Clear();
-    //     }
-    // }
-
-    // public void AddGroupToSpawn(EnemyData enemyToSpawn, int count, bool isBoss)
-    // {
-    //     EnemiesSpawnGroup newGroupToSpawn = new EnemiesSpawnGroup(enemyToSpawn, count, isBoss);
-
-    //     if (enemiesSpawnGroupList == null) { enemiesSpawnGroupList = new List<EnemiesSpawnGroup>(); }
-    //     enemiesSpawnGroupList.Add(newGroupToSpawn);
-    // }
-
-    // public void SpawnEnemy(EnemyData enemyToSpawn, bool isBoss)
-
-    // {
-    //     Vector3 position = UtilityTools.GenerateRandomPositionSquarePattern(spawnArea);
-    //     position += player.transform.position;
-
-    //     GameObject newEnemy = Instantiate(enemy);
-    //     newEnemy.transform.position = position;
-    //     Enemy_ newEnemyComponent = newEnemy.GetComponent<Enemy_>();
-    //     newEnemyComponent.SetTarget(player);
-    //     //newEnemyComponent.SetStats(enemyToSpawn.stats);
-    //     //newEnemyComponent.UpdateStatsForProgress(stageProgress.Progress);
-    //     newEnemy.transform.parent = transform;
+        GameObject newEnemy = Instantiate(enemy);
+        newEnemy.transform.position = position;
+        Enemy_ newEnemyComponent = newEnemy.GetComponent<Enemy_>();
+        newEnemyComponent.SetTarget(player);
+        newEnemyComponent.SetStats(enemyToSpawn.stats);
+        newEnemyComponent.UpdateStatsForProgress(stageProgress.Progress);
+        newEnemy.transform.parent = transform;
 
        
         
 
-    //     if (isBoss == true)
-    //     {
-    //         SpawnBossEnemy(newEnemyComponent);
-    //     }
-    // }
+        if (isBoss == true)
+        {
+            SpawnBossEnemy(newEnemyComponent);
+        }
+    }
 
     
 
-    // private void SpawnBossEnemy(Enemy_ newBoss)
-    // {
-    //     if (bossEnemiesList == null) { bossEnemiesList = new List<Enemy_>(); }
+    private void SpawnBossEnemy(Enemy_ newBoss)
+    {
+        if (bossEnemiesList == null) { bossEnemiesList = new List<Enemy_>(); }
 
-    //     bossEnemiesList.Add(newBoss);
+        bossEnemiesList.Add(newBoss);
 
-    //     totalBossHealth += newBoss.enemyData.Health;
-    //     bossHealthBar.gameObject.SetActive(true);
-    //     bossHealthBar.maxValue = totalBossHealth;
-    // }
+        totalBossHealth += newBoss.stats.health;
+        bossHealthBar.gameObject.SetActive(true);
+        bossHealthBar.maxValue = totalBossHealth;
+    }
 
-    // public void AddRepeatedSpawn(StageEvent stageEvent, bool isBoss)
-    // {
-    //     EnemiesSpawnGroup repeatSpawnGroup = new EnemiesSpawnGroup(stageEvent.enemyToSpawn, stageEvent.count, isBoss);
-    //     repeatSpawnGroup.SetRepeatSpawn(stageEvent.repeatEverySeconds, stageEvent.repeatCount);
-    //     if (repeatedSpawnGroupList == null)
-    //     {
-    //         repeatedSpawnGroupList = new List<EnemiesSpawnGroup>();
-    //     }
+    public void AddRepeatedSpawn(StageEvent stageEvent, bool isBoss)
+    {
+        EnemiesSpawnGroup repeatSpawnGroup = new EnemiesSpawnGroup(stageEvent.enemyToSpawn, stageEvent.count, isBoss);
+        repeatSpawnGroup.SetRepeatSpawn(stageEvent.repeatEverySeconds, stageEvent.repeatCount);
+        if (repeatedSpawnGroupList == null)
+        {
+            repeatedSpawnGroupList = new List<EnemiesSpawnGroup>();
+        }
 
-    //     repeatedSpawnGroupList.Add(repeatSpawnGroup);
-    // }
+        repeatedSpawnGroupList.Add(repeatSpawnGroup);
+    }
 }
