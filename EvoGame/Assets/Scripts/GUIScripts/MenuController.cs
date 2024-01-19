@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Gaskellgames.AudioController;
 
 namespace SpeedTutorMainMenuSystem
 
@@ -39,6 +40,8 @@ namespace SpeedTutorMainMenuSystem
         private string levelToLoad;
 
         [SerializeField] private Toggle fullScreenToggle;
+
+       // public SoundManager sndMngr;
 
         // BASIC CONTROLS
         public void ClickNewGameDialog()
@@ -115,5 +118,12 @@ namespace SpeedTutorMainMenuSystem
             yield return new WaitForSeconds(2);
             confirmationPrompt.SetActive(false);
         }
+
+       /* void Start()
+        {
+            sndMngr = FindObjectOfType<SoundManager>();
+            sndMngr.PlayMusic("menu3");
+
+        }*/
     }
 }

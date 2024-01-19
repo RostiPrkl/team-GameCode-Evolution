@@ -117,7 +117,8 @@ public class PlayerStats : MonoBehaviour
     SpriteRenderer[] spriteRList;
 
     public bool lvlChange;
-    public SoundController sdcsndmngr;
+    public SoundController sndCntrl;
+    //public bool healthAudioActive = false;
     #endregion
 
 
@@ -146,7 +147,7 @@ public class PlayerStats : MonoBehaviour
         SpawnAttack(playerData.StartingAttack);
         //initialization of the exp increase system
         expCap = levelRanges[0].expCapIncrease;
-        sdcsndmngr = GameObject.FindObjectOfType<SoundController>();
+        sndCntrl = FindObjectOfType<SoundController>();
     }
 
 
@@ -204,6 +205,7 @@ public class PlayerStats : MonoBehaviour
         CurrentHealth += amount;
         if (CurrentHealth > newMaxHealth)
             CurrentHealth = newMaxHealth;
+
     }
 
 
@@ -212,9 +214,9 @@ public class PlayerStats : MonoBehaviour
         experience += amount;
         LvlUpChecker();
 
-        if (lvlChange == false)
+       if (lvlChange == false)
         {
-            sdcsndmngr.PlaySoundFX("experience2");
+            sndCntrl.PlaySoundFX("experience1");
         }
         else
         {
@@ -240,6 +242,7 @@ public class PlayerStats : MonoBehaviour
                     break;
                 }
             }
+            lvlChange = true;
             expCap += expCapIncrease;
 
             GameManager.instance.StartEvolution();
@@ -258,11 +261,16 @@ public class PlayerStats : MonoBehaviour
 
             if (CurrentHealth < 20)
             {
+                sndCntrl.PlaySoundFX("lowHealth");
+                //healthAudioActive = true;
                 audioSource.clip = lowHealthAudio;
                 audioSource.Play();
             }
-            else
-                audioSource.Stop();
+           /* else
+            {
+                sndCntrl.gameObject.SetActive(false);
+                sndCntrl.StopSoundFX();
+            }*/
 
             StartCoroutine(FlashRed());
 
@@ -303,8 +311,6 @@ public class PlayerStats : MonoBehaviour
         if (!GameManager.instance.isGameOver)
         {
             Debug.Log("Player has died");
-            sdcsndmngr.StopAllSounds();
-            sdcsndmngr.PlaySoundFX("playerDead");
             GameManager.instance.GameOver();
         }
     }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Gaskellgames.AudioController;
 
 //Base Script for melee Weapon behaviour
 
@@ -14,6 +15,9 @@ public class MeleeBehaviour : MonoBehaviour
     protected float currentCooldownDur;
     [SerializeField] AudioSource audioSource;
     bool isPlaying;
+
+
+    public SoundController meleeSound;
 
 
     void Awake()
@@ -32,6 +36,7 @@ public class MeleeBehaviour : MonoBehaviour
 
     protected virtual void Start()
     {
+        meleeSound = FindObjectOfType<SoundController>();
         Destroy(gameObject, destroyCounterMelee);
     }
 
@@ -43,13 +48,29 @@ public class MeleeBehaviour : MonoBehaviour
             if (!isPlaying)
             {
                 isPlaying = true;
-                audioSource.PlayOneShot(audioSource.clip);
+                
+                if (attackData.AttackName == "Bite") 
+                {
+                    meleeSound.PlaySoundFX("bite01");
+                    //audioSource.PlayOneShot(audioSource.clip);
+                }
+                if (attackData.AttackName == "Stronger Teeth")
+                {
+                    meleeSound.PlaySoundFX("bite02");
+                    //audioSource.PlayOneShot(audioSource.clip);
+                }
+                if (attackData.AttackName == "MAX TEETH")
+                {
+                    meleeSound.PlaySoundFX("bite03");
+                    // audioSource.PlayOneShot(audioSource.clip);
+                }
+
             }
             Enemy_ enemy = collider.GetComponent<Enemy_>();
             enemy.TakeDamage(GetCurrentDamage());
 
-            float delay = audioSource.clip.length;
-            Invoke("DestroyAfterDelay", delay);
+            /*float delay = audioSource.clip.length;
+            Invoke("DestroyAfterDelay", delay);*/
         }
     }
 
