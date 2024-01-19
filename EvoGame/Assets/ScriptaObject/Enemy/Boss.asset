@@ -15,7 +15,7 @@ MonoBehaviour:
   Name: Boss
   animatedPrefab: {fileID: 5980331428888745058, guid: 1261c72825b083240b602a9f30d7e3b1, type: 3}
   stats:
-    health: 5
-    damage: 5
+    health: 500
+    damage: 20
     experience: 5
     moveSpeed: 2

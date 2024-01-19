@@ -8,8 +8,8 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 [Serializable]
 public class EnemyStats
 {
-    // Vihollisen tilastot. 
-    public float health = 1;
+     
+    public int health = 1;
     public int damage = 1;
     public int experience = 200;
     public float moveSpeed = 1f;
@@ -36,7 +36,7 @@ public class Enemy_ : MonoBehaviour
     Transform targetDestination;   
     GameObject targetGameobject;     
     PlayerStats targetPlayer;
-    [SerializeField] protected SpriteRenderer sprite;
+    //[SerializeField] protected SpriteRenderer sprite;
     //[SerializeField] protected int coinValue;
     //[SerializeField] private GameObject coinObject;
     [SerializeField] EnemyData enemyData;
@@ -118,7 +118,7 @@ public class Enemy_ : MonoBehaviour
         if (stats.health < 1)
         {
             targetGameobject.GetComponent<PlayerStats>().IncreaseExp(stats.experience);
-            var instantiationPoint = sprite.transform;
+            //var instantiationPoint = sprite.transform;
             //var coin = Instantiate(coinObject, instantiationPoint.position, Quaternion.identity);
             //coin.gameObject.GetComponent<Coins>().SetValue(coinValue);
             Destroy(gameObject);

@@ -7,7 +7,7 @@ using UnityEngine;
 public class StageEventManager : MonoBehaviour
 {
     [SerializeField] StageData stageData;
-    EnemySpawn enemySpawn;
+    [SerializeField] EnemySpawn enemySpawn;
 
     StageTime stageTime;
     int eventIndexer;
@@ -52,7 +52,7 @@ public class StageEventManager : MonoBehaviour
                     break;
 
             }
-                Debug.Log(stageData.stageEvents[eventIndexer].message);
+                //Debug.Log(stageData.stageEvents[eventIndexer].message);
                 eventIndexer += 1;
 
 
