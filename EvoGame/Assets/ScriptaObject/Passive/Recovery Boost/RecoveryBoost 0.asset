@@ -15,6 +15,6 @@ MonoBehaviour:
   multiplier: 0
   level: 1
   nextLevelPrefab: {fileID: 2888724005675524908, guid: 7224d5ed4086cc430a4f5ced5a9983e4, type: 3}
-  icon: {fileID: 21300000, guid: accac3a18be442a438a83138a286baf1, type: 3}
+  icon: {fileID: 21300000, guid: 2d181462f03822c228555f9f6870d49d, type: 3}
   passiveName: Health Regeneration
   passiveDescription: Restores health 1 hp/s

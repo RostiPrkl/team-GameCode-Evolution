@@ -13,6 +13,7 @@ public class MeleeBehaviour : MonoBehaviour
     protected float currentSpeed;
     protected float currentCooldownDur;
     [SerializeField] AudioSource audioSource;
+    Player playerMovement;
     //public Animator animator;
     bool isPlaying;
 
@@ -33,6 +34,7 @@ public class MeleeBehaviour : MonoBehaviour
 
     protected virtual void Start()
     {
+        playerMovement = FindObjectOfType<Player>();
         Destroy(gameObject, destroyCounterMelee);
     }
 
@@ -46,7 +48,7 @@ public class MeleeBehaviour : MonoBehaviour
                 isPlaying = true;
                 audioSource.PlayOneShot(audioSource.clip);
             }
-            //animator.SetTrigger("Bite");
+            playerMovement.animator.SetTrigger("Bite");
             Enemy_ enemy = collider.GetComponent<Enemy_>();
             enemy.TakeDamage(GetCurrentDamage());
 

@@ -19,6 +19,6 @@ MonoBehaviour:
   penetrate: 2
   level: 1
   nextLevelPrefab: {fileID: 2935252070034245117, guid: fb16570fe6e218ffa92c5672a3a7d22c, type: 3}
-  icon: {fileID: 21300000, guid: de1fd655ac514f29f9c36683d023c41d, type: 3}
-  attackName: Bubbles
-  attackDescription: Homing Water Bullet
+  icon: {fileID: 21300000, guid: 17d52176fea2b82acb63bf516aff6df9, type: 3}
+  attackName: Water Bullet
+  attackDescription: Aim and shoot

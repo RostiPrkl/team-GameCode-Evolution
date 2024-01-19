@@ -6,6 +6,7 @@ public class PlayerAttackController : MonoBehaviour
     [Header("Attack Stats")]
     public PlayerAttackScriptableObject attackData;
     protected PlayerStats player;
+    protected Player playerMovement;
     float currentCooldown;
 
 
@@ -13,6 +14,7 @@ public class PlayerAttackController : MonoBehaviour
     protected virtual void Start()
     {
         player = FindObjectOfType<PlayerStats>();
+        
         currentCooldown = attackData.Cooldown;
     }
 

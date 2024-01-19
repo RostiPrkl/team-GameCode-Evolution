@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   multiplier: 200
   level: 2
-  nextLevelPrefab: {fileID: 0}
-  icon: {fileID: 0}
+  nextLevelPrefab: {fileID: 9177975063921349625, guid: a1dc26a8a6b502763b29a6aebad7b8b9, type: 3}
+  icon: {fileID: 21300000, guid: 891da689d1270370480fe4b9ad1fee4b, type: 3}
   passiveName: Health Boost
   passiveDescription: Maxium Health Raised To 300

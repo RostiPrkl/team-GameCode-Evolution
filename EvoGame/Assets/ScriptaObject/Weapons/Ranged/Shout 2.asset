@@ -18,7 +18,7 @@ MonoBehaviour:
   cooldown: 1.7
   penetrate: 10
   level: 3
-  nextLevelPrefab: {fileID: 0}
-  icon: {fileID: 21300000, guid: de1fd655ac514f29f9c36683d023c41d, type: 3}
+  nextLevelPrefab: {fileID: 2935252070034245117, guid: b3427bc66f2ed634ab36cdca64a964e3, type: 3}
+  icon: {fileID: 21300000, guid: beef4ce791eb84ac18b8d94745fabf42, type: 3}
   attackName: Bubble 3
-  attackDescription: Bubble can penetrate enemies once
+  attackDescription: Bubble can penetrate 10 enemies Dealing 30 DMG to each one..

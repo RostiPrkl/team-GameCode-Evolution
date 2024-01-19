@@ -19,6 +19,6 @@ MonoBehaviour:
   penetrate: 5
   level: 2
   nextLevelPrefab: {fileID: 2935252070034245117, guid: b77c9dc958ad401a0a837e5879e664a3, type: 3}
-  icon: {fileID: 21300000, guid: de1fd655ac514f29f9c36683d023c41d, type: 3}
+  icon: {fileID: 21300000, guid: beef4ce791eb84ac18b8d94745fabf42, type: 3}
   attackName: Bubbles 2
-  attackDescription: 100 % more damage, Bigger Bubble
+  attackDescription: 100 % more damage, Bigger Bubble that can penetrate enemies.

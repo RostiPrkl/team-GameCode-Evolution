@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
     float lastHorizontal;
     float lastVertical;
 
-    [SerializeField] Animator animator;
+    public Animator animator;
     Vector2 input;
     Rigidbody2D rb;
     bool facingDir = true;

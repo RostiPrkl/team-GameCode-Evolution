@@ -19,6 +19,6 @@ MonoBehaviour:
   penetrate: 0
   level: 2
   nextLevelPrefab: {fileID: 7265460018517887890, guid: a592d317f70297ddda047335c3ad88e6, type: 3}
-  icon: {fileID: 4232831887833596157, guid: d6fe922108c4c60b697783ab8c5ada0d, type: 3}
-  attackName: Tentacle Swipe 3
-  attackDescription: 100 % More Damage / Swipe
+  icon: {fileID: 21300000, guid: c33c2efde67c17d5fb415392db3a96ab, type: 3}
+  attackName: Stronger Tentacle
+  attackDescription: 100 % More Damage

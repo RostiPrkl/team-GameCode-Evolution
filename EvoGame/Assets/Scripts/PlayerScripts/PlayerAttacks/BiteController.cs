@@ -17,5 +17,6 @@ public class BiteController : PlayerAttackController
         GameObject spawnedBite = Instantiate(attackData.AttackPrefab);
         spawnedBite.transform.SetParent(transform);
         spawnedBite.transform.position = transform.position;
+        
     }
 }
