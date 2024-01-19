@@ -18,4 +18,4 @@ MonoBehaviour:
     health: 35
     damage: 8
     experience: 0
-    moveSpeed: 5
+    moveSpeed: 2

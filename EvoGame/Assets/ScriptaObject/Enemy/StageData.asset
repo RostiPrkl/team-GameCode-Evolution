@@ -14,38 +14,47 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stageEvents:
   - eventType: 0
-    time: 2
+    time: 5
     message: 
-    objectToSpawn: {fileID: 2227882465152826036, guid: b3a41add9b6599c468c67de769a18815, type: 3}
+    objectToSpawn: {fileID: 0}
     enemyToSpawn: {fileID: 11400000, guid: 45a5418396fb265c6b2fd0cf68839938, type: 2}
     count: 10
-    isRepeatedEvent: 1
-    repeatEverySeconds: 3
-    repeatCount: 120
+    isRepeatedEvent: 0
+    repeatEverySeconds: 30
+    repeatCount: 5
   - eventType: 0
     time: 10
     message: 
-    objectToSpawn: {fileID: 5980331428888745058, guid: 1261c72825b083240b602a9f30d7e3b1, type: 3}
+    objectToSpawn: {fileID: 0}
     enemyToSpawn: {fileID: 11400000, guid: e9928383a4e43a35f9c3a68c4e61c4c5, type: 2}
-    count: 7
+    count: 5
     isRepeatedEvent: 1
-    repeatEverySeconds: 5
-    repeatCount: 50
+    repeatEverySeconds: 30
+    repeatCount: 5
+  - eventType: 0
+    time: 30
+    message: 
+    objectToSpawn: {fileID: 0}
+    enemyToSpawn: {fileID: 11400000, guid: 228fa64f73150aa80a9f6d879de5dcfa, type: 2}
+    count: 3
+    isRepeatedEvent: 0
+    repeatEverySeconds: 20
+    repeatCount: 3
   - eventType: 0
     time: 60
     message: 
-    objectToSpawn: {fileID: 2227882465152826036, guid: a48638ad4bfc57515bc5796167947bf6, type: 3}
-    enemyToSpawn: {fileID: 11400000, guid: 228fa64f73150aa80a9f6d879de5dcfa, type: 2}
-    count: 1
-    isRepeatedEvent: 1
-    repeatEverySeconds: 10
-    repeatCount: 15
-  - eventType: 0
-    time: 120
-    message: 
-    objectToSpawn: {fileID: 5980331428888745058, guid: 08b9afd3d4b87c2f8b7436e22ba34ded, type: 3}
+    objectToSpawn: {fileID: 0}
     enemyToSpawn: {fileID: 11400000, guid: e72785eeb9b4f341882fdc2940b5450d, type: 2}
-    count: 1
-    isRepeatedEvent: 1
+    count: 10
+    isRepeatedEvent: 0
     repeatEverySeconds: 20
-    repeatCount: 10
+    repeatCount: 2
+  - eventType: 1
+    time: 5
+    message: 
+    objectToSpawn: {fileID: 0}
+    enemyToSpawn: {fileID: 11400000, guid: 2787dc71187cad8588544c878d6c7116, type: 2}
+    count: 1
+    isRepeatedEvent: 0
+    repeatEverySeconds: 0
+    repeatCount: 1

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: RareJellyData
   m_EditorClassIdentifier: 
   Name: RareJellyData
-  animatedPrefab: {fileID: 5980331428888745058, guid: 08b9afd3d4b87c2f8b7436e22ba34ded, type: 3}
+  animatedPrefab: {fileID: 2227882465152826036, guid: b3a41add9b6599c468c67de769a18815, type: 3}
   stats:
     health: 60
     damage: 10

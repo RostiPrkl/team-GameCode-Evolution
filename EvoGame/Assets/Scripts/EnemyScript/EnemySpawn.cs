@@ -33,7 +33,7 @@ public class EnemiesSpawnGroup
 public class EnemySpawn : MonoBehaviour
 {
     [SerializeField] StageProgress stageProgress;
-    [SerializeField] GameObject enemy;    
+    //[SerializeField] GameObject enemy;    
     [SerializeField] Vector2 spawnArea;
     [SerializeField] GameObject player;
 
@@ -41,8 +41,8 @@ public class EnemySpawn : MonoBehaviour
     int totalBossHealth;
     int currentBossHealth;
     [SerializeField] Slider bossHealthBar;
-    List<EnemiesSpawnGroup> enemiesSpawnGroupList;
-    List<EnemiesSpawnGroup> repeatedSpawnGroupList;
+    [SerializeField] List<EnemiesSpawnGroup> enemiesSpawnGroupList = new List<EnemiesSpawnGroup>();
+    [SerializeField] List<EnemiesSpawnGroup> repeatedSpawnGroupList = new List<EnemiesSpawnGroup>();
 
     int spawnPerFrame = 2;
 
@@ -133,7 +133,7 @@ public class EnemySpawn : MonoBehaviour
         Vector3 position = UtilityTools.GenerateRandomPositionSquarePattern(spawnArea);
         position += player.transform.position;
 
-        GameObject newEnemy = Instantiate(enemy);
+        GameObject newEnemy = Instantiate(enemyToSpawn.animatedPrefab);
         newEnemy.transform.position = position;
         Enemy_ newEnemyComponent = newEnemy.GetComponent<Enemy_>();
         newEnemyComponent.SetTarget(player);
