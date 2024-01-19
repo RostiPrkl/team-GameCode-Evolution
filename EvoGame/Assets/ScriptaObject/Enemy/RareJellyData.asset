@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6f9a9cc1239529479f6def2651af709, type: 3}
   m_Name: RareJellyData
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 2227882465152826036, guid: a48638ad4bfc57515bc5796167947bf6, type: 3}
-  health: 60
-  moveSpeed: 5
-  damage: 10
+  Name: RareJelly
+  animatedPrefab: {fileID: 2227882465152826036, guid: a48638ad4bfc57515bc5796167947bf6, type: 3}
+  stats:
+    health: 70
+    damage: 10
+    experience: 0
+    moveSpeed: 4

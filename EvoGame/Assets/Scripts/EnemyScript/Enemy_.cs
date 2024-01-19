@@ -36,7 +36,7 @@ public class Enemy_ : MonoBehaviour
     Transform targetDestination;   
     GameObject targetGameobject;     
     PlayerStats targetPlayer;
-    [SerializeField] protected SpriteRenderer sprite;
+    //SerializeField] protected SpriteRenderer sprite;
     //[SerializeField] protected int coinValue;
     //[SerializeField] private GameObject coinObject;
     [SerializeField] EnemyData enemyData;
@@ -49,6 +49,7 @@ public class Enemy_ : MonoBehaviour
     {
 
         rb2d = GetComponent<Rigidbody2D>();
+        targetPlayer = FindObjectOfType<PlayerStats>();
 
     }
 
@@ -90,10 +91,10 @@ public class Enemy_ : MonoBehaviour
         this.stats = new EnemyStats(stats);
     }
 
-    private void OnCollisionStay2D(Collision2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
 
     {
-        if (collision.gameObject == targetGameobject)
+        if (collision.gameObject.CompareTag("Player"))
 
         {
             Attack();
@@ -103,22 +104,18 @@ public class Enemy_ : MonoBehaviour
     private void Attack()
 
     {
-        if (targetPlayer == null)
-        {
-            targetPlayer = targetGameobject.GetComponent<PlayerStats>();
-        }
         targetPlayer.TakeDamage(stats.damage);
 
     }
 
     public void TakeDamage(float currentDamage)
     {
-        stats.health -= currentDamage;
+        stats.health -= Mathf.FloorToInt(currentDamage);
 
         if (stats.health < 1)
         {
             targetGameobject.GetComponent<PlayerStats>().IncreaseExp(stats.experience);
-            var instantiationPoint = sprite.transform;
+            //var instantiationPoint = sprite.transform;
             //var coin = Instantiate(coinObject, instantiationPoint.position, Quaternion.identity);
             //coin.gameObject.GetComponent<Coins>().SetValue(coinValue);
             Destroy(gameObject);

@@ -33,7 +33,6 @@ public class EnemiesSpawnGroup
 public class EnemySpawn : MonoBehaviour
 {
     [SerializeField] StageProgress stageProgress;
-    [SerializeField] GameObject enemy;    
     [SerializeField] Vector2 spawnArea;
     [SerializeField] GameObject player;
 
@@ -133,7 +132,7 @@ public class EnemySpawn : MonoBehaviour
         Vector3 position = UtilityTools.GenerateRandomPositionSquarePattern(spawnArea);
         position += player.transform.position;
 
-        GameObject newEnemy = Instantiate(enemy);
+        GameObject newEnemy = Instantiate(enemyToSpawn.animatedPrefab);
         newEnemy.transform.position = position;
         Enemy_ newEnemyComponent = newEnemy.GetComponent<Enemy_>();
         newEnemyComponent.SetTarget(player);

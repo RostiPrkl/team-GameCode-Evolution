@@ -137,16 +137,16 @@ public class PlayerStats : MonoBehaviour
         CurrentBaseDamage = playerData.BaseDamage;
         CurrentPickupRadius = playerData.PickupRadius;
 
+        SpawnAttack(playerData.StartingAttack);
         
     }
 
 
     void Start()
     {
-        SpawnAttack(playerData.StartingAttack);
         //initialization of the exp increase system
         expCap = levelRanges[0].expCapIncrease;
-        sdcsndmngr = GameObject.FindObjectOfType<SoundController>();
+        sdcsndmngr = FindObjectOfType<SoundController>();
     }
 
 
@@ -256,14 +256,6 @@ public class PlayerStats : MonoBehaviour
             hpCounter = 0;
             CurrentHealth -= dmg;
 
-            if (CurrentHealth < 20)
-            {
-                audioSource.clip = lowHealthAudio;
-                audioSource.Play();
-            }
-            else
-                audioSource.Stop();
-
             StartCoroutine(FlashRed());
 
             iFrameTimer = iFrames;
@@ -329,27 +321,12 @@ public class PlayerStats : MonoBehaviour
             return;
         }
 
-        if (transform.Find("BiteController") || transform.Find("ShoutController 0"))
-        {
-            Vector3 spawnPosition = transform.position + new Vector3(1,0,0);
-            Debug.Log("Melee/Ranged spawn position: " + spawnPosition);
-            GameObject spawnedAttack = Instantiate(attack, spawnPosition, Quaternion.identity);
-            spawnedAttack.transform.SetParent(transform);
-            inventory.AddAttack(AttackIndex, spawnedAttack.GetComponent<PlayerAttackController>());
-            AttackIndex++;
-
-        }
-        else
-        {
             Vector3 spawnPosition = transform.position;
             Debug.Log("Melee/Ranged spawn position: " + spawnPosition);
             GameObject spawnedAttack = Instantiate(attack, spawnPosition, Quaternion.identity);
             spawnedAttack.transform.SetParent(transform);
             inventory.AddAttack(AttackIndex, spawnedAttack.GetComponent<PlayerAttackController>());
             AttackIndex++;
-
-        }
-        
     }
 
 

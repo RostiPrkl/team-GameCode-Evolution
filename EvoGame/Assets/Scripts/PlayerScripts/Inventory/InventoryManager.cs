@@ -85,26 +85,13 @@ public class InventoryManager : MonoBehaviour
              return;
           }
 		  
-	          
-			  if (attack.attackData.NextLevelPrefab.CompareTag("Bite"))
-			  {
-				Vector3 bitePosition = new Vector3(1,0,0);
-			  	GameObject leveledAttack = Instantiate(attack.attackData.NextLevelPrefab, bitePosition, Quaternion.identity);
-			  	leveledAttack.transform.SetParent(transform);
-	          	AddAttack(slotIndex, leveledAttack.GetComponent<PlayerAttackController>());
-	          	Destroy(attack.gameObject);
-	          	attackLevels[slotIndex] = leveledAttack.GetComponent<PlayerAttackController>().attackData.Level;
-			  	attackEvolutions[evolutionIndex].attackData = leveledAttack.GetComponent<PlayerAttackController>().attackData;
-			  }
-			  else
-			  {
-			  	GameObject leveledAttack = Instantiate(attack.attackData.NextLevelPrefab, transform.position, Quaternion.identity);
-			  	leveledAttack.transform.SetParent(transform);
-	          	AddAttack(slotIndex, leveledAttack.GetComponent<PlayerAttackController>());
-	          	Destroy(attack.gameObject);
-	          	attackLevels[slotIndex] = leveledAttack.GetComponent<PlayerAttackController>().attackData.Level;
-			  	attackEvolutions[evolutionIndex].attackData = leveledAttack.GetComponent<PlayerAttackController>().attackData;
-			  }
+
+			GameObject leveledAttack = Instantiate(attack.attackData.NextLevelPrefab, transform.position, Quaternion.identity);
+			leveledAttack.transform.SetParent(transform);
+	        AddAttack(slotIndex, leveledAttack.GetComponent<PlayerAttackController>());
+	        Destroy(attack.gameObject);
+	        attackLevels[slotIndex] = leveledAttack.GetComponent<PlayerAttackController>().attackData.Level;
+			attackEvolutions[evolutionIndex].attackData = leveledAttack.GetComponent<PlayerAttackController>().attackData;
 
 
 

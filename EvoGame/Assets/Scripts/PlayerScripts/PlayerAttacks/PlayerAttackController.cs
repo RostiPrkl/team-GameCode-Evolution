@@ -6,7 +6,7 @@ public class PlayerAttackController : MonoBehaviour
     [Header("Attack Stats")]
     public PlayerAttackScriptableObject attackData;
     protected PlayerStats player;
-    protected Player playerMovement;
+    //protected Player playerMovement;
     float currentCooldown;
 
 
