@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class Player : MonoBehaviour
 {
@@ -12,21 +9,22 @@ public class Player : MonoBehaviour
     //TODO: ✔ player health system
     //TODO: ✔ lvlup event
     //TODO: ✔ separate damage boosts
-    //TODO:   health boost
+    //TODO: ✔ health boost
     //TODO: ✔ recovery boost
-    //TODO:   revamp controller (mouse input)
+    //TODO: ✔ revamp controller (mouse input)
+    //TODO: Animations
+    //TODO: MORE UPGRADES
+    //TODO: attack controller spawn positions
+    //TODO: Balancing the numbers
 
     float lastHorizontal;
     float lastVertical;
-
     public Animator animator;
     Vector2 input;
     Rigidbody2D rb;
     bool facingDir = true;
-
     [HideInInspector] public Vector2 moveDirection;
     [HideInInspector] public Vector2 lastMoveDirection;
-
     PlayerStats playerStats;
     
     

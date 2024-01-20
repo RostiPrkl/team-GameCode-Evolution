@@ -1,8 +1,6 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
+
 
 
 [Serializable]
@@ -44,6 +42,8 @@ public class Enemy_ : MonoBehaviour
     
     Rigidbody2D rb2d;
 
+    private bool isDamaged = false;
+
     private void Awake()
 
     {
@@ -83,6 +83,7 @@ public class Enemy_ : MonoBehaviour
 
         Vector3 direction = (targetDestination.position - transform.position).normalized;
         rb2d.velocity = direction * stats.moveSpeed;
+        isDamaged = false;
 
     }
 
@@ -110,16 +111,16 @@ public class Enemy_ : MonoBehaviour
 
     public void TakeDamage(float currentDamage)
     {
-        stats.health -= Mathf.FloorToInt(currentDamage);
+        if (!isDamaged)
+        {
+            stats.health -= Mathf.FloorToInt(currentDamage);
+            isDamaged = true;
+        }
+        else
+            return;
 
         if (stats.health < 1)
-        {
-            targetGameobject.GetComponent<PlayerStats>().IncreaseExp(stats.experience);
-            //var instantiationPoint = sprite.transform;
-            //var coin = Instantiate(coinObject, instantiationPoint.position, Quaternion.identity);
-            //coin.gameObject.GetComponent<Coins>().SetValue(coinValue);
             Destroy(gameObject);
-        }
     }
 
 }

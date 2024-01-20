@@ -1,4 +1,5 @@
 using UnityEngine;
+using Gaskellgames.AudioController;
 
 
 public class CharacterSelector : MonoBehaviour
@@ -6,9 +7,15 @@ public class CharacterSelector : MonoBehaviour
     public static CharacterSelector instance;
     public PlayerScriptableObject playerData;
 
+    //public SoundManager sndMngr;
+
 
     void Awake()
     {
+
+       // sndMngr = FindObjectOfType<SoundManager>();
+        //sndMngr.PlayMusic("menu2");
+
         if (instance == null)
         {
             instance = this;

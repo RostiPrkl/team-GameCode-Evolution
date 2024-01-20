@@ -17,7 +17,7 @@ public class PlayerStats : MonoBehaviour
     int previousLevel;
     public int expCap;
     public List<LevelRange> levelRanges;
-    
+
     [System.Serializable]
     public class LevelRange
     {
@@ -109,15 +109,16 @@ public class PlayerStats : MonoBehaviour
                 currentPickupRadius = value;
         }
     }
-    
+
     #endregion
-   
+
     #region Misc
     PlayerScriptableObject playerData;
     SpriteRenderer[] spriteRList;
 
     public bool lvlChange;
-    public SoundController sdcsndmngr;
+    public SoundController sndCntrl;
+    //public bool healthAudioActive = false;
     #endregion
 
 
@@ -137,16 +138,16 @@ public class PlayerStats : MonoBehaviour
         CurrentBaseDamage = playerData.BaseDamage;
         CurrentPickupRadius = playerData.PickupRadius;
 
-        SpawnAttack(playerData.StartingAttack);
-        
+
     }
 
 
     void Start()
     {
+        SpawnAttack(playerData.StartingAttack);
         //initialization of the exp increase system
         expCap = levelRanges[0].expCapIncrease;
-        sdcsndmngr = FindObjectOfType<SoundController>();
+        sndCntrl = FindObjectOfType<SoundController>();
     }
 
 
@@ -160,7 +161,7 @@ public class PlayerStats : MonoBehaviour
 
         HealthBar();
         XPBar();
-        
+
         Recover();
     }
 
@@ -195,7 +196,7 @@ public class PlayerStats : MonoBehaviour
             xpCounter = 0;
             xpCounter += Time.deltaTime;
             xpFiller.fillAmount = Mathf.Lerp(previousexperience / expCap, experience / expCap, xpCounter / xpMaxCounter);
-        }        
+        }
     }
 
 
@@ -204,17 +205,18 @@ public class PlayerStats : MonoBehaviour
         CurrentHealth += amount;
         if (CurrentHealth > newMaxHealth)
             CurrentHealth = newMaxHealth;
+
     }
 
 
-    public void IncreaseExp(int amount) 
+    public void IncreaseExp(int amount)
     {
         experience += amount;
         LvlUpChecker();
 
-        if (lvlChange == false)
+       if (lvlChange == false)
         {
-            sdcsndmngr.PlaySoundFX("experience2");
+            sndCntrl.PlaySoundFX("experience1");
         }
         else
         {
@@ -240,6 +242,7 @@ public class PlayerStats : MonoBehaviour
                     break;
                 }
             }
+            lvlChange = true;
             expCap += expCapIncrease;
 
             GameManager.instance.StartEvolution();
@@ -256,6 +259,17 @@ public class PlayerStats : MonoBehaviour
             hpCounter = 0;
             CurrentHealth -= dmg;
 
+            if (CurrentHealth < 20)
+            {
+                sndCntrl.PlaySoundFX("lowHealth");
+                //healthAudioActive = true;
+            }
+           /* else
+            {
+                sndCntrl.gameObject.SetActive(false);
+                sndCntrl.StopSoundFX();
+            }*/
+
             StartCoroutine(FlashRed());
 
             iFrameTimer = iFrames;
@@ -268,26 +282,15 @@ public class PlayerStats : MonoBehaviour
 
 
     private IEnumerator FlashRed()
-{
-    List<Color> originalColors = new List<Color>();
-    foreach (SpriteRenderer sprite in spriteRList)
     {
-        originalColors.Add(sprite.color);
+        foreach (SpriteRenderer sprite in spriteRList)
+        {
+            Color originalColor = sprite.color;
+            sprite.color = Color.red;
+            yield return new WaitForSeconds(0.07f);
+            sprite.color = originalColor;
+        }
     }
-
-    foreach (SpriteRenderer sprite in spriteRList)
-    {
-        sprite.color = Color.red;
-    }
-
-    yield return new WaitForSeconds(0.07f);
-
-
-    for (int i = 0; i < spriteRList.Length; i++)
-    {
-        spriteRList[i].color = originalColors[i];
-    }
-}
 
 
     void Recover()
@@ -306,8 +309,6 @@ public class PlayerStats : MonoBehaviour
         if (!GameManager.instance.isGameOver)
         {
             Debug.Log("Player has died");
-            sdcsndmngr.StopAllSounds();
-            sdcsndmngr.PlaySoundFX("playerDead");
             GameManager.instance.GameOver();
         }
     }
@@ -321,12 +322,14 @@ public class PlayerStats : MonoBehaviour
             return;
         }
 
-            Vector3 spawnPosition = transform.position;
-            Debug.Log("Melee/Ranged spawn position: " + spawnPosition);
-            GameObject spawnedAttack = Instantiate(attack, spawnPosition, Quaternion.identity);
-            spawnedAttack.transform.SetParent(transform);
-            inventory.AddAttack(AttackIndex, spawnedAttack.GetComponent<PlayerAttackController>());
-            AttackIndex++;
+        Vector3 spawnPosition;
+        spawnPosition = transform.position;
+        Debug.Log("Melee/Ranged spawn position: " + spawnPosition);
+        GameObject spawnedAttack = Instantiate(attack, spawnPosition, Quaternion.identity);
+        spawnedAttack.transform.SetParent(transform);
+        inventory.AddAttack(AttackIndex, spawnedAttack.GetComponent<PlayerAttackController>());
+        AttackIndex++;
+
     }
 
 

@@ -674,7 +674,7 @@ GameObject:
   - component: {fileID: 5498515505834248076}
   - component: {fileID: 6442759136142559651}
   - component: {fileID: 3056824947862483710}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Collector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2093,7 +2093,7 @@ MonoBehaviour:
   deathAudio: {fileID: 8300000, guid: 9a0e1af52ffe80841aafb922ee0040ff, type: 3}
   dashAudio: {fileID: 8300000, guid: 50cf3657cb1624242b58e6046505b1e1, type: 3}
   lvlChange: 0
-  sdcsndmngr: {fileID: 0}
+  sndCntrl: {fileID: 0}
 --- !u!114 &7889618562162774287
 MonoBehaviour:
   m_ObjectHideFlags: 0
