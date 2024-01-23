@@ -40,8 +40,8 @@ public class EnemySpawn : MonoBehaviour
     float totalBossHealth;
     float currentBossHealth;
     [SerializeField] Slider bossHealthBar;
-    List<EnemiesSpawnGroup> enemiesSpawnGroupList;
-    List<EnemiesSpawnGroup> repeatedSpawnGroupList;
+    [SerializeField] List<EnemiesSpawnGroup> enemiesSpawnGroupList = new List<EnemiesSpawnGroup>();
+    [SerializeField] List<EnemiesSpawnGroup> repeatedSpawnGroupList = new List<EnemiesSpawnGroup>();
 
     int spawnPerFrame = 2;
 

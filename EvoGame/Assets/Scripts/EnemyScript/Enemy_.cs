@@ -6,8 +6,8 @@ using UnityEngine;
 [Serializable]
 public class EnemyStats
 {
-    // Vihollisen tilastot. 
-    public float health = 1;
+     
+    public int health = 1;
     public int damage = 1;
     public int experience = 200;
     public float moveSpeed = 1f;
