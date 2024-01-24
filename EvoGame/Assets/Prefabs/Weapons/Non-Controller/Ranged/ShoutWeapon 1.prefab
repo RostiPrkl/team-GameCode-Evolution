@@ -135,7 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b2a4fd60cdf62edfb5552416fe29ccf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyCounterProjectile: 2.5
+  destroyProjectileTimer: 3
   attackData: {fileID: 11400000, guid: c871d99411cf3875c823c5878c9f8256, type: 2}
 --- !u!82 &-4237959586568486752
 AudioSource:

@@ -95,12 +95,12 @@ GameObject:
   m_Component:
   - component: {fileID: 8868568205650340582}
   - component: {fileID: 6488296515995224673}
-  - component: {fileID: 7629420613149653472}
   - component: {fileID: 1342342943294368316}
   - component: {fileID: 3344237664539186865}
   - component: {fileID: 7755206036547414646}
   - component: {fileID: -294926006204858418}
   - component: {fileID: 2646101400973644754}
+  - component: {fileID: 6098134209532532282}
   m_Layer: 7
   m_Name: JellyFishEnemy
   m_TagString: Enemy
@@ -176,22 +176,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7629420613149653472
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2227882465152826036}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44b4b48744c83bacc9ffd45b4025388c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementSpeed: 2
-  maxHealth: 20
-  currentHealth: 0
-  enemyDamage: 5
 --- !u!114 &1342342943294368316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -290,8 +274,8 @@ MonoBehaviour:
     damage: 5
     experience: 0
     moveSpeed: 2
-  sprite: {fileID: 0}
   enemyData: {fileID: 11400000, guid: 45a5418396fb265c6b2fd0cf68839938, type: 2}
+  isDamaged: 0
 --- !u!70 &2646101400973644754
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -327,6 +311,21 @@ CapsuleCollider2D:
   m_Offset: {x: -0.026072396, y: -4.0412}
   m_Size: {x: 3.7506738, y: 10.529462}
   m_Direction: 0
+--- !u!114 &6098134209532532282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2227882465152826036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fbc35b613a322f13b9e47331ea132ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageColor: {r: 0, g: 0, b: 0, a: 0.78039217}
+  flashDuration: 0.2
+  deathFade: 0.6
 --- !u!1 &5203030964821595496
 GameObject:
   m_ObjectHideFlags: 0

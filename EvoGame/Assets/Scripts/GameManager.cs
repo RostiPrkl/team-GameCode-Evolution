@@ -163,5 +163,11 @@ public class GameManager : MonoBehaviour
     {
         sndCntrl.PlaySoundFX("levelStart");
     }
+
+
+    public void Exit()
+    {
+       Application.Quit(); 
+    }
 }
 

@@ -118,6 +118,8 @@ public class PlayerStats : MonoBehaviour
 
     public bool lvlChange;
     public SoundController sndCntrl;
+
+    public GameObject mouth;
     //public bool healthAudioActive = false;
     #endregion
 
@@ -139,12 +141,12 @@ public class PlayerStats : MonoBehaviour
         CurrentPickupRadius = playerData.PickupRadius;
 
 
+        SpawnAttack(playerData.StartingAttack);
     }
 
 
     void Start()
     {
-        SpawnAttack(playerData.StartingAttack);
         //initialization of the exp increase system
         expCap = levelRanges[0].expCapIncrease;
         sndCntrl = FindObjectOfType<SoundController>();
@@ -161,8 +163,6 @@ public class PlayerStats : MonoBehaviour
 
         HealthBar();
         XPBar();
-
-        Recover();
     }
 
     public void HealthBar()
@@ -283,17 +283,22 @@ public class PlayerStats : MonoBehaviour
 
     private IEnumerator FlashRed()
     {
+        //Fixed player damage flash!
+        Color[] originalColors = new Color[spriteRList.Length];
+        for (int i = 0; i < spriteRList.Length; i++)
+            originalColors[i] = spriteRList[i].color;
+
         foreach (SpriteRenderer sprite in spriteRList)
-        {
-            Color originalColor = sprite.color;
             sprite.color = Color.red;
-            yield return new WaitForSeconds(0.07f);
-            sprite.color = originalColor;
-        }
+
+        yield return new WaitForSeconds(0.07f);
+
+        for (int i = 0; i < spriteRList.Length; i++)
+            spriteRList[i].color = originalColors[i];
     }
 
 
-    void Recover()
+    public void Recover()
     {
         if(CurrentHealth < newMaxHealth)
         {
@@ -321,14 +326,25 @@ public class PlayerStats : MonoBehaviour
             Debug.LogError("INVENTORY FULL");
             return;
         }
+        
 
         Vector3 spawnPosition;
         spawnPosition = transform.position;
-        Debug.Log("Melee/Ranged spawn position: " + spawnPosition);
         GameObject spawnedAttack = Instantiate(attack, spawnPosition, Quaternion.identity);
-        spawnedAttack.transform.SetParent(transform);
-        inventory.AddAttack(AttackIndex, spawnedAttack.GetComponent<PlayerAttackController>());
-        AttackIndex++;
+
+        if (spawnedAttack.CompareTag("Bite"))
+        {
+            spawnedAttack.transform.position = mouth.transform.position;
+            spawnedAttack.transform.SetParent(transform);
+            inventory.AddAttack(AttackIndex, spawnedAttack.GetComponent<PlayerAttackController>());
+            AttackIndex++;
+        }
+        else
+        {
+            spawnedAttack.transform.SetParent(transform);
+            inventory.AddAttack(AttackIndex, spawnedAttack.GetComponent<PlayerAttackController>());
+            AttackIndex++;
+        }
 
     }
 

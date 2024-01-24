@@ -20,5 +20,5 @@ MonoBehaviour:
   level: 3
   nextLevelPrefab: {fileID: 2935252070034245117, guid: b3427bc66f2ed634ab36cdca64a964e3, type: 3}
   icon: {fileID: 21300000, guid: beef4ce791eb84ac18b8d94745fabf42, type: 3}
-  attackName: Bubble 3
-  attackDescription: Bubble can penetrate 10 enemies Dealing 30 DMG to each one..
+  attackName: Strong Bullet
+  attackDescription: Bubble can penetrate 10 enemies Dealing 30 DMG to each one

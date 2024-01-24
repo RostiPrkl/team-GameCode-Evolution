@@ -55,6 +55,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 1395933730415374667}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35be6db017e4f81108e240ef0d40c230, type: 3}
+  m_Script: {fileID: 11500000, guid: 384562c7e47bd3b8ab9e84454cbc5063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dashTime: 0.5
+  coolDown: 7

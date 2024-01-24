@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
     //TODO: ✔ revamp controller (mouse input)
     //TODO: Animations
     //TODO: MORE UPGRADES
-    //TODO: attack controller spawn positions
+    //TODO: ✔ attack controller spawn positions
     //TODO: Balancing the numbers
 
     float lastHorizontal;
@@ -25,13 +25,16 @@ public class Player : MonoBehaviour
     bool facingDir = true;
     [HideInInspector] public Vector2 moveDirection;
     [HideInInspector] public Vector2 lastMoveDirection;
-    PlayerStats playerStats;
+    public PlayerStats playerStats;
+
+    public Dash dashEvolution;
     
     
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         playerStats = GetComponent<PlayerStats>();
+        //dashEvolution = GetComponent<Dash>();
     }
 
     
@@ -39,12 +42,22 @@ public class Player : MonoBehaviour
     {
         MovementController();
         FlipController();
+
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            if (dashEvolution != null)
+                dashEvolution.ActivateDash();
+            else 
+                return;
+                
+        }
     }
 
 
     void FixedUpdate()
     {
         rb.MovePosition(rb.position + input * playerStats.CurrentMovementSpeed * Time.fixedDeltaTime);
+
     }
 
 

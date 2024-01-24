@@ -13,6 +13,7 @@ public class EnemyStats
     public float moveSpeed = 1f;
     private EnemyStats stats;
 
+
     public EnemyStats(EnemyStats stats)
     {
         this.health = stats.health;
@@ -39,10 +40,9 @@ public class Enemy_ : MonoBehaviour
     //[SerializeField] private GameObject coinObject;
     [SerializeField] EnemyData enemyData;
     internal object currentHealth;
-    
     Rigidbody2D rb2d;
+    public bool isDamaged = false;
 
-    private bool isDamaged = false;
 
     private void Awake()
 
@@ -50,7 +50,6 @@ public class Enemy_ : MonoBehaviour
 
         rb2d = GetComponent<Rigidbody2D>();
         targetPlayer = FindObjectOfType<PlayerStats>();
-
     }
 
     private void Start()
@@ -119,7 +118,7 @@ public class Enemy_ : MonoBehaviour
         else
             return;
 
-        if (stats.health < 1)
+        if (stats.health <= 0)
             Destroy(gameObject);
     }
 

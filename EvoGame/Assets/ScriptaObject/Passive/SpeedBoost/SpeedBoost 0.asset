@@ -16,5 +16,5 @@ MonoBehaviour:
   level: 1
   nextLevelPrefab: {fileID: 1395933730415374667, guid: fc6b2dfb415a70c528893140616206a2, type: 3}
   icon: {fileID: 21300000, guid: 444a4761683a539babf2923d369076f7, type: 3}
-  passiveName: Evolved Tail
-  passiveDescription: 5 % More Move Speed
+  passiveName: Bigger Tail
+  passiveDescription: Dash using shift key. + 5% to move speed

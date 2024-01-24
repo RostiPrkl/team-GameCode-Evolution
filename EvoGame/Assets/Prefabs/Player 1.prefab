@@ -743,7 +743,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a58e4ad9b4b4b997592b1cf3a1deb162, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pull: 100
+  pull: 250
 --- !u!1 &1661178395137760215
 GameObject:
   m_ObjectHideFlags: 0
@@ -1528,7 +1528,7 @@ GameObject:
   - component: {fileID: 2248340980208834031}
   m_Layer: 0
   m_Name: fishy
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2015,6 +2015,8 @@ MonoBehaviour:
   animator: {fileID: 4850697342573874480}
   moveDirection: {x: 0, y: 0}
   lastMoveDirection: {x: 0, y: 0}
+  playerStats: {fileID: 0}
+  dashEvolution: {fileID: 4277887152361280024, guid: f56bf273c8a402ae1bc4e01ceb8e00e8, type: 3}
 --- !u!114 &6832153752566815492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2094,6 +2096,7 @@ MonoBehaviour:
   dashAudio: {fileID: 8300000, guid: 50cf3657cb1624242b58e6046505b1e1, type: 3}
   lvlChange: 0
   sndCntrl: {fileID: 0}
+  mouth: {fileID: 2830609162772578858}
 --- !u!114 &7889618562162774287
 MonoBehaviour:
   m_ObjectHideFlags: 0

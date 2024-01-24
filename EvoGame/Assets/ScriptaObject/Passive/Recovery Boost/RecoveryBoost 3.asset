@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffd9abc31f0802582a7563a80a483eea, type: 3}
   m_Name: RecoveryBoost 3
   m_EditorClassIdentifier: 
-  multiplier: 1000
+  multiplier: 0
   level: 4
   nextLevelPrefab: {fileID: 0}
   icon: {fileID: 21300000, guid: 2d181462f03822c228555f9f6870d49d, type: 3}
-  passiveName: Health Regeneration
-  passiveDescription: Restores health 10 hp/s
+  passiveName: Axolotl Genes
+  passiveDescription: Restores health 10 hp/s. If Health drops Below 10 hp, get full
+    health (30 sec cooldown)

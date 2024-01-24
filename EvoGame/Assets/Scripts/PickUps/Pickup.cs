@@ -16,6 +16,9 @@ public class Pickup : MonoBehaviour, ICollectible
     {
         if (player == null)
             Destroy(gameObject);
+
+        if (isCollected)
+            StartCoroutine(DestroyCollectedObjects());
     }
 
 
@@ -31,8 +34,15 @@ public class Pickup : MonoBehaviour, ICollectible
         if (collider.CompareTag("Player") && isCollected)
         {
             Destroy(gameObject);
-            isCollected = true;
-            
+            isCollected = true; 
         }
     }
+
+
+    private IEnumerator DestroyCollectedObjects()
+    {
+        yield return new WaitForSeconds(3);
+        Destroy(gameObject);
+    }
+
 }

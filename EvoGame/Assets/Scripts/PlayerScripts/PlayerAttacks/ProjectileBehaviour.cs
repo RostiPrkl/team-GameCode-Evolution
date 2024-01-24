@@ -8,7 +8,7 @@ using UnityEngine;
 public class ProjectileBehaviour : MonoBehaviour
 {
     protected Vector3 direction;
-    public float destroyCounterProjectile;
+    public float destroyProjectileTimer;
     public PlayerAttackScriptableObject attackData;
 
     protected float currentDamage;
@@ -34,7 +34,7 @@ public class ProjectileBehaviour : MonoBehaviour
 
     protected virtual void Start()
     {
-        Destroy(gameObject, destroyCounterProjectile);
+        Destroy(gameObject, destroyProjectileTimer);
     }
 
 

@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 6869752710206633746}
   - component: {fileID: 5470185555294747491}
   - component: {fileID: 7043176513645066252}
+  - component: {fileID: 6561441262847216338}
   m_Layer: 7
   m_Name: AnglerEnemy
   m_TagString: Enemy
@@ -332,5 +333,20 @@ MonoBehaviour:
     damage: 8
     experience: 0
     moveSpeed: 4
-  sprite: {fileID: 0}
   enemyData: {fileID: 11400000, guid: e9928383a4e43a35f9c3a68c4e61c4c5, type: 2}
+  isDamaged: 0
+--- !u!114 &6561441262847216338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5980331428888745058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fbc35b613a322f13b9e47331ea132ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageColor: {r: 0, g: 0, b: 0, a: 0.79607844}
+  flashDuration: 0.2
+  deathFade: 0.6

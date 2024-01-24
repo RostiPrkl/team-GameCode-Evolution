@@ -10,8 +10,8 @@ public class EvoPoint : Pickup
 
     protected override void Start()
     {
-        sndCntrl = FindObjectOfType<SoundController>();
         base.Start();
+        sndCntrl = FindObjectOfType<SoundController>();
     }
 
 

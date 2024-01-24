@@ -100,6 +100,7 @@ GameObject:
   - component: {fileID: 7755206036547414646}
   - component: {fileID: 5761183858302702940}
   - component: {fileID: 587503463125834726}
+  - component: {fileID: 3921819055485905024}
   m_Layer: 7
   m_Name: JellyFishEnemyRare
   m_TagString: Enemy
@@ -309,6 +310,22 @@ MonoBehaviour:
     experience: 0
     moveSpeed: 5
   enemyData: {fileID: 11400000, guid: 228fa64f73150aa80a9f6d879de5dcfa, type: 2}
+  isDamaged: 0
+--- !u!114 &3921819055485905024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2227882465152826036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fbc35b613a322f13b9e47331ea132ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageColor: {r: 0, g: 0, b: 0, a: 0.7529412}
+  flashDuration: 0.2
+  deathFade: 0.6
 --- !u!1 &5203030964821595496
 GameObject:
   m_ObjectHideFlags: 0
