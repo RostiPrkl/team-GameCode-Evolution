@@ -137,6 +137,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destroyProjectileTimer: 3
   attackData: {fileID: 11400000, guid: eff0f2dc5dcf4ceefa4cd0700c80bb72, type: 2}
+  shoutEffects: {fileID: 0}
 --- !u!82 &-4237959586568486752
 AudioSource:
   m_ObjectHideFlags: 0
@@ -147,7 +148,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -4937873602936223418, guid: 56672a3f0c1eafa16893f5fa9f3c47d4, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 002335edb5330b5babefd15ad8251298, type: 3}
+  m_audioClip: {fileID: 8300000, guid: c177df0de631031f7aeddcc8c5edcf6c, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1

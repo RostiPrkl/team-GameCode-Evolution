@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using Gaskellgames.AudioController;
 
 
 
@@ -44,6 +45,8 @@ public class Enemy_ : MonoBehaviour
     public bool isDamaged = false;
 
 
+    public SoundController deathEffect;
+
     private void Awake()
 
     {
@@ -59,7 +62,8 @@ public class Enemy_ : MonoBehaviour
            
             SetStats(enemyData.stats);
             SetTarget(GameManager.instance.playerTransform.gameObject);
-            
+            deathEffect = FindObjectOfType<SoundController>();
+
 
         }
     }
@@ -119,7 +123,32 @@ public class Enemy_ : MonoBehaviour
             return;
 
         if (stats.health <= 0)
+        {
+            switch (enemyData.animatedPrefab.name)
+            {
+                case "JellyFishEnemy":
+                    deathEffect.PlaySoundFX("smallEnemyDie");
+                    break;
+                case "AnglerEnemy":
+                    deathEffect.PlaySoundFX("mediumEnemyDie");
+                    break;
+                case "RareJelly":
+                    deathEffect.PlaySoundFX("mediumEnemyDie");
+                    break;
+                case "RareAngler":
+                    deathEffect.PlaySoundFX("biggerEnemyDie");
+                    break;
+                case "Boss":
+                    deathEffect.PlaySoundFX("bossDie");
+                    break;
+                default:
+                    Debug.Log("NULL STATE");
+                    break;
+            }
+
             Destroy(gameObject);
+        }
+            
     }
 
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Gaskellgames.AudioController;
 
 //Base Script for projectile Weapon behaviour
 
@@ -15,6 +16,7 @@ public class ProjectileBehaviour : MonoBehaviour
     protected float currentSpeed;
     protected float currentCooldownDur;
     protected int currentPenetrate;
+    public SoundController shoutEffects;
 
 
     void Awake()
@@ -34,7 +36,11 @@ public class ProjectileBehaviour : MonoBehaviour
 
     protected virtual void Start()
     {
+
         Destroy(gameObject, destroyProjectileTimer);
+
+        shoutEffects = FindObjectOfType<SoundController>();
+
     }
 
 

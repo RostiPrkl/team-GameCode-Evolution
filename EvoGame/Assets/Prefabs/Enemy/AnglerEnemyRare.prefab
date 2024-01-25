@@ -194,7 +194,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -4937873602936223418, guid: 56672a3f0c1eafa16893f5fa9f3c47d4, type: 2}
-  m_audioClip: {fileID: 8300000, guid: beb323c7b45f757388be8f55841ec865, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -334,3 +334,4 @@ MonoBehaviour:
     moveSpeed: 6
   enemyData: {fileID: 11400000, guid: e72785eeb9b4f341882fdc2940b5450d, type: 2}
   isDamaged: 0
+  deathEffect: {fileID: 0}

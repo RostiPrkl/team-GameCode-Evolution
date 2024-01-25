@@ -137,6 +137,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destroyProjectileTimer: 3
   attackData: {fileID: 11400000, guid: cc89820ce61ae433b9ac0fe19eb9bc38, type: 2}
+  shoutEffects: {fileID: 0}
 --- !u!82 &-4237959586568486752
 AudioSource:
   m_ObjectHideFlags: 0
@@ -146,21 +147,21 @@ AudioSource:
   m_GameObject: {fileID: 2170071144750661667}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -4937873602936223418, guid: 56672a3f0c1eafa16893f5fa9f3c47d4, type: 2}
+  OutputAudioMixerGroup: {fileID: -1782419080531085811, guid: d3e69b57599b32f45ad4c5eed4e1c44f, type: 2}
   m_audioClip: {fileID: 8300000, guid: 002335edb5330b5babefd15ad8251298, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
-  DopplerLevel: 1
+  DopplerLevel: 0
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 50
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -193,7 +194,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0

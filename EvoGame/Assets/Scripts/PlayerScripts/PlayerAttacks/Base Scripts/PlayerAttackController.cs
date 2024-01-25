@@ -1,4 +1,5 @@
 using UnityEngine;
+using Gaskellgames.AudioController;
 //Base for all player attack types to inherit from
 
 public class PlayerAttackController : MonoBehaviour
@@ -8,11 +9,13 @@ public class PlayerAttackController : MonoBehaviour
     protected PlayerStats player;
     //protected Player playerMovement;
     float currentCooldown;
+    public SoundController shout;
 
 
 
     protected virtual void Start()
     {
+        shout = FindObjectOfType<SoundController>();
         player = FindObjectOfType<PlayerStats>();
         
         currentCooldown = attackData.Cooldown;
@@ -29,6 +32,25 @@ public class PlayerAttackController : MonoBehaviour
 
     protected virtual void Attack()
     {
+
+        switch (attackData.AttackName)
+        {
+            case "Water Bullet":
+                shout.PlaySoundFX("shoot01");
+                break;
+            case "Bubbles 2":
+                shout.PlaySoundFX("shoot02");
+                break;
+            case "Bubble 3":
+                shout.PlaySoundFX("shoot03");
+                break;
+            case "Vortex":
+                shout.PlaySoundFX("shootVortex");
+                break;
+           /* default:
+                Debug.Log("NULL STATE");
+                break;*/
+        }
         currentCooldown = attackData.Cooldown;
     }
 }

@@ -27,6 +27,7 @@ public class EvoPoint : Pickup
             return;
         else
         {
+           
             sndCntrl.PlaySoundFX("experience2");
             base.Collect();
            

@@ -43,9 +43,9 @@ public class PlayerStats : MonoBehaviour
     float iFrameTimer;
     bool isInvincible;
 
-    [Header("Player Audio")]
-    [SerializeField] AudioSource audioSource;
-    [SerializeField] AudioClip lowHealthAudio, deathAudio, dashAudio;
+    //[Header("Player Audio")]
+    //[SerializeField] AudioSource audioSource;
+   // [SerializeField] AudioClip lowHealthAudio, deathAudio, dashAudio;
     #endregion
 
     #region Current player stats
@@ -216,14 +216,18 @@ public class PlayerStats : MonoBehaviour
         experience += amount;
         LvlUpChecker();
 
-       if (lvlChange == false)
+  /*     if (lvlChange == false)
         {
             sndCntrl.PlaySoundFX("experience1");
+            StartCoroutine(WaitAndPrint());
+
+
+
         }
         else
         {
             lvlChange = false;
-        }
+        }*/
     }
 
 
@@ -364,5 +368,17 @@ public class PlayerStats : MonoBehaviour
         spawnedPassive.transform.SetParent(transform);
         inventory.AddPassive(PassiveIndex, spawnedPassive.GetComponent<PassiveItem>());
         PassiveIndex++; //each attack is it's own slot. no overlap
+    }
+
+    IEnumerator WaitAndPrint()
+    {
+        Debug.Log("Start of coroutine");
+
+        // Wait for 2 seconds
+        yield return new WaitForSeconds(2.0f);
+
+        Debug.Log("After waiting for 2 seconds");
+
+        // Additional code to be executed after the delay
     }
 }

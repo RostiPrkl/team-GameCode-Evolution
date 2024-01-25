@@ -1,32 +1,66 @@
-Bite1-Bite3= Pelihahmon puraisut.
+PELISSÄ KÄYTETTÄVÄT ÄÄNET
 
-Button1-Button4= Menun namiskoiden äänet.
+Button2 = alkumenun valikoiden etenemisäänni
 
-DeadInTheWater= enemyn death ääni
+Button3 = alkumenun valikoiden "Back" nappuloiden ääni
 
-EnemyExplode = Enemyn death äänet
+LevelStart = Pelikentän aloitusääni
 
-Healing = Hitareiden parannus ääni
+Bite1 = Pelaajan oletus puraisuääni
 
-Levlgain= Levelin nousu.
+Bite2 = Pelaajan ensimmäinen evoluutioitunut puraisuääni 
 
-LowHealtLoop= Ilmaisee äänellä jos hahmon hitarit vaarallisen alhaalla.
+Bite3 = Pelaajan toinen evoluutioitunut puraisuääni
 
-MagicChestOpening1-2= mahdollisen aarrearkun avausääni
+PoisonBite = Pelaajan kolmas evoluutioitunut puraisuääni  
 
-Monster***=tarkoitettu erilaisten monstereiden ääniksi
+Shoot1 = Pelaajan oletus kuplan ammuntaääni  
 
-Punch3= lisä-isku ääni tarvittaessa
+Shoot2 = Pelaajan ensimmäinen evoluutioitunut ammuntaääni
 
-Shoot1-4= ampumis ääniä eri tarkoituksiin
+Shoot3 = Pelaajan toinen evoluutioitunut ammuntaääni
 
-Stream loop moderate 3= mahdollinen lisä ääni päämenuun
+VortexShoot = Pelaajan kolmas evoluutioitunut ammuntaäänni
 
-Underwater athmosphere = vedenalainen athmosphere ääni loopattavaksi johonkin kenttään
+VortexDrain = Vortexin olemassaolon ääni
 
-Upgrade= esim evoluution tai parannuksen ääni
+LowHealt Loop = Pelaajan matalan elämän loop-ääni
 
+Dash = Väistöääni
 
+CoinCollection = evopointin keräysääni (tutkitaan tarpeellisuutta vielä)
+
+Experiece1 = Experiencen keräysääni
+
+LevelGain2 = Levelinnousuääni jolloin evoluution valintamenu aukeaa
+
+EvolutionSelected = Kun evoluutio valittu ja valintamenu sulkeutuu
+
+PlayerDead = Pelihahmo kuolee ja "player dead" menu avautuu
+
+SmallEnemyDie1 = Meduusa kuolee
+
+MediumEnemyDie1 = Anglerfish ja Meduusa rare kuolee
+
+BiggerEnemyDie1 = Anglerfish Rare kuolee
+
+BiggestEnemyDie1 = Boss kuolee
+
+Boss_LevelStart = Boss levelin aloitus (Vain tarvittaessa)
+
+Boss_ShootInk = Mustekala Bossin musteen ampumis ääni
+
+Boss_TentacleHit = Mustekala Bossin lonkeron huitaisu ääni
+
+Boss_Roar = Mustekkala Bossin karjumis ääni (aloitus, elämä vähän jäljellä, kuolema)
+
+KENTTÄ KOHTAISET MUSIIKIT / ATHMOSHPERET
+
+Underwater Athmosphere 1 = Kentän athmospere ääni musiikin alla
+
+Menu3 = Malkumenun biisi
+
+WaterEvolution1 = Ensimmäisen pelikentän biisi
 
 
 
