@@ -33,18 +33,18 @@ public class PlayerAttackController : MonoBehaviour
     protected virtual void Attack()
     {
 
-        switch (attackData.AttackName)
+        switch (attackData.AttackPrefab.name)
         {
-            case "Water Bullet":
+            case "ShoutWeapon 0":
                 shout.PlaySoundFX("shoot01");
                 break;
-            case "Bubbles 2":
+            case "ShoutWeapon 1":
                 shout.PlaySoundFX("shoot02");
                 break;
-            case "Bubble 3":
+            case "ShoutWeapon 2":
                 shout.PlaySoundFX("shoot03");
                 break;
-            case "Vortex":
+            case "ShoutWeapon 3":
                 shout.PlaySoundFX("shootVortex");
                 break;
            /* default:
