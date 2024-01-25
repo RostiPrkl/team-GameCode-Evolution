@@ -1,10 +1,8 @@
 PELISSÄ KÄYTETTÄVÄT ÄÄNET
 
-Button2 = alkumenun valikoiden etenemisäänni
+BiggerEnemyDie1 = Anglerfish Rare kuolee
 
-Button3 = alkumenun valikoiden "Back" nappuloiden ääni
-
-LevelStart = Pelikentän aloitusääni
+BiggestEnemyDie1 = Boss kuolee
 
 Bite1 = Pelaajan oletus puraisuääni
 
@@ -12,39 +10,9 @@ Bite2 = Pelaajan ensimmäinen evoluutioitunut puraisuääni
 
 Bite3 = Pelaajan toinen evoluutioitunut puraisuääni
 
-PoisonBite = Pelaajan kolmas evoluutioitunut puraisuääni  
+Button2 = alkumenun valikoiden etenemisäänni
 
-Shoot1 = Pelaajan oletus kuplan ammuntaääni  
-
-Shoot2 = Pelaajan ensimmäinen evoluutioitunut ammuntaääni
-
-Shoot3 = Pelaajan toinen evoluutioitunut ammuntaääni
-
-VortexShoot = Pelaajan kolmas evoluutioitunut ammuntaäänni
-
-VortexDrain = Vortexin olemassaolon ääni
-
-LowHealt Loop = Pelaajan matalan elämän loop-ääni
-
-Dash = Väistöääni
-
-CoinCollection = evopointin keräysääni (tutkitaan tarpeellisuutta vielä)
-
-Experiece1 = Experiencen keräysääni
-
-LevelGain2 = Levelinnousuääni jolloin evoluution valintamenu aukeaa
-
-EvolutionSelected = Kun evoluutio valittu ja valintamenu sulkeutuu
-
-PlayerDead = Pelihahmo kuolee ja "player dead" menu avautuu
-
-SmallEnemyDie1 = Meduusa kuolee
-
-MediumEnemyDie1 = Anglerfish ja Meduusa rare kuolee
-
-BiggerEnemyDie1 = Anglerfish Rare kuolee
-
-BiggestEnemyDie1 = Boss kuolee
+Button3 = alkumenun valikoiden "Back" nappuloiden ääni
 
 Boss_LevelStart = Boss levelin aloitus (Vain tarvittaessa)
 
@@ -54,11 +22,43 @@ Boss_TentacleHit = Mustekala Bossin lonkeron huitaisu ääni
 
 Boss_Roar = Mustekkala Bossin karjumis ääni (aloitus, elämä vähän jäljellä, kuolema)
 
+CoinCollection = evopointin keräysääni (tutkitaan tarpeellisuutta vielä)
+
+Dash = Väistöääni
+
+EvolutionSelected = Kun evoluutio valittu ja valintamenu sulkeutuu
+
+LevelGain2 = Levelinnousuääni jolloin evoluution valintamenu aukeaa
+
+LevelStart = Pelikentän aloitusääni
+
+LowHealt Loop = Pelaajan matalan elämän loop-ääni
+
+MediumEnemyDie1 = Anglerfish ja Meduusa rare kuolee
+
+PlayerDead = Pelihahmo kuolee ja "player dead" menu avautuu
+
+PoisonBite = Pelaajan kolmas evoluutioitunut puraisuääni  
+
+Shoot1 = Pelaajan oletus kuplan ammuntaääni
+
+Shoot2 = Pelaajan ensimmäinen evoluutioitunut ammuntaääni
+
+Shoot3 = Pelaajan toinen evoluutioitunut ammuntaääni
+
+SmallEnemyDie1 = Meduusa kuolee
+
+VortexShoot = Pelaajan kolmas evoluutioitunut ammuntaäänni
+
+VortexDrain = Vortexin olemassaolon ääni
+
+
+
 KENTTÄ KOHTAISET MUSIIKIT / ATHMOSHPERET
 
-Underwater Athmosphere 1 = Kentän athmospere ääni musiikin alla
-
 Menu3 = Malkumenun biisi
+
+Underwater Athmosphere 1 = Kentän athmospere ääni musiikin alla
 
 WaterEvolution1 = Ensimmäisen pelikentän biisi
 

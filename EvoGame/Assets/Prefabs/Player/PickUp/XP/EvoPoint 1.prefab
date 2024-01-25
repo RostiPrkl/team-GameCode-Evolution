@@ -102,6 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isCollected: 0
   experienceCollected: 5
+  sndCntrl: {fileID: 0}
 --- !u!58 &2107630855993264585
 CircleCollider2D:
   m_ObjectHideFlags: 0

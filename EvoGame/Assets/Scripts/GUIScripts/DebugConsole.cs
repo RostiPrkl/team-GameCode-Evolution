@@ -12,8 +12,6 @@ public class DebugConsole : MonoBehaviour
     private void Start()
     {
         playerStats = FindObjectOfType<PlayerStats>();
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
     }
 
 
@@ -56,8 +54,6 @@ public class DebugConsole : MonoBehaviour
     private void ToggleConsole()
     {
         consoleVisible = !consoleVisible;
-        Cursor.lockState = consoleVisible ? CursorLockMode.None : CursorLockMode.Locked;
-        Cursor.visible = consoleVisible;
     }
 
 

@@ -6,6 +6,7 @@ public class Pickup : MonoBehaviour, ICollectible
 {
     public bool isCollected = false;
     PlayerStats player;
+
     protected virtual void Start()
     {
         player = FindObjectOfType<PlayerStats>();
