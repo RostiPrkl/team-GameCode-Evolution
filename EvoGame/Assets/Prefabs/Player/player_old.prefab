@@ -91,7 +91,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8653719598885068355, guid: dad0ee593852e54d7b954e37fe3865dc, type: 3}
       propertyPath: m_Name
-      value: player
+      value: player_old
       objectReference: {fileID: 0}
     - target: {fileID: -8653719598885068355, guid: dad0ee593852e54d7b954e37fe3865dc, type: 3}
       propertyPath: m_Layer
@@ -305,6 +305,8 @@ MonoBehaviour:
   animator: {fileID: 3389842853394874753}
   moveDirection: {x: 0, y: 0}
   lastMoveDirection: {x: 0, y: 0}
+  playerStats: {fileID: 0}
+  dashEvolution: {fileID: 0}
 --- !u!114 &4860451727151830031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -383,7 +385,8 @@ MonoBehaviour:
   deathAudio: {fileID: 8300000, guid: 9a0e1af52ffe80841aafb922ee0040ff, type: 3}
   dashAudio: {fileID: 8300000, guid: 50cf3657cb1624242b58e6046505b1e1, type: 3}
   lvlChange: 0
-  sdcsndmngr: {fileID: 0}
+  sndCntrl: {fileID: 0}
+  mouth: {fileID: 0}
 --- !u!114 &1960338628698134210
 MonoBehaviour:
   m_ObjectHideFlags: 0

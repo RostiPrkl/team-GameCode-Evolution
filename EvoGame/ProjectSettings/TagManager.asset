@@ -9,6 +9,7 @@ TagManager:
   - Environment
   - Melee
   - Ranged
+  - InkAttack
   layers:
   - Default
   - TransparentFX

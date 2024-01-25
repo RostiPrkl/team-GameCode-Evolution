@@ -120,6 +120,8 @@ public class PlayerStats : MonoBehaviour
     public SoundController sndCntrl;
 
     public GameObject mouth;
+
+    public bool debugInvincible = false;
     //public bool healthAudioActive = false;
     #endregion
 
@@ -253,7 +255,7 @@ public class PlayerStats : MonoBehaviour
     public void TakeDamage(float dmg)
     {
         //Check for iframes, and granting for brief invincibilty after dmg
-        if (!isInvincible)
+        if (!isInvincible && !debugInvincible)
         {
             previousHealth = hpFiller.fillAmount * newMaxHealth;
             hpCounter = 0;
