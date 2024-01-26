@@ -132,10 +132,10 @@ public class Enemy_ : MonoBehaviour
                 case "AnglerEnemy":
                     deathEffect.PlaySoundFX("mediumEnemyDie");
                     break;
-                case "RareJelly":
+                case "JellyFishEnemyRare":
                     deathEffect.PlaySoundFX("mediumEnemyDie");
                     break;
-                case "RareAngler":
+                case "AnglerEnemyRare":
                     deathEffect.PlaySoundFX("biggerEnemyDie");
                     break;
                 case "Boss":
