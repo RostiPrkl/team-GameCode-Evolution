@@ -8,10 +8,11 @@ public class DebugConsole : MonoBehaviour
     private bool consoleVisible = false;
     private List<string> debugLogs = new List<string>();
     [SerializeField] PlayerStats playerStats;
-
+    [SerializeField] GameManager gameManager;
     private void Start()
     {
         playerStats = FindObjectOfType<PlayerStats>();
+        gameManager = FindObjectOfType<GameManager>();
     }
 
 
@@ -72,9 +73,9 @@ public class DebugConsole : MonoBehaviour
                     Debug.Log("Sending godmode");
                     break;
                 
-                // case "addlevel":
-                //     AddLevel();
-                //     break;
+                case "addlevel":
+                     AddLevel();
+                     break;
 
                 default:
                     LogCommand("Unknown command: " + command);
@@ -97,9 +98,10 @@ public class DebugConsole : MonoBehaviour
     }
 
 
-    // private void AddLevel()
-    // {
-        
-    // }
+    private void AddLevel()
+    {
+        gameManager.StartEvolution();
+        LogCommand("LevelUpCommand");
+    }
 
 }
