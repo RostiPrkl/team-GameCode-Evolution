@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14e036b40d01814cd848d3818eda7186, type: 3}
+  m_Name: Tentacle 0
+  m_EditorClassIdentifier: 
+  attackPrefab: {fileID: 5612393631241055225, guid: 81ee80684edd1bd3d8e75ec55f4a7389, type: 3}
+  damage: 20
+  speed: 0
+  cooldown: 2
+  penetrate: 0
+  level: 0
+  nextLevelPrefab: {fileID: 7265460018517887890, guid: 813d1f88a432e5c8b82bec8929b411c0, type: 3}
+  icon: {fileID: 21300000, guid: c33c2efde67c17d5fb415392db3a96ab, type: 3}
+  attackName: Tentacle Swipe
+  attackDescription: Deals Damage to Enemies in a large radius around you.

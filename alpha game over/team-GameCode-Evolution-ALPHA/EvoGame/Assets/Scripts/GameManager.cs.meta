@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: cdbcb051190eac47ca21ba2262d7ffa9
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - gameOverScreen: {instanceID: 0}
+  - levelUpScreen: {instanceID: 0}
+  - pauseScreen: {instanceID: 0}
+  - playerLevelSydema: {instanceID: 0}
+  - playerTransform: {fileID: 4646302539560296219, guid: 295a69d288437fb2992923ef0e66a846, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
