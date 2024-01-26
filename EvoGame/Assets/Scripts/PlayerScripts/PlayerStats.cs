@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Gaskellgames.AudioController;
+using Unity.Collections;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -116,13 +117,13 @@ public class PlayerStats : MonoBehaviour
     PlayerScriptableObject playerData;
     SpriteRenderer[] spriteRList;
 
-    public bool lvlChange;
-    public SoundController sndCntrl;
+    public AudioSource HealthSoundCntrl;
+    public AudioClip myAudioClip;
 
     public GameObject mouth;
 
     public bool debugInvincible = false;
-    //public bool healthAudioActive = false;
+
     #endregion
 
 
@@ -151,7 +152,9 @@ public class PlayerStats : MonoBehaviour
     {
         //initialization of the exp increase system
         expCap = levelRanges[0].expCapIncrease;
-        sndCntrl = FindObjectOfType<SoundController>();
+
+        HealthSoundCntrl = GetComponent<AudioSource>();
+
     }
 
 
@@ -165,6 +168,7 @@ public class PlayerStats : MonoBehaviour
 
         HealthBar();
         XPBar();
+        Recover();
     }
 
     public void HealthBar()
@@ -208,6 +212,15 @@ public class PlayerStats : MonoBehaviour
         if (CurrentHealth > newMaxHealth)
             CurrentHealth = newMaxHealth;
 
+        
+        if(CurrentHealth > 20)
+         {
+            if (HealthSoundCntrl.isPlaying == true)
+            {
+                HealthSoundCntrl.Stop();
+            }
+
+        }
     }
 
 
@@ -216,18 +229,6 @@ public class PlayerStats : MonoBehaviour
         experience += amount;
         LvlUpChecker();
 
-  /*     if (lvlChange == false)
-        {
-            sndCntrl.PlaySoundFX("experience1");
-            StartCoroutine(WaitAndPrint());
-
-
-
-        }
-        else
-        {
-            lvlChange = false;
-        }*/
     }
 
 
@@ -248,7 +249,7 @@ public class PlayerStats : MonoBehaviour
                     break;
                 }
             }
-            lvlChange = true;
+            
             expCap += expCapIncrease;
 
             GameManager.instance.StartEvolution();
@@ -265,16 +266,14 @@ public class PlayerStats : MonoBehaviour
             hpCounter = 0;
             CurrentHealth -= dmg;
 
-            if (CurrentHealth < 20)
+            if (CurrentHealth <= 20 )
             {
-                sndCntrl.PlaySoundFX("lowHealth");
-                //healthAudioActive = true;
+                if (HealthSoundCntrl.isPlaying==false) 
+                {
+                    HealthSoundCntrl.Play();
+                }
+       
             }
-           /* else
-            {
-                sndCntrl.gameObject.SetActive(false);
-                sndCntrl.StopSoundFX();
-            }*/
 
             StartCoroutine(FlashRed());
 
@@ -282,7 +281,11 @@ public class PlayerStats : MonoBehaviour
             isInvincible = true;
 
             if (CurrentHealth <= 0)
+            {
+                HealthSoundCntrl.Stop();
                 Death();
+            }
+                
         }
     }
 
@@ -312,6 +315,17 @@ public class PlayerStats : MonoBehaviour
             if (CurrentHealth > newMaxHealth)
                 CurrentHealth = newMaxHealth;
         }
+
+        if (CurrentHealth > 20)
+        {
+            if (HealthSoundCntrl.isPlaying == true)
+            {
+                HealthSoundCntrl.Stop();
+            }
+
+        }
+
+
     }
 
 
@@ -370,15 +384,4 @@ public class PlayerStats : MonoBehaviour
         PassiveIndex++; //each attack is it's own slot. no overlap
     }
 
-    IEnumerator WaitAndPrint()
-    {
-        Debug.Log("Start of coroutine");
-
-        // Wait for 2 seconds
-        yield return new WaitForSeconds(2.0f);
-
-        Debug.Log("After waiting for 2 seconds");
-
-        // Additional code to be executed after the delay
-    }
 }

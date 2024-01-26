@@ -15,7 +15,7 @@ MonoBehaviour:
   startingAttack: {fileID: 7265460018517887890, guid: 6b039fe3df77a039cb1fa074ab012cc3, type: 3}
   maxHealth: 100
   projectileSpeed: 1
-  recovery: 1
+  recovery: 0
   movementSpeed: 4
   pickupRadius: 3
   baseDamage: 1

@@ -1946,9 +1946,9 @@ GameObject:
   - component: {fileID: 6832153752566815492}
   - component: {fileID: 7889618562162774287}
   - component: {fileID: 6376054163536276362}
-  - component: {fileID: 6860162882737766667}
   - component: {fileID: 3817412247770490776}
   - component: {fileID: 4850697342573874480}
+  - component: {fileID: -7987195445956600353}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -2090,13 +2090,12 @@ MonoBehaviour:
   previousHealth: 0
   newMaxHealth: 0
   iFrames: 0.5
-  audioSource: {fileID: 0}
-  lowHealthAudio: {fileID: 8300000, guid: 32f1fbac8c79acb51974b0a1835dd8ad, type: 3}
-  deathAudio: {fileID: 8300000, guid: 9a0e1af52ffe80841aafb922ee0040ff, type: 3}
-  dashAudio: {fileID: 8300000, guid: 50cf3657cb1624242b58e6046505b1e1, type: 3}
   lvlChange: 0
-  sndCntrl: {fileID: 0}
+  HealthSoundCntrl: {fileID: 0}
+  myAudioClip: {fileID: 0}
   mouth: {fileID: 2830609162772578858}
+  debugInvincible: 0
+  healthAudioActive: 0
 --- !u!114 &7889618562162774287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2218,7 +2217,63 @@ CapsuleCollider2D:
   m_Offset: {x: -0.123162396, y: 0.042606313}
   m_Size: {x: 1.6382821, y: 0.56824845}
   m_Direction: 1
---- !u!82 &6860162882737766667
+--- !u!70 &3817412247770490776
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5182314564358921384}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.12750745, y: 0.074133776}
+  m_Size: {x: 1.6345975, y: 0.72127557}
+  m_Direction: 1
+--- !u!95 &4850697342573874480
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5182314564358921384}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e1dc14f1b9c575e45bd31bc203577f16, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!82 &-7987195445956600353
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2227,16 +2282,16 @@ AudioSource:
   m_GameObject: {fileID: 5182314564358921384}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -4937873602936223418, guid: 56672a3f0c1eafa16893f5fa9f3c47d4, type: 2}
-  m_audioClip: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 32f1fbac8c79acb51974b0a1835dd8ad, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.511
   m_Pitch: 1
   Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 113
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -2314,62 +2369,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!70 &3817412247770490776
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5182314564358921384}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.12750745, y: 0.074133776}
-  m_Size: {x: 1.6345975, y: 0.72127557}
-  m_Direction: 1
---- !u!95 &4850697342573874480
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5182314564358921384}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e1dc14f1b9c575e45bd31bc203577f16, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5580976438290502694
 GameObject:
   m_ObjectHideFlags: 0

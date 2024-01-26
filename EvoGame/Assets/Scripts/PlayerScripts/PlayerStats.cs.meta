@@ -3,7 +3,12 @@ guid: d3c8ac0a2faf4cd539909cb21657c19e
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - xpFiller: {instanceID: 0}
+  - hpFiller: {instanceID: 0}
+  - HealthSoundCntrl: {instanceID: 0}
+  - myAudioClip: {instanceID: 0}
+  - mouth: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
