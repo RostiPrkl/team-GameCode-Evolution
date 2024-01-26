@@ -176,13 +176,13 @@ MonoBehaviour:
   drops:
   - name: EvoPoint 5 xp
     itemPrefab: {fileID: 112556324597756653, guid: a53f24a57365c0214b1458d4a367a416, type: 3}
-    dropRate: 80
+    dropRate: 50
   - name: Health
     itemPrefab: {fileID: 3262823880636201055, guid: 8bb42e006630e80a7ab4e8ef4951369b, type: 3}
-    dropRate: 20
+    dropRate: 2
   - name: Evopoint
     itemPrefab: {fileID: 112556324597756653, guid: 804b06d7d70951d6db86aaaab1bf5793, type: 3}
-    dropRate: 50
+    dropRate: 70
 --- !u!70 &5470185555294747491
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

@@ -87,7 +87,6 @@ public class Enemy_ : MonoBehaviour
         Vector3 direction = (targetDestination.position - transform.position).normalized;
         rb2d.velocity = direction * stats.moveSpeed;
         isDamaged = false;
-
     }
 
     internal void SetStats(EnemyStats stats)
@@ -114,13 +113,8 @@ public class Enemy_ : MonoBehaviour
 
     public void TakeDamage(float currentDamage)
     {
-        if (!isDamaged)
-        {
-            stats.health -= Mathf.FloorToInt(currentDamage);
-            isDamaged = true;
-        }
-        else
-            return;
+
+        stats.health -= Mathf.FloorToInt(currentDamage);
 
         if (stats.health <= 0)
         {

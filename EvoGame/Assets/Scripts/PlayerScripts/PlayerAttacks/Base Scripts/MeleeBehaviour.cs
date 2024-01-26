@@ -75,7 +75,11 @@ public class MeleeBehaviour : MonoBehaviour
 
             playerMovement.animator.SetTrigger("Bite");
             Enemy_ enemy = collider.GetComponent<Enemy_>();
-            enemy.TakeDamage(GetCurrentDamage());
+            if (enemy.isDamaged == false)
+            {
+                enemy.TakeDamage(GetCurrentDamage());
+                enemy.isDamaged = true;
+            }
 
             if (biteEffects.IsInvoking("PlaySoundFX"))
             {

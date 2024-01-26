@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   multiplier: 15
   level: 3
-  nextLevelPrefab: {fileID: 0}
+  nextLevelPrefab: {fileID: 1395933730415374667, guid: 38061dd026ae668258e45b595be39ca4, type: 3}
   icon: {fileID: 21300000, guid: 444a4761683a539babf2923d369076f7, type: 3}
   passiveName: Badder Tail
   passiveDescription: 15 % more Move speed and reduced dash cooldown

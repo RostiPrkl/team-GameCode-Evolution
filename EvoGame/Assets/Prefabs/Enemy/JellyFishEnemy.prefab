@@ -190,10 +190,10 @@ MonoBehaviour:
   drops:
   - name: 
     itemPrefab: {fileID: 112556324597756653, guid: 804b06d7d70951d6db86aaaab1bf5793, type: 3}
-    dropRate: 75
+    dropRate: 90
   - name: 
     itemPrefab: {fileID: 3262823880636201055, guid: 8bb42e006630e80a7ab4e8ef4951369b, type: 3}
-    dropRate: 20
+    dropRate: 10
 --- !u!50 &3344237664539186865
 Rigidbody2D:
   serializedVersion: 4
@@ -275,6 +275,7 @@ MonoBehaviour:
     moveSpeed: 2
   enemyData: {fileID: 11400000, guid: 45a5418396fb265c6b2fd0cf68839938, type: 2}
   isDamaged: 0
+  deathEffect: {fileID: 0}
 --- !u!70 &2646101400973644754
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

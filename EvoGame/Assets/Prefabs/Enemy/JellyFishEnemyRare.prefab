@@ -190,10 +190,10 @@ MonoBehaviour:
   drops:
   - name: Evopoint 10 xp
     itemPrefab: {fileID: 112556324597756653, guid: 8b7eccff092ed8ba7b3904f8c537f598, type: 3}
-    dropRate: 9
+    dropRate: 90
   - name: Health Big
     itemPrefab: {fileID: 3262823880636201055, guid: dce5c34c44663294c907f3e6edabc633, type: 3}
-    dropRate: 10
+    dropRate: 1
 --- !u!50 &3344237664539186865
 Rigidbody2D:
   serializedVersion: 4
@@ -310,6 +310,7 @@ MonoBehaviour:
     moveSpeed: 5
   enemyData: {fileID: 11400000, guid: 228fa64f73150aa80a9f6d879de5dcfa, type: 2}
   isDamaged: 0
+  deathEffect: {fileID: 0}
 --- !u!1 &5203030964821595496
 GameObject:
   m_ObjectHideFlags: 0
