@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Gaskellgames.AudioController;
 //Base Script for melee Weapon behaviour
 
 public class MeleeBehaviour : MonoBehaviour
@@ -16,7 +15,8 @@ public class MeleeBehaviour : MonoBehaviour
     Player playerMovement;
     //public Animator animator;
     bool isPlaying;
-    public SoundController biteEffects;
+    //public SoundController biteEffects;
+    public AudioManager biteEffects;
 
 
     void Awake()
@@ -35,7 +35,7 @@ public class MeleeBehaviour : MonoBehaviour
 
     protected virtual void Start()
     {
-        biteEffects = FindObjectOfType<SoundController>();
+        biteEffects = FindObjectOfType<AudioManager>();
         playerMovement = FindObjectOfType<Player>();
         Destroy(gameObject, destroyCounterMelee);
     }
@@ -48,21 +48,20 @@ public class MeleeBehaviour : MonoBehaviour
             if (!isPlaying)
             {
                 isPlaying = true;
-               
 
                 switch (attackData.AttackName)
                 {
                     case "Bite":
-                        biteEffects.PlaySoundFX("bite01");
+                        biteEffects.PlayEffect(2);
                         break;
                     case "Stronger Bite":
-                        biteEffects.PlaySoundFX("bite02");
+                        biteEffects.PlayEffect(3);
                         break;
                     case "Bigger Teeth":
-                        biteEffects.PlaySoundFX("bite03");
+                        biteEffects.PlayEffect(4);
                         break;
                     case "Poison Teeth":
-                        biteEffects.PlaySoundFX("bitePoison");
+                        biteEffects.PlayEffect(20);
                         break;
                    /* default:
                         Debug.Log("NULL STATE");
@@ -75,35 +74,14 @@ public class MeleeBehaviour : MonoBehaviour
 
             playerMovement.animator.SetTrigger("Bite");
             Enemy_ enemy = collider.GetComponent<Enemy_>();
+
             if (enemy.isDamaged == false)
             {
                 enemy.TakeDamage(GetCurrentDamage());
                 enemy.isDamaged = true;
             }
 
-            if (biteEffects.IsInvoking("PlaySoundFX"))
-            {
-                DestroyAfter();
-
-            }
-                
-            //float delay = audioSource.clip.length;
-            //Invoke("DestroyAfterDelay", delay);
-
         }
     }   
 
-
-    private void DestroyAfter()
-     {
-            Destroy(gameObject);
-            isPlaying = false;
-        
-    }
-
-    /*private void DestroyAfterDelay()
-     {
-         Destroy(gameObject);
-         isPlaying = false;
-     }*/
 }

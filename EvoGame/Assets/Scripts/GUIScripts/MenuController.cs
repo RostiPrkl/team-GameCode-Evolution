@@ -9,6 +9,7 @@ namespace SpeedTutorMainMenuSystem
 {
     public class MenuController : MonoBehaviour
     {
+        public AudioManager menuSounds;
         private float _volumeLevel;
         private int _qualityLevel;
         private bool _isFullScreen;
@@ -114,6 +115,12 @@ namespace SpeedTutorMainMenuSystem
             confirmationPrompt.SetActive(true);
             yield return new WaitForSeconds(2);
             confirmationPrompt.SetActive(false);
+        }
+
+        public void Start()
+        {
+            menuSounds = FindObjectOfType<AudioManager>();
+            //menuSounds.PlayEffect(29);
         }
     }
 }

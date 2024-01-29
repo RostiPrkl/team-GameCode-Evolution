@@ -26,11 +26,11 @@ public class GameManager : MonoBehaviour
     public bool isPaused = false;
     public bool chooseUpgrade = false;
 
-    public SoundController sndCntrl;
+    public AudioManager audioManager;
 
     void Awake()
     {
-        sndCntrl = FindObjectOfType<SoundController>();
+        audioManager = FindObjectOfType<AudioManager>();
 
         if (instance == null)
             instance = this;
@@ -133,10 +133,8 @@ public class GameManager : MonoBehaviour
 
     public void GameOverScreen()
     {
-        sndCntrl.PlaySoundFX("playerDead");
-        sndCntrl.gameObject.SetActive(false);
-        sndCntrl.StopMusic();
-        //sndCntrl.StopSoundFX();
+        audioManager.StopSound(28);
+        audioManager.PlayEffect(18);
         gameOverScreen.SetActive(true);
 
 
@@ -145,7 +143,7 @@ public class GameManager : MonoBehaviour
 
     public void StartEvolution()
     {
-        sndCntrl.PlaySoundFX("levelGain01");
+        audioManager.PlayEffect(14);
         ChangeState(GameState.LevelUp);
         playerLevelSydema.SendMessage("ApplyAndRemoveEvolution");
     }
@@ -157,11 +155,12 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
         levelUpScreen.SetActive(false);
         ChangeState(GameState.Gameplay);
-        sndCntrl.PlaySoundFX("evolutionSelected");
+        audioManager.PlayEffect(13);
     }
     public void Start()
     {
-        sndCntrl.PlaySoundFX("levelStart");
+        audioManager.PlayEffect(15);
+        audioManager.PlayEffect(28);
     }
 
 

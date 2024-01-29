@@ -45,7 +45,7 @@ public class Enemy_ : MonoBehaviour
     public bool isDamaged = false;
 
 
-    public SoundController deathEffect;
+    public AudioManager enemySound;
 
     private void Awake()
 
@@ -62,7 +62,7 @@ public class Enemy_ : MonoBehaviour
            
             SetStats(enemyData.stats);
             SetTarget(GameManager.instance.playerTransform.gameObject);
-            deathEffect = FindObjectOfType<SoundController>();
+            enemySound = FindObjectOfType<AudioManager>();
 
 
         }
@@ -107,6 +107,60 @@ public class Enemy_ : MonoBehaviour
     private void Attack()
 
     {
+        switch (enemyData.animatedPrefab.name)
+        {
+            case "JellyFishEnemy":
+                {
+                    if (enemySound.IsSoundPlaying(30) == false)
+                    {
+                        enemySound.PlayDelayedEffect(2.0f,30);
+                    }
+                    else
+                        enemySound.PlayEffect(30);  
+                }
+                break;
+            case "AnglerEnemy":
+                {
+                    if (enemySound.IsSoundPlaying(31) == false)
+                    {
+                        enemySound.PlayDelayedEffect(0.3f,31);
+                    }
+                    else
+                        enemySound.PlayEffect(31);
+                }
+                break;
+            case "JellyFishEnemyRare":
+                {
+                    if (enemySound.IsSoundPlaying(30) == false)
+                    {
+                        enemySound.PlayDelayedEffect(2.0f,30);
+                    }
+                    else
+                        enemySound.PlayEffect(30);
+                }
+                break;
+            case "AnglerEnemyRare":
+                {
+                    if (enemySound.IsSoundPlaying(31) == false)
+                    {
+                        enemySound.PlayDelayedEffect(0.3f,31);
+                    }
+                    else
+                        enemySound.PlayEffect(31);
+                }
+                break;
+            case "Boss":
+                {
+                    if (enemySound.IsSoundPlaying(31) == false)
+                    {
+                        enemySound.PlayEffect(31);
+                    }
+                }
+                break;
+            default:
+                Debug.Log("NULL STATE");
+                break;
+        }
         targetPlayer.TakeDamage(stats.damage);
 
     }
@@ -121,19 +175,44 @@ public class Enemy_ : MonoBehaviour
             switch (enemyData.animatedPrefab.name)
             {
                 case "JellyFishEnemy":
-                    deathEffect.PlaySoundFX("smallEnemyDie");
+                    {
+                        if (enemySound.IsSoundPlaying(24) == false)
+                        {
+                            enemySound.PlayEffect(24);
+                        }
+                    }
                     break;
                 case "AnglerEnemy":
-                    deathEffect.PlaySoundFX("mediumEnemyDie");
+                    {
+                        if (enemySound.IsSoundPlaying(17) == false)
+                        {
+                            enemySound.PlayEffect(17);
+                        }
+                    }
                     break;
                 case "JellyFishEnemyRare":
-                    deathEffect.PlaySoundFX("mediumEnemyDie");
+                    {
+                        if (enemySound.IsSoundPlaying(24) == false)
+                        {
+                            enemySound.PlayEffect(24);
+                        }
+                    }
                     break;
                 case "AnglerEnemyRare":
-                    deathEffect.PlaySoundFX("biggerEnemyDie");
+                    {
+                        if (enemySound.IsSoundPlaying(0) == false)
+                        {
+                            enemySound.PlayEffect(0);
+                        }
+                    }
                     break;
                 case "Boss":
-                    deathEffect.PlaySoundFX("bossDie");
+                    {
+                        if (enemySound.IsSoundPlaying(1) == false)
+                        {
+                            enemySound.PlayEffect(1);
+                        }
+                    }
                     break;
                 default:
                     Debug.Log("NULL STATE");

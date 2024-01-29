@@ -9,13 +9,14 @@ public class PlayerAttackController : MonoBehaviour
     protected PlayerStats player;
     //protected Player playerMovement;
     float currentCooldown;
-    public SoundController shout;
+   // public SoundController shout;
+    public AudioManager shoutSound;
 
 
 
     protected virtual void Start()
     {
-        shout = FindObjectOfType<SoundController>();
+        shoutSound = FindObjectOfType<AudioManager>();
         player = FindObjectOfType<PlayerStats>();
         
         currentCooldown = attackData.Cooldown;
@@ -36,16 +37,16 @@ public class PlayerAttackController : MonoBehaviour
         switch (attackData.AttackPrefab.name)
         {
             case "ShoutWeapon 0":
-                shout.PlaySoundFX("shoot01");
+                    shoutSound.PlayEffect(21);
                 break;
             case "ShoutWeapon 1":
-                shout.PlaySoundFX("shoot02");
+                shoutSound.PlayEffect(22);
                 break;
             case "ShoutWeapon 2":
-                shout.PlaySoundFX("shoot03");
+                shoutSound.PlayEffect(23);
                 break;
             case "ShoutWeapon 3":
-                shout.PlaySoundFX("shootVortex");
+                shoutSound.PlayEffect(27);
                 break;
            /* default:
                 Debug.Log("NULL STATE");

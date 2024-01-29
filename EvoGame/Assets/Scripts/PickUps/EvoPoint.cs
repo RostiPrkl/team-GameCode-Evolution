@@ -6,12 +6,13 @@ using Gaskellgames.AudioController;
 public class EvoPoint : Pickup
 {
     public int experienceCollected;
-    public SoundController sndCntrl;
+   // public SoundController sndCntrl;
+    public AudioManager evoPointSound;
 
     protected override void Start()
     {
         base.Start();
-        sndCntrl = FindObjectOfType<SoundController>();
+        evoPointSound = FindObjectOfType<AudioManager>();
     }
 
 
@@ -27,8 +28,10 @@ public class EvoPoint : Pickup
             return;
         else
         {
-           
-            sndCntrl.PlaySoundFX("experience2");
+            if (evoPointSound.IsSoundPlaying(11) == false)
+            {
+                evoPointSound.PlayEffect(11);
+            }
             base.Collect();
            
         }

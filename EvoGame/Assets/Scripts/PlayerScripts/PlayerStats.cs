@@ -117,8 +117,9 @@ public class PlayerStats : MonoBehaviour
     PlayerScriptableObject playerData;
     SpriteRenderer[] spriteRList;
 
-    public AudioSource HealthSoundCntrl;
-    public AudioClip myAudioClip;
+    //public AudioSource HealthSoundCntrl;
+    //public AudioClip myAudioClip;
+    public AudioManager healthFxSound;
 
     public GameObject mouth;
 
@@ -152,8 +153,8 @@ public class PlayerStats : MonoBehaviour
     {
         //initialization of the exp increase system
         expCap = levelRanges[0].expCapIncrease;
-
-        HealthSoundCntrl = GetComponent<AudioSource>();
+        healthFxSound = FindObjectOfType<AudioManager>();
+        //HealthSoundCntrl = GetComponent<AudioSource>();
 
     }
 
@@ -212,12 +213,12 @@ public class PlayerStats : MonoBehaviour
         if (CurrentHealth > newMaxHealth)
             CurrentHealth = newMaxHealth;
 
-        
-        if(CurrentHealth > 20)
-         {
-            if (HealthSoundCntrl.isPlaying == true)
+
+        if (CurrentHealth > 20)
+        {
+            if (healthFxSound.IsSoundPlaying(16) == false)
             {
-                HealthSoundCntrl.Stop();
+                healthFxSound.StopSound(16);
             }
 
         }
@@ -262,15 +263,20 @@ public class PlayerStats : MonoBehaviour
         //Check for iframes, and granting for brief invincibilty after dmg
         if (!isInvincible && !debugInvincible)
         {
+            //Taking hit sound
+            if (healthFxSound.IsSoundPlaying(19) == false)
+            {
+                healthFxSound.PlayEffect(19);
+            }
             previousHealth = hpFiller.fillAmount * newMaxHealth;
             hpCounter = 0;
             CurrentHealth -= dmg;
 
             if (CurrentHealth <= 20 )
-            {
-                if (HealthSoundCntrl.isPlaying==false) 
+            {    //Low health sound
+                if (healthFxSound.IsSoundPlaying(16) == false) 
                 {
-                    HealthSoundCntrl.Play();
+                    healthFxSound.PlayEffect(16);
                 }
        
             }
@@ -282,7 +288,9 @@ public class PlayerStats : MonoBehaviour
 
             if (CurrentHealth <= 0)
             {
-                HealthSoundCntrl.Stop();
+                healthFxSound.StopSound(16);
+                healthFxSound.StopSound(28);
+                healthFxSound.PlayEffect(18);
                 Death();
             }
                 
@@ -318,9 +326,9 @@ public class PlayerStats : MonoBehaviour
 
         if (CurrentHealth > 20)
         {
-            if (HealthSoundCntrl.isPlaying == true)
+            if (healthFxSound.IsSoundPlaying(16) == false)
             {
-                HealthSoundCntrl.Stop();
+                healthFxSound.StopSound(16);
             }
 
         }
