@@ -1053,13 +1053,33 @@ PrefabInstance:
       value: AudioEffectsCntrl
       objectReference: {fileID: 0}
     - target: {fileID: 1507856458272425221, guid: 38da30c71491eb445ad9f59dfbc0a9dd, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1507856458272425221, guid: 38da30c71491eb445ad9f59dfbc0a9dd, type: 3}
+      propertyPath: m_Pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1507856458272425221, guid: 38da30c71491eb445ad9f59dfbc0a9dd, type: 3}
       propertyPath: MaxDistance
       value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 1507856458272425221, guid: 38da30c71491eb445ad9f59dfbc0a9dd, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 79bfa791fe5264d4cb60626aeed883a4, type: 3}
+    - target: {fileID: 1507856458272425221, guid: 38da30c71491eb445ad9f59dfbc0a9dd, type: 3}
       propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2305924958106763375, guid: 38da30c71491eb445ad9f59dfbc0a9dd, type: 3}
+      propertyPath: m_Volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2305924958106763375, guid: 38da30c71491eb445ad9f59dfbc0a9dd, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: f86a3a8599804eb489fd34805a37fdb1, type: 3}
     - target: {fileID: 7976624813072224308, guid: 38da30c71491eb445ad9f59dfbc0a9dd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 960
