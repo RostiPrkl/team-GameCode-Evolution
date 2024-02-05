@@ -40,8 +40,6 @@ public class Player : MonoBehaviour
     
     void Update()
     {
-        MovementController();
-        FlipController();
 
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
@@ -51,6 +49,8 @@ public class Player : MonoBehaviour
                 return;
                 
         }
+        FlipController();
+        MovementController();
     }
 
 

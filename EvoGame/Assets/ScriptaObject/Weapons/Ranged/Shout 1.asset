@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackPrefab: {fileID: 2170071144750661667, guid: b59ee04b5ca943ab0890e560a18361ab, type: 3}
   damage: 30
-  speed: 4
+  speed: 10
   cooldown: 1.7
   penetrate: 5
   level: 2

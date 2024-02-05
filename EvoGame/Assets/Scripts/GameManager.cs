@@ -44,6 +44,13 @@ public class GameManager : MonoBehaviour
     }
 
 
+    public void Start()
+    {
+        // audioManager.PlayEffect(15);
+        // audioManager.PlayEffect(28);
+    }
+
+
     void Update()
     {
         switch (currentState)
@@ -157,11 +164,7 @@ public class GameManager : MonoBehaviour
         ChangeState(GameState.Gameplay);
         audioManager.PlayEffect(13);
     }
-    public void Start()
-    {
-        audioManager.PlayEffect(15);
-        audioManager.PlayEffect(28);
-    }
+    
 
 
     public void Exit()

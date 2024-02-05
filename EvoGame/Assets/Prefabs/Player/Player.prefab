@@ -730,7 +730,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 2.13
+  m_Radius: 1.71
 --- !u!114 &3056824947862483710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -743,7 +743,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a58e4ad9b4b4b997592b1cf3a1deb162, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pull: 250
+  pull: 270
 --- !u!1 &1661178395137760215
 GameObject:
   m_ObjectHideFlags: 0
@@ -2090,12 +2090,9 @@ MonoBehaviour:
   previousHealth: 0
   newMaxHealth: 0
   iFrames: 0.5
-  lvlChange: 0
-  HealthSoundCntrl: {fileID: 0}
-  myAudioClip: {fileID: 0}
+  healthFxSound: {fileID: 0}
   mouth: {fileID: 2830609162772578858}
   debugInvincible: 0
-  healthAudioActive: 0
 --- !u!114 &7889618562162774287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2156,6 +2153,9 @@ MonoBehaviour:
   - initalAttack: {fileID: 7265460018517887890, guid: 097a8864c2e73c980b36d9bca21353ea, type: 3}
     attackData: {fileID: 11400000, guid: 39dd09235d14746ddae0f0a0a373955a, type: 2}
     attackEvolutionIndex: 2
+  - initalAttack: {fileID: 6887915562192659732, guid: 066979a25aa9cdd4c8fd21d5f3564319, type: 3}
+    attackData: {fileID: 11400000, guid: 29c1af4fac4e193a6a8ae84278dd1ea7, type: 2}
+    attackEvolutionIndex: 3
   passiveEvolutions:
   - initialPassive: {fileID: 1395933730415374667, guid: f56bf273c8a402ae1bc4e01ceb8e00e8, type: 3}
     passiveData: {fileID: 11400000, guid: b2014be26a8761cafbb544d2e90ffcb0, type: 2}

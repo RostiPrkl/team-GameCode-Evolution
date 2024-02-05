@@ -814,7 +814,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Linux Beta Build 1 By Screaming Monkeys Studio
+  m_text: "Windows Beta Build 1.2\n Screaming Monkeys Studio"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
@@ -1331,7 +1331,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 21c29963754942bac96fe33f1a73cd34, type: 2}
     - target: {fileID: 4708708487659541636, guid: 59df1a585b1268e46b72ca6d17303780, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_StringArgument
-      value: Level01
+      value: CharacterSelection
       objectReference: {fileID: 0}
     - target: {fileID: 4708708487659541636, guid: 59df1a585b1268e46b72ca6d17303780, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName

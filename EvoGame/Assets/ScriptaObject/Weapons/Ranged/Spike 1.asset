@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 14e036b40d01814cd848d3818eda7186, type: 3}
-  m_Name: Shout 0
+  m_Name: Spike 1
   m_EditorClassIdentifier: 
-  attackPrefab: {fileID: 2170071144750661667, guid: ebec76a901aeecc16bf80105ce3cec52, type: 3}
-  damage: 15
+  attackPrefab: {fileID: 5614166318573497780, guid: 6306a17ed3161640d93b734ad20887f1, type: 3}
+  damage: 8
   speed: 8
-  cooldown: 0.4
+  cooldown: 0.6
   penetrate: 2
-  level: 1
-  nextLevelPrefab: {fileID: 2935252070034245117, guid: fb16570fe6e218ffa92c5672a3a7d22c, type: 3}
-  icon: {fileID: 21300000, guid: 17d52176fea2b82acb63bf516aff6df9, type: 3}
-  attackName: Water Bullet
-  attackDescription: Aim and shoot
+  level: 2
+  nextLevelPrefab: {fileID: 6887915562192659732, guid: f11ee9019f91181a29c37dbf89aa28e2, type: 3}
+  icon: {fileID: 0}
+  attackName: Spike Strike
+  attackDescription: Spikes can pierce 2 enemies before being destroyed.

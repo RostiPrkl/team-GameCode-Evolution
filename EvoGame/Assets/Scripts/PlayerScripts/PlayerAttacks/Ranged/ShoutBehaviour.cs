@@ -34,8 +34,6 @@ public class ShoutBehaviour : ProjectileBehaviour
     {
         base.Update();
         TargetingSystem();
-        //set the movement of shout
-
     }
 
 

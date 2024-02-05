@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fea20ab6cb6752573aa92dbcacabd107, type: 3}
   m_Name: StartingCharacter
   m_EditorClassIdentifier: 
-  startingAttack: {fileID: 7265460018517887890, guid: 6b039fe3df77a039cb1fa074ab012cc3, type: 3}
-  maxHealth: 400
+  startingAttack: {fileID: 6887915562192659732, guid: 066979a25aa9cdd4c8fd21d5f3564319, type: 3}
+  maxHealth: 100
   projectileSpeed: 1
   recovery: 0
   movementSpeed: 4
