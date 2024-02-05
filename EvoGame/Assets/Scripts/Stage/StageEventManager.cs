@@ -40,15 +40,16 @@ public class StageEventManager : MonoBehaviour
                     SpawnEnemy(false);
                     break;
 
-                case StageEventType.SpawnObject:
-                    SpawnObject();
-                    break;
+                //case StageEventType.SpawnObject:
+                    //SpawnObject();
+                    //break;
 
                 case StageEventType.WinStage:
                     WinStage();
                     break;
 
                 case StageEventType.SpawnEnemyBoss:
+                    SpawnEnemyBoss();
                     break;
 
             }
@@ -63,6 +64,7 @@ public class StageEventManager : MonoBehaviour
     private void SpawnEnemyBoss()
     {
         SpawnEnemy(true);
+        //enemySpawn.SpawnBossEnemy(stageData.stageEvents[eventIndexer].enemyToSpawn);
     }
 
 
@@ -84,14 +86,14 @@ public class StageEventManager : MonoBehaviour
         }
     }
 
-    private void SpawnObject()
-    {
-        for (int i = 0; i < stageData.stageEvents[eventIndexer].count; i++)
-        {
-            Vector3 positionToSpawn = GameManager.instance.playerTransform.position;
-            positionToSpawn += UtilityTools.GenerateRandomPositionSquarePattern(new Vector2(5f, 5f));
+    //private void SpawnObject()
+    //{
+        //for (int i = 0; i < stageData.stageEvents[eventIndexer].count; i++)
+        //{
+            //Vector3 positionToSpawn = GameManager.instance.playerTransform.position;
+            //positionToSpawn += UtilityTools.GenerateRandomPositionSquarePattern(new Vector2(5f, 5f));
 
-            SpawnManager.instance.SpawnObject(positionToSpawn,stageData.stageEvents[eventIndexer].objectToSpawn);
-        }
-    }
+            //SpawnManager.instance.SpawnObject(positionToSpawn,stageData.stageEvents[eventIndexer].objectToSpawn);
+        //}
+    //}
 }

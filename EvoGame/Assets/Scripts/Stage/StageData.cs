@@ -21,7 +21,7 @@ public class StageEvent
 
     public float time;
     public string message;
-    public GameObject objectToSpawn;
+    //public GameObject objectToSpawn;
     public EnemyData enemyToSpawn;
 
     public int count;

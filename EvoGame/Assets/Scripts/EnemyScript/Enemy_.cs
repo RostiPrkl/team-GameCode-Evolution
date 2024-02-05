@@ -2,8 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
-
+using Random = UnityEngine.Random;
 
 [Serializable]
 public class EnemyStats
@@ -111,12 +110,15 @@ public class Enemy_ : MonoBehaviour
 
     }
 
+
     public void TakeDamage(int currentDamage)
     {
         stats.health -= currentDamage;
+        
 
         if (stats.health < 1)
         {
+
             targetGameobject.GetComponent<PlayerStats>().IncreaseExp(stats.experience);
             //var instantiationPoint = sprite.transform;
             //var coin = Instantiate(coinObject, instantiationPoint.position, Quaternion.identity);
@@ -124,5 +126,7 @@ public class Enemy_ : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    
 
 }
