@@ -33,23 +33,26 @@ public class EnemiesSpawnGroup
 public class EnemySpawn : MonoBehaviour
 {
     [SerializeField] StageProgress stageProgress;
+    //[SerializeField] GameObject enemy;    
     [SerializeField] Vector2 spawnArea;
     [SerializeField] GameObject player;
 
     List<Enemy_> bossEnemiesList;
     float totalBossHealth;
     float currentBossHealth;
-    [SerializeField] Slider bossHealthBar;
-    List<EnemiesSpawnGroup> enemiesSpawnGroupList;
-    List<EnemiesSpawnGroup> repeatedSpawnGroupList;
-
+    //[SerializeField] GameObject bossHealthInfo;
+    public Image bossHealthBar;
+    [SerializeField] List<EnemiesSpawnGroup> enemiesSpawnGroupList = new List<EnemiesSpawnGroup>();
+    [SerializeField] List<EnemiesSpawnGroup> repeatedSpawnGroupList = new List<EnemiesSpawnGroup>();
+    
     int spawnPerFrame = 2;
 
     private void Start()
     {
         player = GameManager.instance.playerTransform.gameObject;
-        bossHealthBar = FindObjectOfType<BossHealthBar>(true).GetComponent<Slider>();
-        stageProgress = FindObjectOfType<StageProgress>();
+        bossHealthBar = FindObjectOfType<BossHealthBar>().GetComponent<Image>();
+        //bossHealthBar = GameObject.Find("BossHealthBar").transform.GetChild(0).transform.GetChild(0).GetComponent<Image>();
+        stageProgress = FindObjectOfType<StageProgress>();       
     }
 
     private void Update()
@@ -99,6 +102,7 @@ public class EnemySpawn : MonoBehaviour
     }
     private void UpdateBossHealth()
     {
+        
         if (bossEnemiesList == null) { return; }
         if (bossEnemiesList.Count == 0) { return; }
 
@@ -109,14 +113,27 @@ public class EnemySpawn : MonoBehaviour
             if (bossEnemiesList[i] == null) { continue; }
             currentBossHealth += bossEnemiesList[i].stats.health;
         }
-        bossHealthBar.value = currentBossHealth;
+        bossHealthBar.fillAmount = currentBossHealth/totalBossHealth;
+        //bossHealthBar.value = currentBossHealth;
 
-        if (currentBossHealth < 0)
+        if (currentBossHealth <= 0)
         {
             bossHealthBar.gameObject.SetActive(false);
             bossEnemiesList.Clear();
         }
     }
+
+    //public void DisplayBossHealth(bool toggle)
+    //{
+        //bossHealthInfo.SetActive(toggle);
+    //}
+
+    //private void InitializeBossHealthUI()
+    //{
+         //DisplayBossHealth(true);
+         
+    //}
+
 
     public void AddGroupToSpawn(EnemyData enemyToSpawn, int count, bool isBoss)
     {
@@ -153,13 +170,19 @@ public class EnemySpawn : MonoBehaviour
 
     private void SpawnBossEnemy(Enemy_ newBoss)
     {
-        if (bossEnemiesList == null) { bossEnemiesList = new List<Enemy_>(); }
+        if (bossEnemiesList == null) 
+            { 
+                Debug.Log("No Boss");
+                bossEnemiesList = new List<Enemy_>(); 
+            }
 
         bossEnemiesList.Add(newBoss);
-
+        Debug.Log("Spawn Boss");
         totalBossHealth += newBoss.stats.health;
         bossHealthBar.gameObject.SetActive(true);
-        bossHealthBar.maxValue = totalBossHealth;
+        //bossHealthBar.maxValue = totalBossHealth;
+        bossHealthBar.fillAmount = totalBossHealth/totalBossHealth;
+
     }
 
     public void AddRepeatedSpawn(StageEvent stageEvent, bool isBoss)

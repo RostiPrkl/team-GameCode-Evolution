@@ -1,5 +1,4 @@
 using UnityEngine;
-using Gaskellgames.AudioController;
 //Base for all player attack types to inherit from
 
 public class PlayerAttackController : MonoBehaviour

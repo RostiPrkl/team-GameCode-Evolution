@@ -49,6 +49,7 @@ public class StageEventManager : MonoBehaviour
                     break;
 
                 case StageEventType.SpawnEnemyBoss:
+                    SpawnEnemyBoss();
                     break;
 
             }

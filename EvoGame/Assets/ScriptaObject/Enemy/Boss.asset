@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6f9a9cc1239529479f6def2651af709, type: 3}
   m_Name: Boss
   m_EditorClassIdentifier: 
-  Name: Boss
-  animatedPrefab: {fileID: 5980331428888745058, guid: 1261c72825b083240b602a9f30d7e3b1, type: 3}
+  Name: BossTest
+  animatedPrefab: {fileID: 5980331428888745058, guid: c62e1ad0bd5e8e13a9a905dafb6bee4e, type: 3}
   stats:
-    health: 5
-    damage: 5
-    experience: 5
+    health: 300
+    damage: 1
+    experience: 0
     moveSpeed: 2

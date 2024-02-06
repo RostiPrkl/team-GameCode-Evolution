@@ -12,9 +12,8 @@ GameObject:
   - component: {fileID: 2942172194723960057}
   - component: {fileID: 9137353498149392356}
   - component: {fileID: 3849939608101427176}
-  - component: {fileID: 8566080295360910515}
   - component: {fileID: 6955948604356426476}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TestEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -76,16 +75,16 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5423ba382114e11748196fa3d981daf0, type: 3}
-  m_Color: {r: 0.3018868, g: 0.092559636, b: 0.25168905, a: 1}
+  m_SortingOrder: 5
+  m_Sprite: {fileID: -3999112320013369780, guid: 03d526453bc6813d59755566ab87aeff, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 3.19, y: 2.78}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!50 &9137353498149392356
@@ -104,7 +103,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 6200000, guid: 75a3e0808dd9854ee81b04ba5967c7c7, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -151,8 +150,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.0002005, y: 1.7550001}
-    newSize: {x: 1, y: 1}
+    oldSize: {x: 3.19, y: 2.78}
+    newSize: {x: 3.19, y: 2.78}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -160,25 +159,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.5358108, y: 0.67015064}
   m_EdgeRadius: 0
---- !u!114 &8566080295360910515
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5980331428888745058}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd982afd2e4c957d8bf71d29b980504d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  drops:
-  - name: EvoPoint
-    itemPrefab: {fileID: 112556324597756653, guid: 804b06d7d70951d6db86aaaab1bf5793, type: 3}
-    dropRate: 50
-  - name: Health
-    itemPrefab: {fileID: 3262823880636201055, guid: 8bb42e006630e80a7ab4e8ef4951369b, type: 3}
-    dropRate: 50
 --- !u!114 &6955948604356426476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,10 +172,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats:
-    health: 1
+    health: 3
     damage: 1
-    experience: 200
-    moveSpeed: 1
-  enemyData: {fileID: 11400000, guid: 66486496b930a0147a2bcc6261a3bf9a, type: 2}
+    experience: 1
+    moveSpeed: 3
+  enemyData: {fileID: 11400000, guid: 2787dc71187cad8588544c878d6c7116, type: 2}
   isDamaged: 0
-  deathEffect: {fileID: 0}
+  enemySound: {fileID: 0}

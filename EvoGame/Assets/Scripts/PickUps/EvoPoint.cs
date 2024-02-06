@@ -1,12 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Gaskellgames.AudioController;
 
 public class EvoPoint : Pickup
 {
     public int experienceCollected;
-   // public SoundController sndCntrl;
+
     public AudioManager evoPointSound;
 
     protected override void Start()
