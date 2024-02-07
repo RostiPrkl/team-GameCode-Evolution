@@ -39,7 +39,7 @@ public class EnemySpawn : MonoBehaviour
 
     List<Enemy_> bossEnemiesList;
     float totalBossHealth;
-    float currentBossHealth;
+    public float currentBossHealth;
     //[SerializeField] GameObject bossHealthInfo;
     public Image bossHealthBar;
     [SerializeField] List<EnemiesSpawnGroup> enemiesSpawnGroupList = new List<EnemiesSpawnGroup>();

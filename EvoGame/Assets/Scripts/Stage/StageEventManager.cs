@@ -11,7 +11,7 @@ public class StageEventManager : MonoBehaviour
 
     StageTime stageTime;
     int eventIndexer;
-    PlayerWinManager playerWin;
+    [SerializeField] GameObject winMessagePanel;
 
     private void Awake()
     {
@@ -20,8 +20,9 @@ public class StageEventManager : MonoBehaviour
 
     private void Start()
     {
-        playerWin = FindObjectOfType<PlayerWinManager>();
+        //playerWin = FindObjectOfType<PlayerWinManager>();
         enemySpawn = FindObjectOfType<EnemySpawn>();
+        winMessagePanel.SetActive(false);
     }
 
     public void Update()
@@ -29,6 +30,7 @@ public class StageEventManager : MonoBehaviour
         if (eventIndexer >= stageData.stageEvents.Count)
         {
             return;
+            
         }
 
         if (stageTime.time > stageData.stageEvents[eventIndexer].time)
@@ -59,6 +61,7 @@ public class StageEventManager : MonoBehaviour
 
             
         }
+
     }
 
     private void SpawnEnemyBoss()
@@ -67,9 +70,11 @@ public class StageEventManager : MonoBehaviour
     }
 
 
-    private void WinStage()
+    public void WinStage()
     {
-        playerWin.Win();
+        Time.timeScale = 0f;
+        Debug.Log("YOU WON");
+        winMessagePanel.SetActive(true);
     }
 
     private void SpawnEnemy(bool bossEnemy)

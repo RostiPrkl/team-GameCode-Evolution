@@ -172,7 +172,14 @@ public class Enemy_ : MonoBehaviour
 
         if (stats.health <= 0)
         {
-            switch (enemyData.animatedPrefab.name)
+            Die();
+        }
+            
+    }
+
+    void Die()
+    {
+        switch (enemyData.animatedPrefab.name)
             {
                 case "JellyFishEnemy":
                     {
@@ -206,12 +213,13 @@ public class Enemy_ : MonoBehaviour
                         }
                     }
                     break;
-                case "Boss":
+                case "TestEnemy":
                     {
                         if (enemySound.IsSoundPlaying(1) == false)
                         {
                             enemySound.PlayEffect(1);
                         }
+                        FindObjectOfType<StageEventManager>().WinStage();
                     }
                     break;
                 default:
@@ -220,8 +228,6 @@ public class Enemy_ : MonoBehaviour
             }
 
             Destroy(gameObject);
-        }
-            
     }
 
 }

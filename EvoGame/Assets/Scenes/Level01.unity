@@ -194,6 +194,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemySpawners 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8153564494732425579, guid: 4feaa38fb3bdb286e9c797b92b8c2a06, type: 3}
+      propertyPath: winMessagePanel
+      value: 
+      objectReference: {fileID: 1280522022}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -690,6 +694,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9026513840118176458, guid: 455f30ba27fcf4502811b01d694135ff, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9035129759699557508, guid: 455f30ba27fcf4502811b01d694135ff, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1167,6 +1175,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1280522022 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9026513840118176458, guid: 455f30ba27fcf4502811b01d694135ff, type: 3}
+  m_PrefabInstance: {fileID: 230369199}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1420168867 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8258336415283928192, guid: 455f30ba27fcf4502811b01d694135ff, type: 3}
