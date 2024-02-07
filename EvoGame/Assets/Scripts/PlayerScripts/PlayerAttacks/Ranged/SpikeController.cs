@@ -16,6 +16,8 @@ public class SpikeController : PlayerAttackController
     {
         base.Attack();
 
+        attackSound.PlayEffect(38);
+
         GameObject spawnedSpike = Instantiate(attackData.AttackPrefab);
         spawnedSpike.transform.position = transform.position;
 

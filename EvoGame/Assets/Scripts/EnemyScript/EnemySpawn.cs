@@ -14,7 +14,7 @@ public class EnemiesSpawnGroup
     public float timeBetweenSpawn;
     public int repeatCount;
 
-   
+
 
     public EnemiesSpawnGroup(EnemyData enemyData, int count, bool isBoss)
     {
@@ -47,8 +47,11 @@ public class EnemySpawn : MonoBehaviour
     
     int spawnPerFrame = 2;
 
+    public AudioManager bossActionSound;
+
     private void Start()
     {
+        bossActionSound = FindObjectOfType<AudioManager>();
         player = GameManager.instance.playerTransform.gameObject;
         bossHealthBar = FindObjectOfType<BossHealthBar>().GetComponent<Image>();
         //bossHealthBar = GameObject.Find("BossHealthBar").transform.GetChild(0).transform.GetChild(0).GetComponent<Image>();
@@ -162,6 +165,10 @@ public class EnemySpawn : MonoBehaviour
 
         if (isBoss == true)
         {
+            bossActionSound.StopSound(28);
+            bossActionSound.PlayOneShotAudio(5);
+            bossActionSound.PlayEffect(39);
+            bossActionSound.PlayEffect(6);
             SpawnBossEnemy(newEnemyComponent);
         }
     }

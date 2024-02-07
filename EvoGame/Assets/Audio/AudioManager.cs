@@ -88,6 +88,19 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    public void PlayOneShotAudio(int soundIndex)
+    {
+        // Play the one-shot audio clip from the specified index
+        if (soundIndex >= 0 && soundIndex < audioSources.Length)
+        {
+            audioSources[soundIndex].PlayOneShot(audioClips[soundIndex]);
+        }
+        else
+        {
+            Debug.LogError("Invalid audio index!");
+        }
+    }
+
     IEnumerator PlayAudioWithDelay(float delay,int soundIndex)
     {
         yield return new WaitForSeconds(delay);

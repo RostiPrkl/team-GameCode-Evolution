@@ -111,50 +111,54 @@ public class Enemy_ : MonoBehaviour
         {
             case "JellyFishEnemy":
                 {
-                    if (enemySound.IsSoundPlaying(30) == false)
+                    if (enemySound.IsSoundPlaying(2) == true)
                     {
-                        enemySound.PlayDelayedEffect(2.0f,30);
+                        enemySound.PlayDelayedEffect(2.0f,2);
                     }
                     else
-                        enemySound.PlayEffect(30);  
+                        enemySound.PlayEffect(2);  
                 }
                 break;
             case "AnglerEnemy":
                 {
-                    if (enemySound.IsSoundPlaying(31) == false)
+                    if (enemySound.IsSoundPlaying(3) == true)
                     {
-                        enemySound.PlayDelayedEffect(0.3f,31);
+                        enemySound.PlayDelayedEffect(2.0f,3);
                     }
                     else
-                        enemySound.PlayEffect(31);
+                        enemySound.PlayEffect(3);
                 }
                 break;
             case "JellyFishEnemyRare":
                 {
-                    if (enemySound.IsSoundPlaying(30) == false)
+                    if (enemySound.IsSoundPlaying(2) == true)
                     {
-                        enemySound.PlayDelayedEffect(2.0f,30);
+                        enemySound.PlayDelayedEffect(2.0f,2);
                     }
                     else
-                        enemySound.PlayEffect(30);
+                        enemySound.PlayEffect(2);
                 }
                 break;
             case "AnglerEnemyRare":
                 {
-                    if (enemySound.IsSoundPlaying(31) == false)
+                    if (enemySound.IsSoundPlaying(4) == true)
                     {
-                        enemySound.PlayDelayedEffect(0.3f,31);
+                        enemySound.PlayDelayedEffect(2.0f,4);
                     }
                     else
-                        enemySound.PlayEffect(31);
+                        enemySound.PlayEffect(4);
                 }
                 break;
-            case "Boss":
+            case "TestEnemy":
                 {
-                    if (enemySound.IsSoundPlaying(31) == false)
+                    if (enemySound.IsSoundPlaying(20) == true)
                     {
-                        enemySound.PlayEffect(31);
+                        enemySound.PlayDelayedEffect(3.0f, 20);
                     }
+                    else
+                        enemySound.PlayEffect(20);
+                    
+                   
                 }
                 break;
             default:
@@ -220,6 +224,8 @@ public class Enemy_ : MonoBehaviour
                             enemySound.PlayEffect(1);
                         }
                         FindObjectOfType<StageEventManager>().WinStage();
+                        enemySound.StopSound(39);
+                        enemySound.PlayEffect(40);
                     }
                     break;
                 default:
