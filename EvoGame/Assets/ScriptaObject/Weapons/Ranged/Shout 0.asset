@@ -15,7 +15,7 @@ MonoBehaviour:
   attackPrefab: {fileID: 2170071144750661667, guid: ebec76a901aeecc16bf80105ce3cec52, type: 3}
   damage: 15
   speed: 8
-  cooldown: 0.4
+  cooldown: 0.8
   penetrate: 2
   level: 1
   nextLevelPrefab: {fileID: 2935252070034245117, guid: fb16570fe6e218ffa92c5672a3a7d22c, type: 3}

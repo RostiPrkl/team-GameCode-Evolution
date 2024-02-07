@@ -22,15 +22,6 @@ MonoBehaviour:
     isRepeatedEvent: 1
     repeatEverySeconds: 5
     repeatCount: 100
-  - eventType: 1
-    time: 10
-    message: 
-    objectToSpawn: {fileID: 0}
-    enemyToSpawn: {fileID: 11400000, guid: 2787dc71187cad8588544c878d6c7116, type: 2}
-    count: 1
-    isRepeatedEvent: 0
-    repeatEverySeconds: 1
-    repeatCount: 1
   - eventType: 0
     time: 35
     message: 
@@ -112,3 +103,12 @@ MonoBehaviour:
     isRepeatedEvent: 1
     repeatEverySeconds: 35
     repeatCount: 50
+  - eventType: 1
+    time: 300
+    message: 
+    objectToSpawn: {fileID: 0}
+    enemyToSpawn: {fileID: 11400000, guid: 2787dc71187cad8588544c878d6c7116, type: 2}
+    count: 1
+    isRepeatedEvent: 0
+    repeatEverySeconds: 1
+    repeatCount: 1

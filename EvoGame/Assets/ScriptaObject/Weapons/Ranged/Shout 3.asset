@@ -15,10 +15,10 @@ MonoBehaviour:
   attackPrefab: {fileID: 2170071144750661667, guid: 120d053e1e78a38f7aef851f75be96f0, type: 3}
   damage: 1
   speed: 10
-  cooldown: 1.7
+  cooldown: 1.5
   penetrate: 20
   level: 3
   nextLevelPrefab: {fileID: 2170071144750661667, guid: 120d053e1e78a38f7aef851f75be96f0, type: 3}
   icon: {fileID: 21300000, guid: beef4ce791eb84ac18b8d94745fabf42, type: 3}
-  attackName: Vortex
+  attackName: Bubble Vortex
   attackDescription: Sucks Enemies in dealing damage over time

@@ -21,4 +21,4 @@ MonoBehaviour:
   nextLevelPrefab: {fileID: 7265460018517887890, guid: a592d317f70297ddda047335c3ad88e6, type: 3}
   icon: {fileID: 21300000, guid: 4f447d8aa26e5ceb993ac4d0f328071d, type: 3}
   attackName: Ink Attack
-  attackDescription: Ink Spals that slows enemies to a crawl
+  attackDescription: Ink splash that slows enemies to a crawl

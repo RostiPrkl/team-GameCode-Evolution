@@ -19,6 +19,6 @@ MonoBehaviour:
   penetrate: 0
   level: 1
   nextLevelPrefab: {fileID: 6887915562192659732, guid: f7ff31408445cb95e999a4778dfa7b85, type: 3}
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: a0bdbd5cf611c88bda7b1ccdc3026099, type: 3}
   attackName: Spike Strike
   attackDescription: Shoot Enemy seeking spikes from your body

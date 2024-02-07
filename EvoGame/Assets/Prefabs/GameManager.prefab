@@ -54,4 +54,4 @@ MonoBehaviour:
   isGameOver: 0
   isPaused: 0
   chooseUpgrade: 0
-  sndCntrl: {fileID: 0}
+  audioManager: {fileID: 7543131765105033915, guid: 38da30c71491eb445ad9f59dfbc0a9dd, type: 3}

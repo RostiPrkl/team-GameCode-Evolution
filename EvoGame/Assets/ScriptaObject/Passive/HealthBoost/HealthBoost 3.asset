@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffd9abc31f0802582a7563a80a483eea, type: 3}
   m_Name: HealthBoost 3
   m_EditorClassIdentifier: 
-  multiplier: 200
+  multiplier: 300
   level: 2
   nextLevelPrefab: {fileID: 9177975063921349625, guid: a1dc26a8a6b502763b29a6aebad7b8b9, type: 3}
   icon: {fileID: 21300000, guid: 891da689d1270370480fe4b9ad1fee4b, type: 3}

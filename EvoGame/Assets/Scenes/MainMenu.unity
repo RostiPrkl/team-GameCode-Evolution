@@ -686,7 +686,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Windows Beta Build 1.2\n Screaming Monkeys Studio"
+  m_text: "Windows Beta Build 2.2\n Screaming Monkeys Studio"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
@@ -897,13 +897,21 @@ PrefabInstance:
       propertyPath: m_Volume
       value: 0.37
       objectReference: {fileID: 0}
+    - target: {fileID: 1507856458272425221, guid: 38da30c71491eb445ad9f59dfbc0a9dd, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1775206854352084224, guid: 38da30c71491eb445ad9f59dfbc0a9dd, type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 6edc4d0e943cd15458432bc943464442, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 1775206854352084224, guid: 38da30c71491eb445ad9f59dfbc0a9dd, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2305924958106763375, guid: 38da30c71491eb445ad9f59dfbc0a9dd, type: 3}
+      propertyPath: m_audioClip
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6731277504505044223, guid: 38da30c71491eb445ad9f59dfbc0a9dd, type: 3}
       propertyPath: m_audioClip
